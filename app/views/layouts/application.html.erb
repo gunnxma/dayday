@@ -9,9 +9,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <style>
-  	.top_container{
-  		margin-top:80px;
-  	}
+  	
   </style>
 </head>
 <body style="background-color:#ebeced">
@@ -35,11 +33,11 @@
 	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 	      <ul class="nav navbar-nav">
 	        <li class="active"><a href="#"><strong>首页</strong></a></li>
-	        <li class="dropdown">
+	        <li class="nav_flyout dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>分类</strong><span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#">Action</a></li>
-	            <li><a href="#">Another action</a></li>
+	            <li><a href="#" class='pop' id='pop'>Action</a></li>
+	            <li><a href="#" class='pop' id='target'>Another action</a></li>
 	            <li><a href="#">Something else here</a></li>
 	            <li class="divider"></li>
 	            <li><a href="#">Separated link</a></li>
@@ -65,6 +63,29 @@
 	  </div><!-- /.container-fluid -->
 	</nav>
 <%= yield %>
+
+<div id="pop_content" class="popover fade right">
+  <!--<div class="arrow"></div>-->
+   <h2 class="popover-title">自定义HTML</h2>
+   <div class="popover-content">
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   	自定义<a href="#">HTML</a><br>
+   </div>
+</div>
+
+<div id="target_content" class="popover fade right">
+  <!--<div class="arrow"></div>-->
+   <h2 class="popover-title">自定义HTML</h2>
+   <div class="popover-content">自定义<a href="#">HTML11</a></div>
+</div>
 
 </body>
 </html>
