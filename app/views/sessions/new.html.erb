@@ -1,0 +1,46 @@
+<div class="top_container">
+  <div class="row">
+    <div class="col-md-3 hidden-xs"></div>
+    <div class="col-xs-12 col-md-6 white">
+      <div class="page-header">
+        <h3>登录</h3>
+      </div>
+      <%= form_tag "/auth/identity/callback", :class => "form-horizontal", :role => "form" do %>
+      <div class="form-group">
+        <label for="email" class="col-sm-2 control-label">邮箱</label>
+        <div class="col-sm-8">
+          <input type="email" class="form-control" id="auth_key" name="auth_key" placeholder="请输入注册时的Email地址">
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="form-group">
+        <label for="password" class="col-sm-2 control-label">密码</label>
+        <div class="col-sm-8">
+          <input type="password" class="form-control" id="password" name="password" placeholder="请输入密码">
+        </div>
+        <div class="col-sm-2"></div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-primary">登录</button><span style="margin-left:30px">还没有用户名？<%= link_to "点此注册", new_identity_path, :class => "btn btn-success" %></span>
+        </div>
+      </div>
+      <% end %>
+    </div>
+    <div class="col-md-3 hidden-xs"></div>
+  </div>
+  <div class="row" style="padding-bottom:30px;">
+    <div class="col-md-3 hidden-xs"></div>
+    <div class="col-xs-12 col-md-6 white">
+      <center>
+        <div class="page-header">
+          <h5>使用社交帐号登录</h5>
+        </div>
+        <a href="#"><%= image_tag("qq.png", :class => "img-rounded")%></a>
+        <div class="page-header">
+        </div>
+      </center>
+    </div>
+    <div class="col-md-3 hidden-xs"></div>
+  </div>
+</div>

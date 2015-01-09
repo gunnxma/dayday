@@ -1,3 +1,10 @@
+<% if current_user %>
+  Welcome <%= current_user.name %>!
+  <%= link_to "Sign Out", signout_path %>
+<% else %>
+  <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+<% end %>
+
 <div class="jumbotron hidden-xs" style="position:relative;padding:0px">
   <img src="http://knewone.com/assets/landing_day-6d45ab622f604d12ebf7eedc7c59d46e.jpg" class="img-responsive" style="position:relative;" />
   <img src="http://knewone.com/assets/logos/10-4651d715be895a378452a6f88fa54c61.png" class="img-responsive logo_img" />

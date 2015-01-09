@@ -43,3 +43,7 @@ gem 'bootstrap-sass', '~> 3.3.1'
 gem 'autoprefixer-rails'
 
 gem 'compass-rails'
+
+gem 'omniauth-identity'
+
+gem 'omniauth-qq-connect'

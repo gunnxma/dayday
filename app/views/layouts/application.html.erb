@@ -57,7 +57,23 @@
 		          <input type="text" class="form-control" placeholder="搜索产品">
 		        </div>
 		      </form>
-	        <li><a href="#">登录</a></li>
+		      <% if current_user %>
+					  <li class="nav_flyout dropdown">
+		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>分类</strong><span class="caret"></span></a>
+		          <ul class="dropdown-menu" role="menu">
+		            <li><a href="#" class='pop' id='pop'>Action</a></li>
+		            <li><a href="#" class='pop' id='target'>Another action</a></li>
+		            <li><a href="#">Something else here</a></li>
+		            <li class="divider"></li>
+		            <li><a href="#">Separated link</a></li>
+		            <li class="divider"></li>
+		            <li><%= link_to "退出", signout_path %></li>
+		          </ul>
+		        </li>
+					<% else %>
+						<li><%= link_to "登录", new_session_path %></li>
+					<% end %>
+	        
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
