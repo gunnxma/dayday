@@ -5,6 +5,11 @@
       <div class="page-header">
         <h3>登录</h3>
       </div>
+      <% if flash[:notice] %>
+        <div class="alert alert-warning" role="alert">         
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
       <%= form_tag "/auth/identity/callback", :class => "form-horizontal", :role => "form" do %>
       <div class="form-group">
         <label for="email" class="col-sm-2 control-label">邮箱</label>
