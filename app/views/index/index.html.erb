@@ -1,3 +1,4 @@
+<% if !current_user %>
 <div class="jumbotron hidden-xs" style="position:relative;padding:0px">
   <img src="http://knewone.com/assets/landing_day-6d45ab622f604d12ebf7eedc7c59d46e.jpg" class="img-responsive" style="position:relative;" />
   <img src="http://knewone.com/assets/logos/10-4651d715be895a378452a6f88fa54c61.png" class="img-responsive logo_img" />
@@ -5,7 +6,7 @@
   <img src="http://knewone.com/assets/slogan-af987f057e34290b97dc346e2ae41842.png" class="img-responsive slogan" />
   <a href="/identities/new" class="btn btn-primary btn-lg login_button" role="button">  	
   	<i class="glyphicon glyphicon-log-in login_icon"></i>
-  	注册 | 登录
+  	注册
   </a>
 </div>
 
@@ -32,6 +33,10 @@
 		</div>
 	</div>
 </div>
+<% else %>
+<div class="top_container">
+</div>
+<% end %>
 
 <div class="top_container visible-xs">
 </div>
