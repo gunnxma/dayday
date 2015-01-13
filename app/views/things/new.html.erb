@@ -1,0 +1,29 @@
+<div class="top_container">
+	<input id="imgFile" type="file" style="display:none">
+  <a class="btn" onclick="$('input[id=imgFile]').click();">上传图片</a>
+ 
+<script type="text/javascript">
+	function UpladFile() {
+    var fileObj = document.getElementById("imgFile").files[0];
+    var FileController = "/kindeditor/upload?dir=image";
+   
+    // FormData 对象
+    var form = new FormData();
+    form.append("imgFile", fileObj);
+
+    // XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", FileController, true);
+    xhr.onload = function (data) {
+    	if (this.status == 200) {
+    		alert("上传完成!"+this.responseText);
+			}        
+    };
+    xhr.send(form);
+  }
+
+	$('input[id=imgFile]').change(function() {
+	  UpladFile();
+	});
+</script>
+</div>

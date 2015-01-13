@@ -101,7 +101,7 @@ categories = [
 			{ name: '服饰' },
 			{ name: '名片夹' },
 			{ name: '腰带' },
-			{ name: '手套' }，
+			{ name: '手套' },
 			{ name: '个人配刀' },
 			{ name: '怀表' },
 			{ name: '烟盒' },
@@ -699,3 +699,48 @@ categories = [
 		] }
 	]}
 ]
+
+
+
+
+categories.each do |category|
+	if Category.where('name = ? and parent_id=0', category[:name]).any?
+		parent = Category.where('name = ? and parent_id=0', category[:name]).first
+	else
+		parent = Category.new
+		parent.name = category[:name]
+		parent.parent_id = 0
+		parent.save
+	end
+	category[:children].each do |c_child|
+		if Category.where('name = ? and parent_id = ?', c_child[:name], parent.id).any?
+			child = Category.where('name = ? and parent_id = ?', c_child[:name], parent.id).first
+		else
+			child = Category.new
+			child.name = c_child[:name]
+			child.parent_id = parent.id
+			child.save
+		end
+		c_child[:tags].each do |c_tag|
+			if Tag.where('name = ?', c_tag[:name]).any?
+				tag = Tag.where('name = ?', c_tag[:name]).first
+			else
+				tag = Tag.new
+				tag.name = c_tag[:name]
+				tag.save
+			end
+			if !CategoryTag.where('category_id = ? and tag_id = ?', parent.id, tag.id).any?
+				category_tag = CategoryTag.new
+				category_tag.category_id = parent.id
+				category_tag.tag_id = tag.id
+				category_tag.save
+			end
+			if !CategoryTag.where('category_id = ? and tag_id = ?', child.id, tag.id).any?
+				category_tag = CategoryTag.new
+				category_tag.category_id = child.id
+				category_tag.tag_id = tag.id
+				category_tag.save
+			end
+		end
+	end
+end
