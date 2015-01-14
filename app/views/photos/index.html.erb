@@ -1,0 +1,6 @@
+<% @photos.each do |photo| %>
+		<div style="display:inline;float:left;margin-right:10px;">
+			<%= image_tag(photo.avatar_url, :width => 50, :height => 50) if photo.avatar? %>
+			<center><a href="javascript:del_photo(<%= photo.id %>)" class="btn btn-danger btn-xs">删除</a></center>
+		</div>
+<% end %>

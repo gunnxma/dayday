@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
 
   resources :things
+  resources :photos
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

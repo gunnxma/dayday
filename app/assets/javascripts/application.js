@@ -20,6 +20,10 @@
 
 
 $(function(){
+	pop_init();
+});
+
+function pop_init() {
 	$(".pop").each(function() {
 	  var $pElem = $(this);
 	  $pElem.popover({
@@ -58,4 +62,4 @@ $(function(){
 		function getPopoverContent(target) {
 		  return $("#" + target + "_content > div.popover-content").html();
 		};
-});
+}

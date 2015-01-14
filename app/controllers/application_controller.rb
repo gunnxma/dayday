@@ -10,4 +10,10 @@ class ApplicationController < ActionController::Base
 	def current_user
 	  @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
 	end
+
+	def check_user
+		if !current_user
+			redirect_to :controller => :sessions, :action => :new
+		end
+	end
 end
