@@ -2,8 +2,6 @@
 @import "bootstrap";
 
 @import "compass";
-@import "jquery.fileupload";
-@import "jquery.fileupload-ui";
 
 $most_top_margin: 80px;
 
@@ -89,12 +87,6 @@ $most_top_margin: 80px;
   line-height: 16px;
   letter-spacing: 5px;
   padding-right: 15px;
-}
-
-.avatar img {
-    display: block;
-    height: 40px;
-    width: 40px
 }
 
 

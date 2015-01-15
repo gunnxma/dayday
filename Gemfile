@@ -52,6 +52,6 @@ gem 'carrierwave'
 
 gem "mini_magick"
 
-gem "jquery-fileupload-rails"
-
 gem 'rails_kindeditor'
+
+gem 'nokogiri'

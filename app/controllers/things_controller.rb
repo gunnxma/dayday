@@ -1,6 +1,7 @@
 class ThingsController < ApplicationController
-	before_filter :check_user
+	#before_filter :check_user
 	before_filter :check_power, :only => [:edit, :update, :destroy]
+	skip_before_filter :verify_authenticity_token, :only => [:crawler]
 
 	def new
 		@thing = Thing.new
@@ -59,7 +60,72 @@ class ThingsController < ApplicationController
 		redirect_to '/'
 	end
 
+	def crawler
+		url = params[:url]
+
+		thing_hash = {}
+
+		thing_hash = tmall_crawler(url) if url.include? "tmall.com"
+		thing_hash = knewone_crawler(url) if url.include? "knewone.com"
+
+		if thing_hash.empty?
+			render :text => 'error'
+		else
+			thing = Thing.new
+			thing.token = SecureRandom.hex
+			thing.title = thing_hash[:title]
+			thing.subtitle = thing_hash[:subtitle]
+			thing.body = thing_hash[:body]
+			thing.official_site = thing_hash[:official_site]
+			thing.publish = false
+			thing.user_id = current_user.id
+			thing.save
+			thing_hash[:photos].each do |photo|
+				t_photo = Photo.new
+				t_photo.thing_id = thing.id
+				t_photo.token = thing.token
+				t_photo.remote_avatar_url = photo
+				t_photo.save
+			end
+			render :text => thing.id
+		end
+	end
+
 	private
+
+	def tmall_crawler(url)
+		page = Nokogiri::HTML(open(url))
+		hash = { 
+			title: page.css('title').text,
+			subtitle: '',
+			photos: [page.css('img#J_ImgBooth').first['src']],
+			body: '',
+			official_site: url
+		}
+		
+		hash = {} if hash[:title].empty? || hash[:photos].empty?
+
+		hash
+	end
+
+	def knewone_crawler(url)
+		page = Nokogiri::HTML(open(url))
+		photos = []
+		page.css('div[class="carousel carousel--extend"] ul li img').each do |photo|
+			photos << (photo['src'].gsub! '!middle', '')
+		end
+		hash = { 
+			title: page.css('div#thing_title h1 a').text,
+			subtitle: page.css('div#thing_title h2').text,
+			photos: photos,
+			body: page.css('div[class="body post_content is_folded"] p').to_s,
+			official_site: page.css('a[class="official_site"]').first['href']
+		}
+		
+		hash = {} if hash[:title].empty? || hash[:photos].empty?
+
+		hash
+	end
 
 	def check_power
 		@thing = Thing.find(params[:id])

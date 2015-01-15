@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get "/signout", to: "sessions#destroy", :as => :signout
   get "/auth/failure", to: "sessions#failure"
 
+  post 'things/crawler'
   resources :things
   resources :photos
 

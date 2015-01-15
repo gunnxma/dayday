@@ -16,7 +16,6 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap-sprockets
-//= require jquery-fileupload
 
 
 $(function(){
@@ -62,4 +61,42 @@ function pop_init() {
 		function getPopoverContent(target) {
 		  return $("#" + target + "_content > div.popover-content").html();
 		};
+}
+
+function crawler() {
+	var url = $("#url").val();
+
+	var form = new FormData();
+    form.append("url", url);
+
+    $('#progress').css('display', '');
+    $('#crawler_error').css('display','none');
+    $('#crawler_button').attr("disabled",true);
+    // XMLHttpRequest 对象
+    var xhr = new XMLHttpRequest();
+    xhr.open("post", '/things/crawler', true);
+    xhr.upload.addEventListener("progress", uploadProgress, false);
+    xhr.onload = function (data) {
+    		var result = false;
+        if (this.status == 200) {
+        	if (this.responseText != "error") {
+        		$('#crawler_success').css('display','');
+        		window.location.href='/things/'+this.responseText+"/edit";
+        		result = true;
+        	}
+        }
+        if (!result){
+	        $('#progress').css('display', 'none');
+	        $('#crawler_error').css('display','');
+	    		$('#crawler_button').removeAttr("disabled");
+	    	}
+    };
+    xhr.send(form);
+}
+
+function uploadProgress(evt) {
+  if (evt.lengthComputable) {
+    var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+    $('#progressbar').css('width', percentComplete.toString() + '%');
+  }
 }
