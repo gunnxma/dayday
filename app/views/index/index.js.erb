@@ -1,0 +1,4 @@
+$('.spinner').css('display','none');
+$("<%= j(render partial: 'thing', collection: @things, as: :thing) %>").appendTo($("#things_content"));
+$(".pagination").html("<%= j(paginate @things, :remote => true) %>");
+checkScroll();

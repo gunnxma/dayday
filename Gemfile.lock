@@ -71,6 +71,9 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.1)
     jwt (1.2.0)
+    kaminari (0.16.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     mime-types (2.4.3)
@@ -103,6 +106,8 @@ GEM
     omniauth-qq-connect (0.2.0)
       omniauth (~> 1.0)
       omniauth-oauth2 (~> 1.0)
+    puma (2.8.2)
+      rack (>= 1.1, < 2.0)
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
@@ -170,10 +175,12 @@ DEPENDENCIES
   compass-rails
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   mini_magick
   nokogiri
   omniauth-identity
   omniauth-qq-connect
+  puma
   rails (= 4.1.7)
   rails_kindeditor
   sass-rails (~> 4.0.3)

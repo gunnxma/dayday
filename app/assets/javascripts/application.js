@@ -20,6 +20,31 @@
 
 $(function(){
 	pop_init();
+	checkScroll();
+
+	$(window).bind("scroll", function(){
+
+      // 获取网页文档对象滚动条的垂直偏移
+      var scrollTopNum = $(document).scrollTop(),
+          // 获取浏览器当前窗口的高度
+          winHeight = $(window).height(),
+          returnTop = $("div.returnTop");
+
+      // 滚动条的垂直偏移大于 0 时显示，反之隐藏
+      (scrollTopNum > 0) ? returnTop.fadeIn("fast") : returnTop.fadeOut("fast");
+
+      // 给 IE6 定位
+      if (!-[1,]&&!window.XMLHttpRequest) {
+          returnTop.css("top", scrollTopNum + winHeight - 200);
+      }
+
+  });
+
+  // 点击按钮后，滚动条的垂直方向的值逐渐变为0，也就是滑动向上的效果
+  $("div.returnTop").click(function() {
+      $("html, body").animate({ scrollTop: 0 }, 100);
+  });
+  
 });
 
 function pop_init() {
@@ -99,4 +124,27 @@ function uploadProgress(evt) {
     var percentComplete = Math.round(evt.loaded * 100 / evt.total);
     $('#progressbar').css('width', percentComplete.toString() + '%');
   }
+}
+
+function checkScroll() {
+  if (nearBottomOfPage()) {
+    if($(".next a").length != 0){
+    	$('.spinner').css('display','');
+      $.rails.handleRemote($(".next a"));
+    }
+  } else {
+    setTimeout("checkScroll()", 250);
+  }
+}
+
+function nearBottomOfPage() {
+  return scrollDistanceFromBottom() < 150;
+}
+
+function scrollDistanceFromBottom(argument) {
+  return pageHeight() - (window.pageYOffset + self.innerHeight);
+}
+
+function pageHeight() {
+  return Math.max(document.body.scrollHeight, document.body.offsetHeight);
 }
