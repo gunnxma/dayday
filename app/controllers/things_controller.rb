@@ -55,6 +55,10 @@ class ThingsController < ApplicationController
 		end
 	end
 
+	def show
+		@thing = Thing.find(params[:id])
+	end
+
 	def destroy
 		@thing.destroy
 		redirect_to '/'

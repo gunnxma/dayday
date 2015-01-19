@@ -57,7 +57,7 @@ function pop_init() {
 	    content: getPopoverContent($pElem.attr("id")),
 	    container: 'body',
 	    animation: false,
-	    template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content"></div></div>'
+	    template: '<div class="popover" role="tooltip"><div class="arrow"></div><div class="popover-content" style="overflow:auto;height:600px"></div></div>'
 	  });
 	}).on("mouseenter",
 		function() {

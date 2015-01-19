@@ -36,13 +36,9 @@
 	        <li class="nav_flyout dropdown">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>分类</strong><span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
-	            <li><a href="#" class='pop' id='pop'>Action</a></li>
-	            <li><a href="#" class='pop' id='target'>Another action</a></li>
-	            <li><a href="#">Something else here</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
+	          	<% Category.where('parent_id = 0').each do |category| %>
+	            <li><a href="#" class='pop' id='category_<%= category.id %>'><%= category.name %></a></li>
+	            <% end %>
 	          </ul>
 	        </li>
 	        <li><a href="#"><strong>热门</strong></a></li>
@@ -80,28 +76,22 @@
 	</nav>
 <%= yield %>
 
-<div id="pop_content" class="popover fade right">
-  <!--<div class="arrow"></div>-->
-   <h2 class="popover-title">自定义HTML</h2>
-   <div class="popover-content">
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
-   	自定义<a href="#">HTML</a><br>
+<% Category.where('parent_id = 0').each do |category| %>
+<div id="category_<%= category.id %>_content" class="popover fade right">
+   <div class="popover-content" style="">   	
+	  <% category.children.each do |child| %>
+	  <div class="page-header" style="margin-top:20px;">
+	  	<a href="#"><span class="label label-primary"><%= child.name %></span></a>
+	  </div>
+	  <div style="line-height:30px;">
+	  	<% child.tags.each do |tag| %>
+	   	<a href="#" style="margin:10px;"><span class="label label-info"><%= tag.name %></span></a>
+	   	<% end %>
+	   	<% end %>
+	  </div>
    </div>
 </div>
-
-<div id="target_content" class="popover fade right">
-  <!--<div class="arrow"></div>-->
-   <h2 class="popover-title">自定义HTML</h2>
-   <div class="popover-content">自定义<a href="#">HTML11</a></div>
-</div>
+<% end %>
 
 <div class="modal fade" id="create_thing" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

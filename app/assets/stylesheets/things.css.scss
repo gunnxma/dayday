@@ -1,3 +1,32 @@
 // Place all the styles related to the things controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$thing_title_background_color: #fafafa;
+
+#thing_title{
+	@include border-top-radius(15px);
+	background-color: $thing_title_background_color;
+	padding:50px;
+	text-align:center;
+	h1{
+		font-size:24px;
+		margin:0px;
+	}
+	h2{
+		font-size:18px;
+		margin:0px;
+		margin-top: 30px;
+	}
+}
+
+#thing_top_nav{
+	background-color: $thing_title_background_color;
+	.active{
+		background-color: #ffffff;
+	}
+}
+
+.btn-share{
+	border-radius:0px;
+}

@@ -3,8 +3,8 @@
 	        <%= image_tag(thing.user.avatar_url, :width => 60, :height => 60, :class => "img-circle img-responsive center-block") if thing.user %>
 	      </div>
 	      <div class="col-xs-12 col-md-10 item">
-        	<a href="#"><%= image_tag(thing.photos.first.avatar_url, :class => 'img-responsive') if thing.photos.first %></a>
-        	<p class="item_title"><a href="#"><%= thing.title %></a></p>
-        	<div class="item_author"><%= image_tag(thing.user.avatar_url, :width => 26, :height => 26, :class => "img-circle img-responsive pull-left") if thing.user %><a href="#">MeggeryWang</a><span class="pull-right item_fav"><a href="#"><i class="glyphicon glyphicon-heart-empty"></i>1</span></a></div>
+        	<a href="/things/<%= thing.id %>" target="_blank"><%= image_tag(thing.photos.first.avatar_url, :class => 'img-responsive') if thing.photos.first %></a>
+        	<p class="item_title"><a href="/things/<%= thing.id %>" target="_blank"><%= thing.title %></a></p>
+        	<div class="item_author"><%= image_tag(thing.user.avatar_url, :width => 26, :height => 26, :class => "img-circle img-responsive pull-left") if thing.user %><a href="#"><%= thing.user.name if thing.user %></a><span class="pull-right item_fav"><i class="glyphicon glyphicon-heart-empty"></i>1</span></div>
 	      </div>
 	    </div>

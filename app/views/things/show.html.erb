@@ -1,0 +1,69 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-8">
+	  	<div id="thing_title">
+		  	<h1><%= @thing.title %></h1>
+		  	<h2><%= @thing.subtitle %></h2>
+		  </div>
+		  <nav id="thing_top_nav">
+		  	<ul class="nav nav-justified">
+		  		<li class="active"><a href="#">产品</a></li>
+		  		<li><a href="#">评测</a></li>
+		  		<li><a href="#">短评</a></li>
+		  		<li><a href="#">动态</a></li>
+		  	</ul>
+		  </nav>
+		  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			  <!-- Indicators -->
+			  <ol class="carousel-indicators">
+			  	<% @thing.photos.each_with_index do |photo, i| %>
+			    <li data-target="#carousel-example-generic" data-slide-to="<%=i%>" class="<%= i == 0 ? 'active' : '' %>"></li>
+			    <% end %>
+			  </ol>
+
+			  <!-- Wrapper for slides -->
+			  <div class="carousel-inner" role="listbox" style="width:100%;height:528px;">
+			  	<% @thing.photos.each_with_index do |photo, i| %>
+			    <div class="item <%= i == 0 ? 'active' : '' %>" style="width:100%;height:528px;">
+			      <center><%= image_tag(photo.avatar_url) %></center>
+			    </div>
+			    <% end %>			    
+			  </div>
+
+			  <!-- Controls -->
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left"></span>
+			    <span class="sr-only">上一张</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right"></span>
+			    <span class="sr-only">下一张</span>
+			  </a>
+			</div>
+			<div id="thing_description">
+				<article class="article">
+					<div id="thing_author">
+						<a href="#"><%= image_tag(@thing.user.avatar_url, :width => 50, :height => 50) if @thing.user %></a>
+						<span class="author_name">
+							<label>分享者</label><a href="#"><%= @thing.user.name if @thing.user %>
+						</span>
+						<a class="btn btn-info btn-share"><i class="glyphicon glyphicon-share"></i>分享</a>
+					</div>
+				</article>
+			</div>
+	  </div>
+	  <div class="col-xs-0 col-md-4 hidden-xs">
+	  	<div class="row mb_30">
+	  		<div class="col-md-12">
+	  			<img src="http://image.knewone.com/promotions/73d1fa795f222ee62a4919445c2f6745.jpg!middle" class="img-responsive" />
+	  		</div>
+	  	</div>
+	  	<div class="row mb_30">
+	  		<div class="col-md-12">
+	  			<img src="http://image.knewone.com/promotions/f17c17f6799c6ea85b6f1390b0aff481.jpg!middle" class="img-responsive" />
+	  		</div>
+	  	</div>
+	  </div>
+	</div>
+</div>
