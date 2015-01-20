@@ -44,6 +44,13 @@ $(function(){
   $("div.returnTop").click(function() {
       $("html, body").animate({ scrollTop: 0 }, 100);
   });
+
+  //thing.js
+  //设置body中的图片为响应式并且居中
+  $(".post_content img").each(function() {
+    $(this).addClass('img-responsive');
+    $(this).addClass('center-block');
+  });
   
 });
 

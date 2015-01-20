@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $thing_title_background_color: #fafafa;
+$white: #ffffff;
 
 #thing_title{
 	@include border-top-radius(15px);
@@ -23,10 +24,125 @@ $thing_title_background_color: #fafafa;
 #thing_top_nav{
 	background-color: $thing_title_background_color;
 	.active{
-		background-color: #ffffff;
+		background-color: $white;
+	}
+}
+
+#thing_description{
+	background-color: $white;
+	padding-top: 30px;
+	padding-bottom: 50px;
+	margin-bottom: 30px;
+}
+
+#thing_author{
+	border-left: 3px solid #049cdb;
+	margin-bottom: 50px;
+	a{
+		border-radius:0px;
+		border: 0px;
+		height: 40px;
+		width: 85px;
+		padding: 0px;
+		line-height: 40px;
+		//vertical-align:middle;
 	}
 }
 
 .btn-share{
-	border-radius:0px;
+	background-color: #8cadca;
+}
+
+.btn-flag {
+	background-color: #97ceec;
+}
+
+.author_name{
+	background-color: $thing_title_background_color;
+	padding-left:30px;
+	label{
+		margin-left:20px;
+		margin-right:20px;
+	}
+}
+
+.post_content{
+	padding-left: 30px;
+	padding-right: 30px;
+	img{
+		@include img-responsive;
+	}
+	footer{
+		a{
+			line-height: 15px;
+			padding-top: 80px;
+			i{
+				margin-right:3px;
+			}
+		}
+	}
+}
+
+#thing_reviews{
+	background-color: $white;
+}
+
+#thing_feeling_form{
+	margin: 0px;
+	background-color: $white;
+	padding: 30px;
+	margin-bottom: 30px;
+	div{
+		padding: 0px;
+	}
+	img{
+		width: 60px;
+		height: 60px;
+	}
+}
+
+#feeling_form{
+	textarea{
+		padding-left:0px;
+		height:80px;
+	}
+}
+
+#thing-feeds-tab{
+	a{
+		border-radius:0px;
+		border: 0px;
+		background-color: #f7f7f7;
+		color: #777777;
+	}
+	i{
+		margin-right:5px;
+	}
+}
+
+.feed_item{
+	margin: 0px;
+	background-color: $white;
+	padding: 20px;
+	margin-bottom: 30px;
+	div{
+		padding: 0px;
+	}
+	img{
+		width: 60px;
+		height: 60px;
+	}
+	i{
+		margin-right:5px;
+	}
+}
+
+.feed-like{
+	a{
+		color: #777777;
+		margin-left: 10px;
+		&:hover{
+			color: #50c0ed;
+		}
+	}	
 }

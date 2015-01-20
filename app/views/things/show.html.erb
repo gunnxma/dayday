@@ -6,7 +6,7 @@
 		  	<h1><%= @thing.title %></h1>
 		  	<h2><%= @thing.subtitle %></h2>
 		  </div>
-		  <nav id="thing_top_nav">
+		  <nav id="thing_top_nav" class="hidden-xs">
 		  	<ul class="nav nav-justified">
 		  		<li class="active"><a href="#">产品</a></li>
 		  		<li><a href="#">评测</a></li>
@@ -43,14 +43,71 @@
 			</div>
 			<div id="thing_description">
 				<article class="article">
-					<div id="thing_author">
-						<a href="#"><%= image_tag(@thing.user.avatar_url, :width => 50, :height => 50) if @thing.user %></a>
+					<div id="thing_author">						
 						<span class="author_name">
+							<a href="#"><%= image_tag(@thing.user.avatar_url, :width => 40, :height => 40, :class => 'img-circle') if @thing.user %></a>
 							<label>分享者</label><a href="#"><%= @thing.user.name if @thing.user %>
 						</span>
-						<a class="btn btn-info btn-share"><i class="glyphicon glyphicon-share"></i>分享</a>
+						<a class="btn btn-warning btn-share pull-right"><i class="glyphicon glyphicon-share"></i>分享</a>
+						<a class="btn btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
+					</div>
+					<div class="post_content">
+						<p><%= @thing.subtitle %></p>
+						<hr>
+						<%= raw @thing.body %>
+						<footer>
+							<% if !@thing.official_site.empty? %>
+							<a href="<%= @thing.official_site %>" target="_blank"><i class="glyphicon glyphicon-globe"></i>来源网站</a>
+							<% end %>
+						</footer>
 					</div>
 				</article>
+			</div>
+			<div id="thing_reviews" style="display:none">
+				<div class="no_reviews jumbotron">
+					<p>还没有人为 <%= @thing.title %> 撰写评测，你想做第一个为它写评测的人么？</p>
+					<ul class="list-inline">
+						<li><a href="#" class="btn btn_info"></a></li>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" id="thing_feeling_form">
+				<div class="col-md-2 hidden-xs">
+					<center>
+						<%= image_tag(@thing.user.avatar_url, :class => 'img-circle') if @thing.user %>
+						<p><a href="#"><%= @thing.user.name if @thing.user %></a></p>
+					</center>
+				</div>
+				<div class="col-md-10" id="feeling_form">
+					<form role="form">
+  					<div class="form-group">
+							<center><textarea class="form-control" placeholder="说点什么吧（140字以内哦）"></textarea></center>
+						</div>
+						<button type="submit" class="btn btn-info pull-right">发布</button>
+					</form>
+				</div>
+			</div>
+			<nav id="thing-feeds-tab">
+				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
+					<li class="active">
+						<a><i class="glyphicon glyphicon-leaf"></i>短评</a>
+					</li>
+				</ul>
+			</nav>
+			<div class="row feed_item">
+				<div class="col-md-2 hidden-xs">
+					<center>
+						<%= image_tag(@thing.user.avatar_url, :class => 'img-circle') if @thing.user %>
+						<p><a href="#"><%= @thing.user.name if @thing.user %></a></p>
+					</center>
+				</div>
+				<div class="col-md-9 feed_body">
+					这是个1600万色的LED灯泡，使用寿命漫长的,一般都在5万小时以上，你就算不关灯也能工作五六年，应该没必要换灯泡。另外色温也是可以调节的。
+				</div>
+				<div class="col-md-1 feed-like">
+					<a href="#"><i class="glyphicon glyphicon-thumbs-up"></i>0</a>
+				</div>
 			</div>
 	  </div>
 	  <div class="col-xs-0 col-md-4 hidden-xs">
