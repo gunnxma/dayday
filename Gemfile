@@ -38,6 +38,9 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+gem 'mysql2'
+
 gem 'puma'
 
 gem 'bootstrap-sass', '~> 3.3.1'
