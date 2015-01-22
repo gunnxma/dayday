@@ -131,6 +131,16 @@ class ThingsController < ApplicationController
 		hash
 	end
 
+	def processed_body(body)
+		#从body中取出所有图片链接，调用save_remote_img(url)方法保存到本地，并将更新地址后的body返回
+		body
+	end
+
+	def save_remote_img(url)
+		newfile = Rails.root.join('public', 'uploads', File.basename(url))
+		File.open(newfile, 'wb') { |f| f.write(open(url).read) }
+	end
+
 	def check_power
 		@thing = Thing.find(params[:id])
 
