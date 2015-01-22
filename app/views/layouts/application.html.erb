@@ -52,7 +52,11 @@
 	        <li><a href="#"><strong>热门</strong></a></li>
 	        <li><a href="#"><strong>精选</strong></a></li>
 	        <li><a href="#"><strong>小组</strong></a></li>
+	        <% if current_user %>
 	        <li><a href="#" data-toggle="modal" data-target="#create_thing"><i class="glyphicon glyphicon-plus" style="color:#049cdb;margin-right:5px"></i><strong>分享产品</strong></a></li>
+	        <% else %>
+	        <li><a href="/sessions/new"><i class="glyphicon glyphicon-plus" style="color:#049cdb;margin-right:5px"></i><strong>分享产品</strong></a></li>
+	        <% end %>
 	      </ul>
 	      
 	      <ul class="nav navbar-nav navbar-right">

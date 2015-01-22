@@ -1,5 +1,5 @@
 class ThingsController < ApplicationController
-	#before_filter :check_user
+	before_filter :check_user, :only => [:new, :create]
 	before_filter :check_power, :only => [:edit, :update, :destroy]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
 
