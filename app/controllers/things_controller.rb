@@ -79,7 +79,7 @@ class ThingsController < ApplicationController
 			thing.token = SecureRandom.hex
 			thing.title = thing_hash[:title]
 			thing.subtitle = thing_hash[:subtitle]
-			thing.body = thing_hash[:body]
+			thing.body = processed_body(thing_hash[:body])
 			thing.official_site = thing_hash[:official_site]
 			thing.publish = false
 			thing.user_id = current_user.id
@@ -133,12 +133,23 @@ class ThingsController < ApplicationController
 
 	def processed_body(body)
 		#从body中取出所有图片链接，调用save_remote_img(url)方法保存到本地，并将更新地址后的body返回
+		page = Nokogiri::HTML(body)
+		page.css('img').each do |img|
+			img_url = img[:src].gsub! '!review', ''
+			#img[:src] = save_remote_img(img_url)
+			body.gsub! "#{img_url}!review", save_remote_img(img[:src].gsub! '!review', '')
+		end
 		body
 	end
 
 	def save_remote_img(url)
-		newfile = Rails.root.join('public', 'uploads', File.basename(url))
+		ym = DateTime.now.strftime('%Y%m')
+		dir = Rails.root.join('public', 'uploads', 'body_img', ym)		
+		Dir.mkdir(dir) unless File.exists?(dir)
+
+		newfile = Rails.root.join('public', 'uploads', 'body_img', ym, File.basename(url))
 		File.open(newfile, 'wb') { |f| f.write(open(url).read) }
+		"/uploads/body_img/#{ym}/#{File.basename(url)}"
 	end
 
 	def check_power
