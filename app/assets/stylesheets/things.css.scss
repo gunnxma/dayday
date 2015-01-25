@@ -5,7 +5,7 @@
 $thing_title_background_color: #fafafa;
 $white: #ffffff;
 
-#thing_title{
+.thing_title{
 	@include border-top-radius(15px);
 	background-color: $thing_title_background_color;
 	padding:50px;
