@@ -62,3 +62,6 @@ gem 'rails_kindeditor'
 gem 'nokogiri'
 
 gem 'kaminari'
+
+gem 'rest-client'
+gem 'carrierwave-upyun'

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	mount_uploader :avatar, UserUploader
+	mount_uploader :avatar, PhotoUploader
 	has_many :things
 
 	def self.create_with_omniauth(auth)
