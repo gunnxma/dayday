@@ -1,0 +1,2 @@
+module KindeditorUpyunHelper
+end

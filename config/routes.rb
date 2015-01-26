@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :things
   resources :photos
 
+  post 'kindeditor_upyun/upload'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
