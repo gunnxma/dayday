@@ -135,9 +135,11 @@ class ThingsController < ApplicationController
 		#从body中取出所有图片链接，调用save_remote_img(url)方法保存到本地，并将更新地址后的body返回
 		page = Nokogiri::HTML(body)
 		page.css('img').each do |img|
-			img_url = img[:src].gsub! '!review', ''
+			#img_url = img[:src].gsub! '!review', ''
+			img_url = img[:src]
 			#img[:src] = save_remote_img(img_url)
-			body.gsub! "#{img_url}!review", save_remote_img(img[:src].gsub! '!review', '')
+			#body.gsub! "#{img_url}!review", save_remote_img(img[:src].gsub! '!review', '')
+			body.gsub! "#{img_url}", save_remote_img(img_url)
 		end
 		body
 	end
@@ -147,9 +149,23 @@ class ThingsController < ApplicationController
 		dir = Rails.root.join('public', 'uploads', 'body_img', ym)		
 		Dir.mkdir(dir) unless File.exists?(dir)
 
-		newfile = Rails.root.join('public', 'uploads', 'body_img', ym, File.basename(url))
+		basename = File.basename(url).gsub! '!review', ''
+
+		#body中的图片保存到本地
+		newfile = Rails.root.join('public', 'uploads', 'body_img', ym, basename)
 		File.open(newfile, 'wb') { |f| f.write(open(url).read) }
-		"/uploads/body_img/#{ym}/#{File.basename(url)}"
+		#"/uploads/body_img/#{ym}/#{basename}"
+
+		#body中的图片保存到upyun
+		upyun = Upyun::Rest.new('xinqidou', 'xinqidou', 'macnmq1983', {}, Upyun::ED_AUTO)
+		result = upyun.put("/uploads/body_img/#{ym}/#{basename}", File.new(newfile, 'rb'))
+		#result = upyun.upload(File.new(newfile))
+		if result
+			File.delete(newfile)
+			"http://image.xinqidou.com/uploads/body_img/#{ym}/#{basename}"
+		else
+			"/uploads/body_img/#{ym}/#{basename}"
+		end
 	end
 
 	def check_power

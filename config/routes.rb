@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :sessions
 
   get "/auth/:provider/callback", to: "sessions#create"
+  post "/auth/:provider/callback", to: "sessions#create"
   get "/signout", to: "sessions#destroy", :as => :signout
   get "/auth/failure", to: "sessions#failure"
 
