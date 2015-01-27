@@ -48,6 +48,10 @@
 							<a href="#"><%= image_tag(@thing.user.avatar_url('60x60'), :width => 40, :height => 40, :class => 'img-circle') if @thing.user %></a>
 							<label>分享者</label><a href="#"><%= @thing.user.name if @thing.user %>
 						</span>
+						<% if current_user && (current_user.id == @thing.user_id) %>
+						<a class="btn btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
+						<a class="btn btn-info btn-flag pull-right" href="/things/<%= @thing.id %>/edit"><i class="glyphicon glyphicon-edit"></i>编辑</a>
+						<% end %>
 						<a class="btn btn-warning btn-share pull-right"><i class="glyphicon glyphicon-share"></i>分享</a>
 						<a class="btn btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
 					</div>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	mount_uploader :avatar, PhotoUploader
 	has_many :things
+	has_many :feelings
 
 	def self.create_with_omniauth(auth)
 	  create! do |user|

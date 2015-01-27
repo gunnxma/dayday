@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
 
   post 'things/crawler'
-  resources :things
+  resources :things do
+    resources :feelings
+  end
   resources :photos
 
   post 'kindeditor_upyun/upload'

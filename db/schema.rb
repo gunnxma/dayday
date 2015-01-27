@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150116023611) do
+ActiveRecord::Schema.define(version: 20150127073735) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20150116023611) do
   create_table "category_tags", force: true do |t|
     t.integer  "category_id"
     t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "feelings", force: true do |t|
+    t.integer  "thing_id"
+    t.integer  "user_id"
+    t.string   "body"
+    t.integer  "up"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
