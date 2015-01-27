@@ -57,6 +57,8 @@ class ThingsController < ApplicationController
 
 	def show
 		@thing = Thing.find(params[:id])
+		@title = @thing.title
+		@title = "#{@title} - #{@thing.subtitle}" if !@thing.subtitle.empty?
 	end
 
 	def destroy
