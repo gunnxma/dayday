@@ -46,13 +46,13 @@
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>分类</strong><span class="caret"></span></a>
 	          <ul class="dropdown-menu" role="menu">
 	          	<% Category.where('parent_id = 0').each do |category| %>
-	            <li><a href="#" class='pop' id='category_<%= category.id %>'><%= category.name %></a></li>
+	            <li><a href="/" class='pop' id='category_<%= category.id %>'><%= category.name %></a></li>
 	            <% end %>
 	          </ul>
 	        </li>
-	        <li><a href="#"><strong>热门</strong></a></li>
-	        <li><a href="#"><strong>精选</strong></a></li>
-	        <li><a href="#"><strong>小组</strong></a></li>
+	        <li><a href="/"><strong>热门</strong></a></li>
+	        <li><a href="/"><strong>精选</strong></a></li>
+	        <li><a href="/"><strong>小组</strong></a></li>
 	        <% if current_user %>
 	        <li><a href="#" data-toggle="modal" data-target="#create_thing"><i class="glyphicon glyphicon-plus" style="color:#049cdb;margin-right:5px"></i><strong>分享产品</strong></a></li>
 	        <% else %>
@@ -70,12 +70,6 @@
 					  <li class="nav_flyout dropdown avatar">
 		          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><strong>个人中心</strong><span class="caret"></span></a>
 		          <ul class="dropdown-menu" role="menu">
-		            <li><a href="#" class='pop' id='pop'>Action</a></li>
-		            <li><a href="#" class='pop' id='target'>Another action</a></li>
-		            <li><a href="#">Something else here</a></li>
-		            <li class="divider"></li>
-		            <li><a href="#">Separated link</a></li>
-		            <li class="divider"></li>
 		            <li><%= link_to "退出", signout_path %></li>
 		          </ul>
 		        </li>
@@ -91,14 +85,14 @@
 
 <% Category.where('parent_id = 0').each do |category| %>
 <div id="category_<%= category.id %>_content" class="popover fade right">
-   <div class="popover-content" style="">   	
+   <div class="popover-content" style="">
 	  <% category.children.each do |child| %>
 	  <div class="page-header" style="margin-top:20px;">
-	  	<a href="#"><span class="label label-primary"><%= child.name %></span></a>
+	  	<a href="/"><span class="label label-primary"><%= child.name %></span></a>
 	  </div>
 	  <div style="line-height:30px;">
 	  	<% child.tags.each do |tag| %>
-	   	<a href="#" style="margin:10px;"><span class="label label-info"><%= tag.name %></span></a>
+	   	<a href="/" style="margin:10px;"><span class="label label-info"><%= tag.name %></span></a>
 	   	<% end %>
 	  </div>	  
 	  <% end %>
