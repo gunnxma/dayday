@@ -6,7 +6,7 @@ $thing_title_background_color: #fafafa;
 $white: #ffffff;
 
 .thing_title{
-	@include border-top-radius(15px);
+	@include border-top-radius(10px);
 	background-color: $thing_title_background_color;
 	padding:50px;
 	text-align:center;
@@ -145,4 +145,90 @@ $white: #ffffff;
 			color: #50c0ed;
 		}
 	}	
+}
+
+.shop{
+	@include border-radius(10px);
+	padding: 30px;
+	margin-bottom: 20px;
+	button{
+		border-radius:10px;
+		border: 0px;
+		color: #ffffff;
+		background-color: #EA764B;
+		width: 100%;
+		height: 40px;
+		i{
+			margin-right: 15px;
+		}
+		&:hover{
+			background-color: #E76534;
+			color: #ffffff;
+		}
+	}
+}
+
+.price{
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+
+.actions{
+	padding: 0px;
+	li{
+		list-style-type:none;
+		float: left;
+		width: 50%;
+		height: 132px;
+		text-align: center;
+		background-color: #ffffff;
+		a{
+			height: 132px;
+			display:block;	
+			padding-top: 30px;
+			small{
+				margin-left:5px;
+			}
+			&:hover{
+				backgroud-color: #FAFAFA;
+			}
+		}
+		i{
+			font-size: 32px;
+			width: 100%;
+			margin-bottom: 10px;
+		}
+	}
+}
+
+.fanciers{
+	a{
+		color: #E03C2E;
+		border: 1px #EEEEEE;
+		border-style:none dashed dashed none;
+	}
+}
+
+.owners{
+	a{
+		color: #97CEEC;
+		border: 1px #EEEEEE;
+		border-style:none none dashed none;
+	}
+}
+
+.write_feeling{
+	a{
+		color: #8BADCB;
+		border: 1px #EEEEEE;
+		border-style:none dashed dashed none;
+	}	
+}
+
+.add_to_list{
+	a{
+		color: #EA764B;
+		border: 1px #EEEEEE;
+		border-style:none none dashed none;
+	}
 }
