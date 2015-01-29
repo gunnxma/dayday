@@ -67,14 +67,11 @@
 					</div>
 				</article>
 			</div>
-			<% # todo %>
-			<% if false %>
-			<div id="thing_reviews" style="display:none">
-				<div class="no_reviews jumbotron">
+			<div id="thing_reviews">
+				<div class="no_reviews jumbotron white">
 					<p>还没有人为 <%= @thing.title %> 撰写评测，你想做第一个为它写评测的人么？</p>
 					<ul class="list-inline">
-						<li><a href="#" class="btn btn_info"></a></li>
-						<li></li>
+						<li><a href="#" class="btn btn_info"><i class="glyphicon glyphicon-pencil"></i><span>写评测</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -85,6 +82,7 @@
 						<p><a href="#"><%= @thing.user.name if @thing.user %></a></p>
 					</center>
 				</div>
+				<a name="write_feeling"></a>
 				<div class="col-md-10" id="feeling_form">
 					<form role="form">
   					<div class="form-group">
@@ -97,7 +95,7 @@
 			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
 					<li class="active">
-						<a><i class="glyphicon glyphicon-leaf"></i>短评</a>
+						<a><i class="fa fa-comments"></i>短评</a>
 					</li>
 				</ul>
 			</nav>
@@ -112,10 +110,15 @@
 					这是个1600万色的LED灯泡，使用寿命漫长的,一般都在5万小时以上，你就算不关灯也能工作五六年，应该没必要换灯泡。另外色温也是可以调节的。
 				</div>
 				<div class="col-md-1 feed-like">
-					<a href="#"><i class="glyphicon glyphicon-thumbs-up"></i>0</a>
+					<a href="#"><i class="fa fa-thumbs-up fa-fw"></i>0</a>
 				</div>
 			</div>
-			<% end %>
+			<div class="tab-pane active" id="tab_feelings">
+				<div class="nothing">
+					<i class="fa fa-meh-o"></i><br>
+					什么都没有
+				</div>
+			</div>
 	  </div>
 	  <div class="col-xs-0 col-md-4 hidden-xs">
 	  	<div class="row mb_30">
@@ -140,7 +143,7 @@
 		  				</a>
 		  			</li>
 		  			<li class="write_feeling">
-		  				<a href="#">
+		  				<a href="#write_feeling">
 		  					<i class="glyphicon glyphicon-pencil"></i>
 		  					说点什么
 		  				</a>
@@ -152,8 +155,14 @@
 		  				</a>
 		  			</li>
 		  		</ul>
-		  		<div class="others clearfix">
+		  		<div class="others white clearfix">
 		  			<ul class="tags clearfix">
+		  				<li>
+		  					<a href="#">
+		  						<i class="glyphicon glyphicon-tag"></i>
+		  						数码
+		  					</a>
+		  				</li>
 		  				<li>
 		  					<a href="#">
 		  						<i class="glyphicon glyphicon-tag"></i>

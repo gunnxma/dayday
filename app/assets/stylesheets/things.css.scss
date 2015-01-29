@@ -24,7 +24,7 @@ $white: #ffffff;
 #thing_top_nav{
 	background-color: $thing_title_background_color;
 	.active{
-		background-color: $white;
+		border-bottom: 2px #48B2E2 solid;
 	}
 }
 
@@ -45,7 +45,6 @@ $white: #ffffff;
 		width: 85px;
 		padding: 0px;
 		line-height: 40px;
-		//vertical-align:middle;
 	}
 }
 
@@ -85,6 +84,15 @@ $white: #ffffff;
 
 #thing_reviews{
 	background-color: $white;
+	li{
+		a{
+			background-color:#88B1D1;
+			color:#ffffff;
+			i{
+				margin-right:5px;
+			}
+		}
+	}	
 }
 
 #thing_feeling_form{
@@ -175,6 +183,7 @@ $white: #ffffff;
 
 .actions{
 	padding: 0px;
+	margin:0px;
 	li{
 		list-style-type:none;
 		float: left;
@@ -182,7 +191,7 @@ $white: #ffffff;
 		height: 132px;
 		text-align: center;
 		background-color: #ffffff;
-		a{
+		a{		
 			height: 132px;
 			display:block;	
 			padding-top: 30px;
@@ -190,9 +199,9 @@ $white: #ffffff;
 				margin-left:5px;
 			}
 			&:hover{
-				backgroud-color: #FAFAFA;
+				background-color: #FAFAFA;			
 			}
-		}
+		}	
 		i{
 			font-size: 32px;
 			width: 100%;
@@ -230,5 +239,25 @@ $white: #ffffff;
 		color: #EA764B;
 		border: 1px #EEEEEE;
 		border-style:none none dashed none;
+	}
+}
+
+.tags{
+	height: 60px;
+	padding: 25px;
+	vertical-align:middle;
+	li{
+		list-style-type:none;
+		float: right;
+		margin-left:20px;
+		a{
+			@include border-radius(5px);
+			background-color:#F7F7F7;
+			padding:5px 10px;
+			&:hover{
+				background-color:#737373;
+				color:#ffffff;
+			}
+		}
 	}
 }
