@@ -75,23 +75,7 @@
 					</ul>
 				</div>
 			</div>
-			<div class="row" id="thing_feeling_form">
-				<div class="col-md-2 hidden-xs">
-					<center>
-						<%= image_tag(@thing.user.avatar_url('150x150'), :class => 'img-circle') if @thing.user %>
-						<p><a href="#"><%= @thing.user.name if @thing.user %></a></p>
-					</center>
-				</div>
-				<a name="write_feeling"></a>
-				<div class="col-md-10" id="feeling_form">
-					<%= form_for @feeling, :url => thing_feelings_path(@thing), :html => { :role => "form" }, :remote => true do |f| %>
-  					<div class="form-group">
-							<center><%= f.text_area :body, :class => 'form-control', :placeholder => "说点什么吧（140字以内哦）" %></center>
-						</div>
-						<div class="form-group"><span class="alert alert-warning" role="alert" id="new_feeling_error" style="display:none"></span><button type="submit" class="btn btn-info pull-right" id="btn_feeling">发布</button></div>
-					<% end %>
-				</div>
-			</div>
+			<%= render partial: 'new_feeling', locals: { thing: @thing, feeling: @feeling } %>
 			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
 					<li class="active">
