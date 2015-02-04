@@ -88,7 +88,7 @@
   					<div class="form-group">
 							<center><%= f.text_area :body, :class => 'form-control', :placeholder => "说点什么吧（140字以内哦）" %></center>
 						</div>
-						<button type="submit" class="btn btn-info pull-right">发布</button>
+						<div class="form-group"><span class="alert alert-warning" role="alert" id="new_feeling_error" style="display:none"></span><button type="submit" class="btn btn-info pull-right" id="btn_feeling">发布</button></div>
 					<% end %>
 				</div>
 			</div>
@@ -99,35 +99,10 @@
 					</li>
 				</ul>
 			</nav>
-			<% @thing.feelings.order(id: :desc).each do |feeling| %>
-			<div class="row feed_item">
-				<div class="col-md-2 hidden-xs">
-					<center>
-						<%= image_tag(feeling.user.avatar_url('150x150'), :class => 'img-circle') if feeling.user %>
-						<p><a href="#"><%= feeling.user.name if feeling.user %></a></p>
-					</center>
-				</div>
-				<div class="col-md-9 feed_body">
-					<%= feeling.body %>
-				</div>
-				<div class="col-md-1 feed-like">
-					<a href="#"><i class="fa fa-thumbs-up fa-fw"></i><%= feeling.up %></a>
-				</div>
-			</div>
-			<% end %>
-			<div class="row feed_item">
-				<div class="col-md-2 hidden-xs">
-					<center>
-						<%= image_tag(@thing.user.avatar_url('150x150'), :class => 'img-circle') if @thing.user %>
-						<p><a href="#"><%= @thing.user.name if @thing.user %></a></p>
-					</center>
-				</div>
-				<div class="col-md-9 feed_body">
-					这是个1600万色的LED灯泡，使用寿命漫长的,一般都在5万小时以上，你就算不关灯也能工作五六年，应该没必要换灯泡。另外色温也是可以调节的。
-				</div>
-				<div class="col-md-1 feed-like">
-					<a href="#"><i class="fa fa-thumbs-up fa-fw"></i>0</a>
-				</div>
+			<div id="feeling_list">
+				<% @thing.feelings.order(id: :desc).each do |feeling| %>
+				<%= render partial: "feelings/feeling", locals: { feeling: feeling } %>				
+				<% end %>
 			</div>
 			<div class="tab-pane active" id="tab_feelings">
 				<div class="nothing">

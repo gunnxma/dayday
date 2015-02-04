@@ -1,0 +1,14 @@
+<div class="row feed_item">
+					<div class="col-md-2 hidden-xs">
+						<center>
+							<%= image_tag(feeling.user.avatar_url('150x150'), :class => 'img-circle') if feeling.user %>
+							<p><a href="#"><%= feeling.user.name if feeling.user %></a></p>
+						</center>
+					</div>
+					<div class="col-md-9 feed_body">
+						<%= feeling.body %>
+					</div>
+					<div class="col-md-1 feed-like">
+						<a href="#"><i class="fa fa-thumbs-up fa-fw"></i><%= feeling.up %></a>
+					</div>
+				</div>

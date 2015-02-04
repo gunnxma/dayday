@@ -6,14 +6,7 @@ class FeelingsController < ApplicationController
     @feeling.user_id = current_user.id
     @thing.feelings << @feeling
 
-    respond_to do |format|
-      if @thing.save
-        #redirect_to :action => :new
-        format.json { render json: @feeling, status: :created }
-      else
-        format.json { render json: @feeling.errors, status: :unprocessable_entity }
-      end
-    end
+    @thing.save
 	end
 
 private
