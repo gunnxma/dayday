@@ -185,7 +185,6 @@ $white: #ffffff;
 	padding: 0px;
 	margin:0px;
 	li{
-		list-style-type:none;
 		float: left;
 		width: 50%;
 		height: 132px;
@@ -247,7 +246,6 @@ $white: #ffffff;
 	padding: 25px;
 	vertical-align:middle;
 	li{
-		list-style-type:none;
 		float: right;
 		margin-left:20px;
 		a{
@@ -259,5 +257,34 @@ $white: #ffffff;
 				color:#ffffff;
 			}
 		}
+	}
+}
+
+.feed_body{
+	section{
+		height: 60px;
+	}
+}
+
+.metas{
+	color: #999999;
+	display:block;
+	li{
+		width:auto;
+		float:left;
+		margin-right:15px;
+	}
+}
+
+.feed_empty{
+	color: #999999;
+	margin: 0px;
+	background-color: $white;
+	padding: 50px;
+	margin-bottom: 80px;
+	text-align: center;
+	font-size:18px;
+	i{		
+		font-size: 60px;
 	}
 }

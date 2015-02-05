@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   post 'things/crawler'
   resources :things do
-    resources :feelings
+    resources :feelings do
+      resources :feeling_ups
+    end
   end
   resources :photos
 

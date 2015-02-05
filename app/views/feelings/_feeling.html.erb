@@ -6,14 +6,29 @@
 						</center>
 					</div>
 					<div class="col-md-9 feed_body">
-						<%= feeling.body %>
+						<section>
+							<%= feeling.body %>
+						</section>
 						<footer>
-							<time datetime="2015-1-1">30天前</time>
-							<a href="#"><i class="fa fa-comments-o"></i>1</a>
-							<a href="#"><i class="fa fa-share-alt"></i></a>
+							<div class="wrap">
+								<ul class="metas">
+									<li>
+										<time datetime="<%= feeling.created_at %>"><%= distance_of_time_in_words_to_now(feeling.created_at) %>前</time>
+									</li>
+									<li style="display:none">
+										<a href="#"><i class="fa fa-comments-o"></i>1</a>
+									</li>
+									<li>
+										<a href="#" data-toggle="modal" data-target="#share_form" id="share_button"><i class="fa fa-share-alt"></i></a>
+									</li>
+								</ul>
 						</footer>
 					</div>
 					<div class="col-md-1 feed-like">
-						<a href="#"><i class="fa fa-thumbs-up fa-fw"></i><%= feeling.up %></a>
+						<% if current_user && feeling.feeling_ups.where('user_id = ?', current_user.id).exists? %>							
+							<a><i class="fa fa-thumbs-up fa-fw"></i><span><%= feeling.feeling_ups.count %></span></a>
+						<% else %>
+							<a href="<%= thing_feeling_feeling_ups_path(feeling.thing, feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.feeling_ups.count %></span></a>
+						<% end %>
 					</div>
 				</div>

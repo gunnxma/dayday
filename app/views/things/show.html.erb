@@ -52,7 +52,7 @@
 						<a class="btn btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
 						<a class="btn btn-info btn-flag pull-right" href="/things/<%= @thing.id %>/edit"><i class="glyphicon glyphicon-edit"></i>编辑</a>
 						<% end %>
-						<a class="btn btn-warning btn-share pull-right"><i class="glyphicon glyphicon-share"></i>分享</a>
+						<a class="btn btn-warning btn-share pull-right" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
 						<a class="btn btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
 					</div>
 					<div class="post_content">
@@ -83,17 +83,13 @@
 					</li>
 				</ul>
 			</nav>
-			<div id="feeling_list">
-				<% @thing.feelings.order(id: :desc).each do |feeling| %>
-				<%= render partial: "feelings/feeling", locals: { feeling: feeling } %>				
-				<% end %>
-			</div>
-			<div class="tab-pane active" id="tab_feelings">
-				<div class="nothing">
-					<i class="fa fa-meh-o"></i><br>
-					什么都没有
+			<% if @thing.feelings.exists? %>
+				<div id="feeling_list">
+					<%= render partial: "feelings/feeling", collection: @thing.feelings.order(id: :desc), as: :feeling %>
 				</div>
-			</div>
+			<% else %>
+				<%= render partial: 'feelings/empty_feeling' %>
+			<% end %>
 	  </div>
 	  <div class="col-xs-0 col-md-4 hidden-xs">
 	  	<div class="row mb_30">
