@@ -7,6 +7,7 @@ class FeelingUpsController < ApplicationController
 			feeling_up = FeelingUp.new
 			feeling_up.user_id = current_user.id
 			feeling.feeling_ups << feeling_up
+			feeling.up = feeling.feeling_ups.count
 			if feeling.save
 				render plain: 'ok'
 			else

@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     resources :feelings do
       resources :feeling_ups
     end
+    resources :reviews
+    resources :fanciers
+    resources :owners
+    resources :buys
   end
   resources :photos
 

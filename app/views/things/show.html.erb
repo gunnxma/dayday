@@ -2,18 +2,7 @@
 	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 	<div class="row">
 	  <div class="col-xs-12 col-md-8">
-	  	<div class="thing_title">
-		  	<h1><%= @thing.title %></h1>
-		  	<h2><%= @thing.subtitle %></h2>
-		  </div>
-		  <nav id="thing_top_nav" class="hidden-xs">
-		  	<ul class="nav nav-justified">
-		  		<li class="active"><a href="#">产品</a></li>
-		  		<li><a href="#">评测</a></li>
-		  		<li><a href="#">短评</a></li>
-		  		<li><a href="#">动态</a></li>
-		  	</ul>
-		  </nav>
+	  	<%= render partial: 'top', locals: { thing: @thing } %>
 		  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
@@ -49,11 +38,11 @@
 							<label>分享者</label><a href="#"><%= @thing.user.name if @thing.user %>
 						</span>
 						<% if current_user && (current_user.id == @thing.user_id) %>
-						<a class="btn btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
-						<a class="btn btn-info btn-flag pull-right" href="/things/<%= @thing.id %>/edit"><i class="glyphicon glyphicon-edit"></i>编辑</a>
+						<a class="btn btn-square btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
+						<a class="btn btn-square btn-info btn-flag pull-right" href="/things/<%= @thing.id %>/edit"><i class="glyphicon glyphicon-edit"></i>编辑</a>
 						<% end %>
-						<a class="btn btn-warning btn-share pull-right" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
-						<a class="btn btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
+						<a class="btn btn-square btn-warning btn-blue pull-right" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
+						<a class="btn btn-square btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
 					</div>
 					<div class="post_content">
 						<p><%= @thing.subtitle %></p>
@@ -75,7 +64,7 @@
 					</ul>
 				</div>
 			</div>
-			<%= render partial: 'new_feeling', locals: { thing: @thing, feeling: @feeling } %>
+			<%= render partial: 'feelings/new', locals: { thing: @thing, feeling: @feeling } %>
 			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
 					<li class="active">
@@ -85,65 +74,17 @@
 			</nav>
 			<% if @thing.feelings.exists? %>
 				<div id="feeling_list">
-					<%= render partial: "feelings/feeling", collection: @thing.feelings.order(id: :desc), as: :feeling %>
+					<%= render partial: "feelings/show", collection: @thing.feelings.order(id: :desc).take(5), as: :feeling %>
 				</div>
+				<% if @thing.feelings.count > 5 %>
+				<div class="clearfix thing_feelings_action">
+					<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_feelings_path(@thing) %>">更多短评</a>
+				</div>
+				<% end %>
 			<% else %>
 				<%= render partial: 'feelings/empty_feeling' %>
 			<% end %>
 	  </div>
-	  <div class="col-xs-0 col-md-4 hidden-xs">
-	  	<div class="row mb_30">
-	  		<div class="col-md-12">
-	  			<div class="shop white">
-		  			<div class="price">
-		  				¥830
-		  			</div>
-	  				<button type="button" class="btn btn-default"><i class="glyphicon glyphicon-send"></i>网购</button>
-	  			</div>
-	  			<ul class="actions white clearfix">
-		  			<li class="fanciers">
-		  				<a href="#">
-		  					<i class="glyphicon glyphicon-heart-empty"></i>
-		  					<span class="fanciers_count">0</span><small>喜欢</small>
-		  				</a>
-		  			</li>
-		  			<li class="owners">
-		  				<a href="#">
-		  					<i class="glyphicon glyphicon-ok-circle"></i>
-		  					<span class="fanciers_count">0</span><small>拥有</small>
-		  				</a>
-		  			</li>
-		  			<li class="write_feeling">
-		  				<a href="#write_feeling">
-		  					<i class="glyphicon glyphicon-pencil"></i>
-		  					说点什么
-		  				</a>
-		  			</li>
-		  			<li class="add_to_list">
-		  				<a href="#">
-		  					<i class="glyphicon glyphicon-th-list"></i>
-		  					加入列表
-		  				</a>
-		  			</li>
-		  		</ul>
-		  		<div class="others white clearfix">
-		  			<ul class="tags clearfix">
-		  				<li>
-		  					<a href="#">
-		  						<i class="glyphicon glyphicon-tag"></i>
-		  						数码
-		  					</a>
-		  				</li>
-		  				<li>
-		  					<a href="#">
-		  						<i class="glyphicon glyphicon-tag"></i>
-		  						手机
-		  					</a>
-		  				</li>
-		  			</ul>
-		  		</div>
-	  		</div>	  		
-	  	</div>	  	
-	  </div>
+	  <%= render partial: 'right', locals: { thing: @thing } %>
 	</div>
 </div>

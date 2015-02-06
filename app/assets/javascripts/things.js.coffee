@@ -13,3 +13,31 @@ $(document).ready ->
   		$(this).children('i').addClass('fa fa-thumbs-up fa-fw')
   		$(this).children('span').html(parseInt($(this).children('span').html())+1)
   )
+
+  $("#new_fancier").on("ajax:success", (e, data, status, xhr) ->
+    if data == "ok"
+      $(this).children('i').removeClass('fa fa-heart-o')
+      $(this).children('i').addClass('fa fa-heart')
+      $(this).children('span').html(parseInt($(this).children('span').html())+1)
+      $(this).attr('title', $(this).data("unlike"))
+    
+    if data == "removeok"
+      $(this).children('i').removeClass('fa fa-heart')
+      $(this).children('i').addClass('fa fa-heart-o')
+      $(this).children('span').html(parseInt($(this).children('span').html())-1)
+      $(this).attr('title', $(this).data("like"))
+  )
+
+  $("#new_owner").on("ajax:success", (e, data, status, xhr) ->
+    if data == "ok"
+      $(this).children('i').removeClass('fa fa-circle-o')
+      $(this).children('i').addClass('fa fa-check-circle-o')
+      $(this).children('span').html(parseInt($(this).children('span').html())+1)
+      $(this).attr('title', $(this).data("unlike"))
+    
+    if data == "removeok"
+      $(this).children('i').removeClass('fa fa-check-circle-o')
+      $(this).children('i').addClass('fa fa-circle-o')
+      $(this).children('span').html(parseInt($(this).children('span').html())-1)
+      $(this).attr('title', $(this).data("like"))
+  )

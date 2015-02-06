@@ -1,0 +1,71 @@
+		<div class="col-xs-0 col-md-4 hidden-xs">
+	  	<div class="row mb_30">
+	  		<div class="col-md-12">
+	  			<% if !thing.buy_url.blank? %>
+	  			<div class="shop white">
+	  				<% if !thing.price.blank? %>
+		  			<div class="price">
+		  				<%= thing.price %>
+		  			</div>
+		  			<% end %>
+	  				<a class="btn btn-default" href="<%= thing_buys_path(thing) %>" data-method="post" target="_blank"><i class="fa fa-location-arrow fa-lg"></i>网购</a>
+	  			</div>
+	  			<% end %>
+	  			<ul class="actions white clearfix">
+		  			<li class="fanciers">
+		  				<% if thing.fanciers.where('user_id = ?', current_user.id).exists? %>
+		  				<a href="<%= thing_fanciers_path(thing) %>" data-method="post" data-remote="true" id="new_fancier" data-like="喜欢该商品" data-unlike="取消喜欢该商品" title="取消喜欢该商品">			  				
+		  					<i class="fa fa-heart"></i>		  				
+		  					<span class="fanciers_count"><%= thing.fancier_count %></span><small>喜欢</small>
+		  				</a>		  				
+		  				<% else %>
+		  				<a href="<%= thing_fanciers_path(thing) %>" data-method="post" data-remote="true" id="new_fancier" data-like="喜欢该商品" data-unlike="取消喜欢该商品" title="喜欢该商品">			  	
+		  					<i class="fa fa-heart-o"></i>		 
+		  					<span class="fanciers_count"><%= thing.fancier_count %></span><small>喜欢</small> 					
+		  				<% end %>
+		  			</li>
+		  			<li class="owners">		  	
+		  				<% if thing.owners.where('user_id = ?', current_user.id).exists? %>			
+		  				<a href="<%= thing_owners_path(thing) %>" data-method="post" data-remote="true" id="new_owner" data-like="拥有该商品" data-unlike="取消拥有该商品" title="取消拥有该商品">		  					
+		  					<i class="fa fa-check-circle-o"></i>		  					
+		  					<span class="fanciers_count"><%= thing.owner_count %></span><small>拥有</small>
+		  				</a>	
+		  				<% else %>	 
+		  				<a href="<%= thing_owners_path(thing) %>" data-method="post" data-remote="true" id="new_owner" data-like="拥有该商品" data-unlike="取消拥有该商品" title="拥有该商品">		
+		  					<i class="fa fa-circle-o"></i>
+		  					<span class="fanciers_count"><%= thing.owner_count %></span><small>拥有</small>
+		  				</a>
+		  				<% end %> 				
+		  			</li>
+		  			<li class="write_feeling">
+		  				<a href="#write_feeling">
+		  					<i class="fa fa-comments-o"></i>
+		  					说点什么
+		  				</a>
+		  			</li>
+		  			<li class="add_to_list">
+		  				<a href="#">
+		  					<i class="fa fa-list-ul"></i>
+		  					加入列表
+		  				</a>
+		  			</li>
+		  		</ul>
+		  		<div class="others white clearfix">
+		  			<ul class="tags clearfix">
+		  				<li>
+		  					<a href="#">
+		  						<i class="glyphicon glyphicon-tag"></i>
+		  						数码
+		  					</a>
+		  				</li>
+		  				<li>
+		  					<a href="#">
+		  						<i class="glyphicon glyphicon-tag"></i>
+		  						手机
+		  					</a>
+		  				</li>
+		  			</ul>
+		  		</div>
+	  		</div>	  		
+	  	</div>	  	
+	  </div>

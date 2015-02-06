@@ -57,8 +57,7 @@ class ThingsController < ApplicationController
 
 	def show
 		@thing = Thing.find(params[:id])
-		@title = @thing.title
-		@title = "#{@title} - #{@thing.subtitle}" if !@thing.subtitle.empty?
+		@title = @thing.page_title
 		@feeling = Feeling.new
 	end
 

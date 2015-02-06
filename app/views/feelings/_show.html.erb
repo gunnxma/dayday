@@ -26,9 +26,9 @@
 					</div>
 					<div class="col-md-1 feed-like">
 						<% if current_user && feeling.feeling_ups.where('user_id = ?', current_user.id).exists? %>							
-							<a><i class="fa fa-thumbs-up fa-fw"></i><span><%= feeling.feeling_ups.count %></span></a>
+							<a><i class="fa fa-thumbs-up fa-fw"></i><span><%= feeling.up %></span></a>
 						<% else %>
-							<a href="<%= thing_feeling_feeling_ups_path(feeling.thing, feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.feeling_ups.count %></span></a>
+							<a href="<%= thing_feeling_feeling_ups_path(feeling.thing, feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.up %></span></a>
 						<% end %>
 					</div>
 				</div>

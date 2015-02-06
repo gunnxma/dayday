@@ -199,3 +199,44 @@ a:visited { text-decoration: none;}
     width: 8px;
     background: #61b72e;
 }
+
+.bdsharebuttonbox{
+  a{
+    margin-right:30px;
+  }
+}
+
+.pagination{
+  display:block;
+  float:right;
+  background-color: #ffffff;
+  margin:0px;
+  span{
+    margin:0px;
+    padding:0px;
+    display:inline-block;
+    float:left;
+    height:40px;
+    line-height:40px;
+    width:40px;
+    text-align:center;
+    vertical-align:middle;
+  }
+  a{
+    display:block;
+    color:#50c0ed;
+    border-radius:0px;
+    border: 0px;
+    height:40px;
+    width:40px;
+    line-height:40px;
+    &:hover{
+      color:#ffffff;
+      background-color: #50c0ed;
+    }
+  }
+  .current{
+    color:#ffffff;
+    background-color: #7aa9cc;
+  }
+}

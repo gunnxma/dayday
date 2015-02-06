@@ -1,5 +1,5 @@
 <% if @feeling.errors.empty? %>
-$("<%= j(render partial: 'feeling', locals: { feeling: @feeling }) %>").prependTo($("#feeling_list"));
+$("<%= j(render partial: 'show', locals: { feeling: @feeling }) %>").prependTo($("#feeling_list"));
 <% else %>
 $("#new_feeling_error").html('短评发布失败，请重试');
 $("#new_feeling_error").css('display','');

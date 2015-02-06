@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205031239) do
+ActiveRecord::Schema.define(version: 20150206081629) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(version: 20150205031239) do
   create_table "category_tags", force: true do |t|
     t.integer  "category_id"
     t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "fanciers", force: true do |t|
+    t.integer  "thing_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -51,6 +58,13 @@ ActiveRecord::Schema.define(version: 20150205031239) do
     t.datetime "updated_at"
   end
 
+  create_table "owners", force: true do |t|
+    t.integer  "thing_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "photos", force: true do |t|
     t.integer  "thing_id"
     t.datetime "created_at"
@@ -75,6 +89,10 @@ ActiveRecord::Schema.define(version: 20150205031239) do
     t.datetime "updated_at"
     t.string   "token"
     t.boolean  "publish"
+    t.integer  "fancier_count"
+    t.integer  "owner_count"
+    t.string   "price"
+    t.string   "buy_url"
   end
 
   create_table "users", force: true do |t|

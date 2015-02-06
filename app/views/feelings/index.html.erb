@@ -1,0 +1,27 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-8">
+	  	<%= render partial: 'things/top', locals: { thing: @thing } %>
+			<%= render partial: 'new', locals: { thing: @thing, feeling: @feeling } %>
+			<nav id="thing-feeds-tab">
+				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
+					<li class="active">
+						<a><i class="fa fa-comments"></i>短评</a>
+					</li>
+				</ul>
+			</nav>
+			<% if @feelings.exists? %>
+				<div id="feeling_list">
+					<%= render partial: "feelings/show", collection: @feelings, as: :feeling %>
+				</div>
+			<% else %>
+				<%= render partial: 'feelings/empty_feeling' %>
+			<% end %>
+			<div class="thing_feelings_action">
+				<%= paginate @feelings %>
+			</div>
+	  </div>
+	  <%= render partial: 'things/right', locals: { thing: @thing } %>
+	</div>
+</div>
