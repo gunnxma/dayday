@@ -1,0 +1,53 @@
+<div class="container top_container white" style="padding-bottom:30px;">
+    <div class="row">
+        <div class="col-md-2 hidden-xs"></div>
+        <div class="col-xs-12 col-md-8">
+            <div class="page-header">
+              <h3>正在为 “<a href="<%= thing_path(thing) %>" target="_blank"><%= thing.title %></a>” 写评测<%= review.id %></h3>              
+            </div>
+            <% if flash[:notice] %>
+              <div class="alert alert-warning" role="alert">         
+                <%= flash[:notice] %>
+              </div>
+            <% end %>
+            <%= form_for [thing, review], :html => { :class => 'form-horizontal', :role => 'form' } do |f| %>
+              <div class="form-group">
+                <label for="title" class="col-sm-2 control-label"><span style="color:red;margin-right:5px;">*</span>标题</label>
+                <div class="col-sm-10">
+                    <%= f.text_field :title, :class => 'form-control', :placeholder => '请输入评测标题' %>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="body" class="col-sm-2 control-label">正文</label>
+              </div>
+              <div class="form-group">
+                <%= f.text_area :body %>
+              </div>
+              <div class="form-group">
+                <center>
+                    <%= f.submit '保存', :class => 'btn btn-default' %>
+                    <%= f.submit '发布', :class => 'btn btn-default' %>
+                </center>
+              </div>
+            <% end %>
+        </div>
+        <div class="col-md-2 hidden-xs"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+  var options = {
+    "width":"100%",
+    "height":300,
+    "allowFileManager":true,
+    //"uploadJson":"/kindeditor/upload",
+    "uploadJson":"/kindeditor_upyun/upload",
+    "fileManagerJson":"/kindeditor/filemanager",
+    "items":["bold","italic","underline","removeformat","|","image","link","hr"],
+    "basePath":"/assets/kindeditor/"
+  };
+
+  KindEditor.ready(function(K) {
+    window.editor = K.create('#review_body', options);
+  });
+</script>

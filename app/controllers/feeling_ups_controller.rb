@@ -1,7 +1,7 @@
 class FeelingUpsController < ApplicationController
 	def create
 		feeling = Feeling.find(params[:feeling_id])
-		if feeling.feeling_ups.where("user_id = ? ", current_user.id).exists?
+		if feeling.feeling_ups.where("user_id = ? ", current_user.id).exists? || feeling.user_id == current_user.id
 			render plain: 'error'
 		else
 			feeling_up = FeelingUp.new

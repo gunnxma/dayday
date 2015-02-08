@@ -60,7 +60,7 @@
 				<div class="no_reviews jumbotron white">
 					<p>还没有人为 <%= @thing.title %> 撰写评测，你想做第一个为它写评测的人么？</p>
 					<ul class="list-inline">
-						<li><a href="#" class="btn btn_info"><i class="glyphicon glyphicon-pencil"></i><span>写评测</span></a></li>
+						<li><a href="<%= new_thing_review_path(@thing) %>" target="_blank" class="btn btn_info"><i class="glyphicon glyphicon-pencil"></i><span>写评测</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -76,11 +76,12 @@
 				<div id="feeling_list">
 					<%= render partial: "feelings/show", collection: @thing.feelings.order(id: :desc).take(5), as: :feeling %>
 				</div>
-				<% if @thing.feelings.count > 5 %>
+				
 				<div class="clearfix thing_feelings_action">
+					<% if @thing.feelings.count > 5 %>
 					<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_feelings_path(@thing) %>">更多短评</a>
+					<% end %>
 				</div>
-				<% end %>
 			<% else %>
 				<%= render partial: 'feelings/empty_feeling' %>
 			<% end %>

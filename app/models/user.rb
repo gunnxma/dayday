@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 	has_many :things
 	has_many :feelings
 	has_many :feeling_ups
+	has_many :reviews
 
 	def self.create_with_omniauth(auth)
 	  create! do |user|

@@ -4,6 +4,7 @@ class Thing < ActiveRecord::Base
 	has_many :feelings
 	has_many :fanciers
 	has_many :owners
+	has_many :reviews
 
 	def page_title
 		p_title = title
