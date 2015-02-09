@@ -6,6 +6,10 @@ class Thing < ActiveRecord::Base
 	has_many :owners
 	has_many :reviews
 
+	def to_param
+		"#{id}-#{PinYin.of_string(title).to_s.parameterize}"
+	end
+
 	def page_title
 		p_title = title
     p_title = "#{p_title} - #{subtitle}" if !subtitle.empty?

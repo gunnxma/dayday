@@ -56,6 +56,7 @@
 					</div>
 				</article>
 			</div>
+			<% if !@thing.reviews.where('publish = ?', true).exists? %>
 			<div id="thing_reviews">
 				<div class="no_reviews jumbotron white">
 					<p>还没有人为 <%= @thing.title %> 撰写评测，你想做第一个为它写评测的人么？</p>
@@ -64,27 +65,45 @@
 					</ul>
 				</div>
 			</div>
+			<% else %>
+				<nav id="thing-feeds-tab">
+					<ul class="nav nav-pills nav-justified nav-layout thing_tab">
+						<li>
+							<a id="review_title">用户评测</a><a id="write_review" href="<%= new_thing_review_path(@thing) %>" target="_blank">写评测</a>
+						</li>
+					</ul>
+				</nav>
+				<div class="feeling_list">
+				<%= render partial: "reviews/show", collection: @thing.reviews.where('publish = ?', true).order(id: :desc).take(3), as: :review %>
+				</div>
+			<% end %>
+			<div class="clearfix thing_reviews_action">
+				<% if @thing.feelings.count > 3 %>
+				<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_reviews_path(@thing) %>">更多评测</a>
+				<% end %>
+			</div>
 			<%= render partial: 'feelings/new', locals: { thing: @thing, feeling: @feeling } %>
 			<nav id="thing-feeds-tab">
-				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
-					<li class="active">
+				<ul class="nav nav-pills nav-justified nav-layout thing_tab">
+					<li>
 						<a><i class="fa fa-comments"></i>短评</a>
 					</li>
 				</ul>
 			</nav>
 			<% if @thing.feelings.exists? %>
-				<div id="feeling_list">
+				<div id="feeling_list" class="feeling_list">
 					<%= render partial: "feelings/show", collection: @thing.feelings.order(id: :desc).take(5), as: :feeling %>
-				</div>
-				
-				<div class="clearfix thing_feelings_action">
-					<% if @thing.feelings.count > 5 %>
-					<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_feelings_path(@thing) %>">更多短评</a>
-					<% end %>
-				</div>
+				</div>				
 			<% else %>
+				<div id="feeling_list">
+				</div>
 				<%= render partial: 'feelings/empty_feeling' %>
 			<% end %>
+			<div class="clearfix thing_feelings_action">
+				<% if @thing.feelings.count > 5 %>
+				<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_feelings_path(@thing) %>">更多短评</a>
+				<% end %>
+			</div>
 	  </div>
 	  <%= render partial: 'right', locals: { thing: @thing } %>
 	</div>

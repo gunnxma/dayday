@@ -68,3 +68,5 @@ gem 'rest-client'
 gem 'carrierwave-upyun'
 
 gem 'upyun', '~> 1.0.4'
+
+gem 'ruby-pinyin'

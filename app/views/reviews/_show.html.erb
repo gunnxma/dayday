@@ -1,0 +1,34 @@
+<div class="row feed_item">
+					<div class="col-md-2 hidden-xs">
+						<center>
+							<%= image_tag(review.user.avatar_url('150x150'), :class => 'img-circle') if review.user %>
+							<p><a href="#"><%= review.user.name if review.user %></a></p>
+						</center>
+					</div>
+					<div class="col-md-9 feed_body review_body">
+						<header>
+							<a href="<%= thing_review_path(review.thing, review) %>"><%= review.title %></a>
+						</header>
+						<section>
+							<%= strip_tags(review.body).truncate(118, :separator => ' ') %>
+						</section>
+						<footer>
+							<div class="wrap">
+								<ul class="metas">
+									<li>
+										<time datetime="<%= review.created_at %>"><%= distance_of_time_in_words_to_now(review.created_at) %>前</time>
+									</li>
+									<li style="display:none">
+										<a href="#"><i class="fa fa-comments-o"></i>1</a>
+									</li>
+								</ul>
+						</footer>
+					</div>
+					<div class="col-md-1 feed-like">
+						<% if current_user && review.review_ups.where('user_id = ?', current_user.id).exists? %>							
+							<a><i class="fa fa-thumbs-up fa-fw"></i><span><%= review.up %></span></a>
+						<% else %>
+							<a href="<%= thing_review_review_ups_path(review.thing, review) %>" data-method="post" data-remote="true" data-new-review-up="<%= review.id %>"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= review.up %></span></a>
+						<% end %>
+					</div>
+				</div>

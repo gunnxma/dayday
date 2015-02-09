@@ -117,24 +117,12 @@ $white: #ffffff;
 	}
 }
 
-#thing-feeds-tab{
-	a{
-		border-radius:0px;
-		border: 0px;
-		background-color: #f7f7f7;
-		color: #777777;
-	}
-	i{
-		margin-right:5px;
-	}
-}
-
 .feed_item{
 	margin: 0px;
 	background-color: $white;
 	padding: 20px;
 	border: 1px #EEEEEE;
-	border-style:none none dashed none;
+	border-style:dashed none none none;
 	div{
 		padding: 0px;
 	}
@@ -144,6 +132,15 @@ $white: #ffffff;
 	}
 	i{
 		margin-right:5px;
+	}
+	footer{
+		margin-top: 15px;
+	}
+}
+
+.feeling_list{
+	.feed_item:first-child{
+		border-style: none;
 	}
 }
 
@@ -289,7 +286,6 @@ $white: #ffffff;
 	margin: 0px;
 	background-color: $white;
 	padding: 50px;
-	margin-bottom: 80px;
 	text-align: center;
 	font-size:18px;
 	i{		
@@ -308,5 +304,65 @@ $white: #ffffff;
 	span{
 		color: #999999;
 		margin-left:10px;
+	}
+}
+
+.thing_reviews_action{
+	margin-bottom: 30px;
+}
+
+#thing-feeds-tab{
+	a{
+	}
+}
+
+.thing_tab{
+	li{
+		height: 50px;
+		margin: 0px;
+		padding: 0px;
+		a{
+			height: 50px;
+			line-height: 50px;
+			display: inline-block;
+			margin: 0px;
+			padding: 0px;
+			width: 100%;
+			border-radius:0px;
+			border: 0px;		
+			background-color: #f7f7f7;
+			color: #777777;
+			&:hover{
+				background-color: #f7f7f7;
+				color: #777777;
+			}
+			i{
+				margin-right:5px;
+			}
+		}
+	}
+}
+
+#review_title{
+	width: 90%;
+	float: left;
+}
+
+#write_review{
+	width: 10%;
+	float: right;
+	background-color: #50c0ed;
+	color: #ffffff;
+	border-radius:0px;
+	border: 0px;
+}
+
+.review_body{
+	header{
+		font-size: 16px;
+		margin-bottom: 20px;
+		a{
+			color: #588cc7;
+		}
 	}
 }
