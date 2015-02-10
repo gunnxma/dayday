@@ -19,4 +19,8 @@ class Thing < ActiveRecord::Base
 	def page_title_feelings
 		"#{page_title} - 短评"
 	end
+
+	def page_title_reviews
+		"#{page_title} - 评测"
+	end
 end

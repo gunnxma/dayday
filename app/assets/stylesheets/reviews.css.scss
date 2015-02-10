@@ -1,3 +1,81 @@
 // Place all the styles related to the reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.reviews_nav{
+	margin-top: 30px;
+}
+
+.things_subpage{
+	background-color: #ffffff;
+}
+
+.single_review{
+	.review_header{
+		background-color: #f7f7f7;
+		box-shadow: inset 0 0 8px rgba(0,0,0,0.1);
+	}
+	header{
+		height: 164px;
+		padding: 30px 30px;
+		img{
+			width: 60px;
+			height: 60px;
+			margin-top: 20px;
+		}
+		h3{
+			font-size: 18px;
+		}
+		p{
+			margin-top: 20px;
+		}
+	}
+}
+
+.post_content{
+	padding: 30px;
+	font-size: 16px;
+	header{
+		height: 130px;
+		i{
+			margin-right: 5px;
+		}
+		a{
+			margin-right: 10px;
+		}
+	}
+}
+
+.review_footer{
+	padding: 50px;
+	a{
+		background-color: transparent;
+		border-radius: 15px;
+		border: 1px solid #47b2e2;
+		color: #47b2e2;	
+		height: 40px;
+		line-height: 40px;
+		padding: 0 18px;
+		margin-right: 15px;
+		i{
+			margin-right: 10px;
+		}
+		&:visited{
+			color: #47b2e2;
+		}
+		&:active{			
+			color: #47b2e2;
+		}
+		&:hover{
+			background-color: #47b2e2;
+			color: #ffffff;
+		}
+	}
+	.like-active{
+		background-color: rgba(122,169,204,0.9);
+		color: #ffffff;
+		border: 1px solid rgba(122,169,204,0.9);
+		&:hover{
+			background-color: #737373;
+		}
+	}
+}

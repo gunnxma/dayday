@@ -5,7 +5,7 @@
 		  <nav id="thing_top_nav" class="hidden-xs">
 		  	<ul class="nav nav-justified">
 		  		<li class="<%= params[:controller] == "things" && params[:action] == "show" ? 'active' : '' %>"><a href="<%= thing_path(thing) %>"><i class="<%= params[:controller] == "things" && params[:action] == "show" ? 'fa fa-caret-down' : '' %>"></i>产品</a></li>
-		  		<li class="<%= params[:controller] == "reviews" && params[:action] == "index" ? 'active' : '' %>"><a href="<%= thing_reviews_path(thing) %>"><i class="<%= params[:controller] == "reviews" && params[:action] == "index" ? 'fa fa-caret-down' : '' %>"></i>评测<span><%= thing.reviews.where('publish = ?', true).count %></span></a></li>
+		  		<li class="<%= params[:controller] == "reviews" ? 'active' : '' %>"><a href="<%= thing_reviews_path(thing) %>"><i class="<%= params[:controller] == "reviews" ? 'fa fa-caret-down' : '' %>"></i>评测<span><%= thing.reviews.where('publish = ?', true).count %></span></a></li>
 		  		<li class="<%= params[:controller] == "feelings" && params[:action] == "index" ? 'active' : '' %>"><a href="<%= thing_feelings_path(thing) %>"><i class="<%= params[:controller] == "feelings" && params[:action] == "index" ? 'fa fa-caret-down' : '' %>"></i>短评<span><%= thing.feelings.count %></span></a></li>
 		  		<li class="<%= params[:controller] == "activities" && params[:action] == "index" ? 'active' : '' %>"><a href="#"><i class="<%= params[:controller] == "activities" && params[:action] == "index" ? 'fa fa-caret-down' : '' %>"></i>动态</a></li>
 		  	</ul>

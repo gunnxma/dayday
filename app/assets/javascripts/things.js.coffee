@@ -13,6 +13,13 @@ $(document).ready ->
       $(this).children('i').removeClass('fa fa-thumbs-o-up fa-fw')
       $(this).children('i').addClass('fa fa-thumbs-up fa-fw')
       $(this).children('span').html(parseInt($(this).children('span').html())+1)
+      $(this).attr('title', $(this).data("unlike"))
+
+    if data == "removeok"
+      $(this).children('i').removeClass('fa fa-thumbs-up fa-fw')
+      $(this).children('i').addClass('fa fa-thumbs-o-up fa-fw')
+      $(this).children('span').html(parseInt($(this).children('span').html())-1)
+      $(this).attr('title', $(this).data("like"))
   )
 
   $("a[data-new-review-up]").on("ajax:success", (e, data, status, xhr) ->
@@ -20,6 +27,13 @@ $(document).ready ->
       $(this).children('i').removeClass('fa fa-thumbs-o-up fa-fw')
       $(this).children('i').addClass('fa fa-thumbs-up fa-fw')
       $(this).children('span').html(parseInt($(this).children('span').html())+1)
+      $(this).attr('title', $(this).data("unlike"))
+
+    if data == "removeok"
+      $(this).children('i').removeClass('fa fa-thumbs-up fa-fw')
+      $(this).children('i').addClass('fa fa-thumbs-o-up fa-fw')
+      $(this).children('span').html(parseInt($(this).children('span').html())-1)
+      $(this).attr('title', $(this).data("like"))
   )
 
   $("#new_fancier").on("ajax:success", (e, data, status, xhr) ->

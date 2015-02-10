@@ -1,8 +1,10 @@
 class ReviewsController < ApplicationController
-	before_filter :find_thing, :only => [:index, :new, :create, :edit, :update, :destroy]
+	before_filter :find_thing, :only => [:index, :new, :create, :edit, :update, :show, :destroy]
 	before_filter :find_review, :only => [:edit, :update, :show, :destroy]
 	
 	def index
+		@reviews = @thing.reviews.order(id: :desc).page(params[:page]).per(15)
+    @title = @thing.page_title_reviews
 	end
 
 	def new
@@ -28,7 +30,7 @@ class ReviewsController < ApplicationController
 			else
 				@thing.publish = true
 				@thing.save
-				redirect_to thing_reviews_path(@thing)
+				redirect_to thing_review_path(@thing, @review)
 			end
 		else
 			flash[:notice] = '评测保存失败'
@@ -49,7 +51,7 @@ class ReviewsController < ApplicationController
 					@review.publish = true
 					@review.save
 				end
-				redirect_to thing_reviews_path(@thing)
+				redirect_to thing_review_path(@thing, @review)
 			end
 		else
 			flash[:notice] = '评测修改失败'
@@ -58,6 +60,9 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
+		@rfeeling = Rfeeling.new
+		@rfeelings = @review.rfeelings.order(id: :desc).page(params[:page]).per(15)
+    @title = @review.page_title
 	end
 
 	def destroy

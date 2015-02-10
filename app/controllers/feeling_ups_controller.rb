@@ -1,8 +1,12 @@
 class FeelingUpsController < ApplicationController
 	def create
 		feeling = Feeling.find(params[:feeling_id])
-		if feeling.feeling_ups.where("user_id = ? ", current_user.id).exists? || feeling.user_id == current_user.id
-			render plain: 'error'
+		if feeling.feeling_ups.where("user_id = ? ", current_user.id).exists?
+			feeling_up = feeling.feeling_ups.where("user_id = ? ", current_user.id).first
+			feeling_up.destroy
+			feeling.up = feeling.feeling_ups.count
+			feeling.save
+			render plain: 'removeok'
 		else
 			feeling_up = FeelingUp.new
 			feeling_up.user_id = current_user.id

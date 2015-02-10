@@ -1,0 +1,28 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-8">
+	  	<%= render partial: 'things/top', locals: { thing: @thing } %>
+	  	<% if @reviews.exists? %>
+
+				<nav id="thing-feeds-tab">
+					<ul class="nav nav-pills nav-justified nav-layout thing_tab">
+						<li>
+							<a id="review_title"></a><a id="write_review" href="<%= new_thing_review_path(@thing) %>" target="_blank">写评测</a>
+						</li>
+					</ul>
+				</nav>
+			
+				<div class="feeling_list">
+					<%= render partial: "reviews/show", collection: @reviews, as: :review %>
+				</div>
+			<% else %>
+				<%= render partial: 'reviews/empty', locals: { thing: @thing } %>
+			<% end %>
+			<div class="thing_feelings_action">
+				<%= paginate @reviews %>
+			</div>
+	  </div>
+	  <%= render partial: 'things/right', locals: { thing: @thing } %>
+	</div>
+</div>

@@ -6,16 +6,18 @@
 			<%= render partial: 'new', locals: { thing: @thing, feeling: @feeling } %>
 			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout nav--thing_tab">
-					<li class="active">
+					<li>
 						<a><i class="fa fa-comments"></i>短评</a>
 					</li>
 				</ul>
 			</nav>
 			<% if @feelings.exists? %>
-				<div id="feeling_list">
+				<div id="feeling_list" class="feeling_list">
 					<%= render partial: "feelings/show", collection: @feelings, as: :feeling %>
 				</div>
-			<% else %>
+			<% else %>			
+				<div id="feeling_list" class="feeling_list">
+				</div>
 				<%= render partial: 'feelings/empty_feeling' %>
 			<% end %>
 			<div class="thing_feelings_action">

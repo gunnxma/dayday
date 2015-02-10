@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :reviews do
       resources :review_ups
+      resources :rfeelings
     end
     resources :fanciers
     resources :owners

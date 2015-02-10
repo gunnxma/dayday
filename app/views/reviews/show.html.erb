@@ -1,0 +1,61 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-8">
+	  	<%= render partial: 'things/top', locals: { thing: @thing } %>
+	  	<section class="things_subpage">
+	  		<article class="single_review">
+	  			<div class="review_header">
+	  				<header class="row">
+		  				<div class="col-md-3 hidden-xs author_img">
+								<center>
+									<%= image_tag(@review.user.avatar_url('150x150'), :class => 'img-circle') %>								
+								</center>
+							</div>
+							<div class="col-md-9">
+								<h3><%= @review.title %></h3>
+								<p><a href="#"><%= @review.user.name %></a></p>
+							</div>
+	  				</header>
+					</div>
+  				<section class="post_content">
+  					<header class="row">
+  						<a class="btn btn-info"><i class="fa fa-plus"></i>关注作者</a>
+  						<a class="btn btn-primary" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享评测</a>
+  					</header>
+  					<%= raw @review.body %>
+  				</section>
+  				<div class="review_footer">
+  					<footer class="row">
+  						<% if !current_user %>
+  							<a href="/sessions/new" class="btn btn-like" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
+  						<% else %>
+  							<% if @review.review_ups.where('user_id = ?', current_user.id).exists? %>
+  								<a href="<%= thing_review_review_ups_path(@review.thing, @review) %>" data-method="post" data-remote="true" id="review_up" class="btn btn-like like-active" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
+  							<% else %>
+  								<a href="<%= thing_review_review_ups_path(@review.thing, @review) %>" data-method="post" data-remote="true" id="review_up" class="btn btn-like" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
+  							<% end %>
+  						<% end %>
+  						<a class="btn btn-share" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
+  						<time class="pull-right" datetime="<%= @review.created_at %>"><%= distance_of_time_in_words_to_now(@review.created_at) %>前</time>
+  					</footer>
+  				</div>
+  				<%= render partial: 'rfeelings/new', locals: { review: @review, rfeeling: @rfeeling } %>
+  				<% if @rfeelings.exists? %>
+						<div id="rfeeling_list" class="feeling_list">
+							<%= render partial: "rfeelings/show", collection: @rfeelings, as: :rfeeling %>
+						</div>				
+					<% else %>
+						<div id="rfeeling_list" class="feeling_list">
+						</div>
+						<%= render partial: 'rfeelings/empty_feeling' %>
+					<% end %>
+					<div class="thing_feelings_action">
+						<%= paginate @rfeelings %>
+					</div>
+	  		</article>
+	  	</section>
+	  </div>
+	  <%= render partial: 'things/right', locals: { thing: @thing } %>
+	</div>
+</div>

@@ -17,9 +17,9 @@ class FeelingsController < ApplicationController
 
 private
 
-    def find_thing
-        @thing = Thing.find(params[:thing_id])
-    end
+  def find_thing
+      @thing = Thing.find(params[:thing_id])
+  end
 
 	def feeling_params
     params.require(:feeling).permit(:body)
