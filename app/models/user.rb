@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 	mount_uploader :avatar, PhotoUploader
 	has_many :things
+	has_many :fanciers
+	has_many :owners
 	has_many :feelings
 	has_many :feeling_ups
 	has_many :reviews

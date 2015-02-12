@@ -12,24 +12,14 @@ class ReviewsController < ApplicationController
 	end
 
 	def create
-		@review = Review.new(review_params)
-		if @review.title.empty? || @review.body.empty?
-			flash[:notice] = '请将必填项填写完整'
-			render 'new'
-			return
-		end
-		@review.publish = false		
-		@review.user_id = current_user.id
-		@review.up = 0
+		@review = current_user.reviews.new_by_publish(review_params, params[:commit] == '保存' ? false : true)		
 		@thing.reviews << @review
 		
 		if @thing.save
-			if params[:commit] == '保存'
+			if !@review.publish
 				flash[:notice] = '评测保存成功'
 				redirect_to edit_thing_review_path(@thing, @review)
 			else
-				@thing.publish = true
-				@thing.save
 				redirect_to thing_review_path(@thing, @review)
 			end
 		else
@@ -42,15 +32,11 @@ class ReviewsController < ApplicationController
 	end
 
 	def update
-		if @review.update_attributes(review_params)
-			if params[:commit] == '保存'
+		if @review.update_attributes_with_publish(review_params, params[:commit] == '保存' ? false : true)
+			if !@review.publish
 				flash[:notice] = '评测修改成功'
 				redirect_to edit_thing_review_path(@thing, @review)
 			else
-				if !@review.publish
-					@review.publish = true
-					@review.save
-				end
 				redirect_to thing_review_path(@thing, @review)
 			end
 		else

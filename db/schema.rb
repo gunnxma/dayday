@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150210071206) do
+ActiveRecord::Schema.define(version: 20150212070444) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -20,12 +20,17 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.datetime "updated_at"
   end
 
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id"
+
   create_table "category_tags", force: true do |t|
     t.integer  "category_id"
     t.integer  "tag_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "category_tags", ["category_id"], name: "index_category_tags_on_category_id"
+  add_index "category_tags", ["tag_id"], name: "index_category_tags_on_tag_id"
 
   create_table "fanciers", force: true do |t|
     t.integer  "thing_id"
@@ -34,12 +39,18 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.datetime "updated_at"
   end
 
+  add_index "fanciers", ["thing_id"], name: "index_fanciers_on_thing_id"
+  add_index "fanciers", ["user_id"], name: "index_fanciers_on_user_id"
+
   create_table "feeling_ups", force: true do |t|
     t.integer  "feeling_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "feeling_ups", ["feeling_id"], name: "index_feeling_ups_on_feeling_id"
+  add_index "feeling_ups", ["user_id"], name: "index_feeling_ups_on_user_id"
 
   create_table "feelings", force: true do |t|
     t.integer  "thing_id"
@@ -49,6 +60,9 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "feelings", ["thing_id"], name: "index_feelings_on_thing_id"
+  add_index "feelings", ["user_id"], name: "index_feelings_on_user_id"
 
   create_table "identities", force: true do |t|
     t.string   "name"
@@ -65,6 +79,9 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.datetime "updated_at"
   end
 
+  add_index "owners", ["thing_id"], name: "index_owners_on_thing_id"
+  add_index "owners", ["user_id"], name: "index_owners_on_user_id"
+
   create_table "photos", force: true do |t|
     t.integer  "thing_id"
     t.datetime "created_at"
@@ -73,12 +90,17 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.string   "token"
   end
 
+  add_index "photos", ["thing_id"], name: "index_photos_on_thing_id"
+
   create_table "review_ups", force: true do |t|
     t.integer  "review_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "review_ups", ["review_id"], name: "index_review_ups_on_review_id"
+  add_index "review_ups", ["user_id"], name: "index_review_ups_on_user_id"
 
   create_table "reviews", force: true do |t|
     t.integer  "thing_id"
@@ -91,6 +113,9 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.integer  "user_id"
   end
 
+  add_index "reviews", ["thing_id"], name: "index_reviews_on_thing_id"
+  add_index "reviews", ["user_id"], name: "index_reviews_on_user_id"
+
   create_table "rfeelings", force: true do |t|
     t.integer  "review_id"
     t.integer  "user_id"
@@ -98,6 +123,9 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "rfeelings", ["review_id"], name: "index_rfeelings_on_review_id"
+  add_index "rfeelings", ["user_id"], name: "index_rfeelings_on_user_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -120,6 +148,8 @@ ActiveRecord::Schema.define(version: 20150210071206) do
     t.string   "price"
     t.string   "buy_url"
   end
+
+  add_index "things", ["user_id"], name: "index_things_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "provider"

@@ -34,8 +34,8 @@
 				<article class="article">
 					<div id="thing_author">						
 						<span class="author_name">
-							<a href="#"><%= image_tag(@thing.user.avatar_url('60x60'), :width => 40, :height => 40, :class => 'img-circle') if @thing.user %></a>
-							<label>分享者</label><a href="#"><%= @thing.user.name if @thing.user %>
+							<a href="#"><%= image_tag(@thing.user_avatar.url('60x60'), :width => 40, :height => 40, :class => 'img-circle') %></a>
+							<label>分享者</label><a href="#"><%= @thing.user_name %>
 						</span>
 						<% if current_user && (current_user.id == @thing.user_id) %>
 						<a class="btn btn-square btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
