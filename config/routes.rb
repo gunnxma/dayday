@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get 'users/login'
-  resources :users
+  resources :users do
+    resources :followers
+  end
 
   resources :identities, only: [:new]
 
