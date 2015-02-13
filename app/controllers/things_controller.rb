@@ -1,6 +1,7 @@
 class ThingsController < ApplicationController
 	before_filter :check_user, :only => [:new, :create]
-	before_filter :check_power, :only => [:edit, :update, :destroy]
+	before_filter :find_my_thing, :only => [:edit, :update, :destroy]
+	before_filter :find_thing, :only => [:show]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
 
 	def new
@@ -9,26 +10,16 @@ class ThingsController < ApplicationController
 	end
 
 	def create
-		@thing = Thing.new(thing_params)
-		@thing.publish = false
-		@thing.user_id = current_user.id
-		if @thing.title.empty? || !Photo.where('token = ?', @thing.token).any?
-			flash[:notice] = '请将必填项填写完整'
-			render 'new'
-			return
-		end
-		if @thing.save
-			Photo.where('token = ?', @thing.token).update_all(thing_id: @thing.id)
-			if params[:commit] == '保存'
+		@thing = current_user.things.new_by_publish(thing_params, params[:commit] == '保存' ? false : true)
+		if @thing.save_with_photos			
+			if @thing.publish
+				redirect_to thing_path(@thing)
+			else
 				flash[:notice] = '产品保存成功'
 				redirect_to edit_thing_path(@thing)
-			else
-				@thing.publish = true
-				@thing.save
-				redirect_to thing_path(@thing)
 			end
 		else
-			flash[:notice] = '产品保存失败'
+			flash[:notice] = '产品保存失败，请检查必填项目是否填写完整'
 			render 'new'
 		end
 	end
@@ -38,16 +29,12 @@ class ThingsController < ApplicationController
 	end
 
 	def update
-		if @thing.update_attributes(thing_params)
-			if params[:commit] == '保存'
+		if @thing.update_attributes_with_publish(thing_params, params[:commit] == '保存' ? false : true)
+			if @thing.publish
+				redirect_to thing_path(@thing)				
+			else
 				flash[:notice] = '产品修改成功'
 				redirect_to edit_thing_path(@thing)
-			else
-				if !@thing.publish
-					@thing.publish = true
-					@thing.save
-				end
-				redirect_to thing_path(@thing)
 			end
 		else
 			flash[:notice] = '产品修改失败'
@@ -56,7 +43,6 @@ class ThingsController < ApplicationController
 	end
 
 	def show
-		@thing = Thing.find(params[:id])
 		@title = @thing.page_title
 		@feeling = Feeling.new
 	end
@@ -77,22 +63,25 @@ class ThingsController < ApplicationController
 		if thing_hash.empty?
 			render :text => 'error'
 		else
-			thing = Thing.new
-			thing.token = SecureRandom.hex
-			thing.title = thing_hash[:title]
-			thing.subtitle = thing_hash[:subtitle]
-			thing.body = processed_body(thing_hash[:body])
-			thing.official_site = thing_hash[:official_site]
-			thing.publish = false
-			thing.user_id = current_user.id
+			thing = current_user.things.new_by_hash(thing_hash)
+			#thing = Thing.new
+			#thing.token = SecureRandom.hex
+			#thing.title = thing_hash[:title]
+			#thing.subtitle = thing_hash[:subtitle]
+			#thing.body = processed_body(thing_hash[:body])
+			#thing.official_site = thing_hash[:official_site]
+			#thing.publish = false
+			#thing.user_id = current_user.id
+			#thing.save
+			#thing_hash[:photos].each do |photo|
+			#	t_photo = Photo.new
+			#	t_photo.thing_id = thing.id
+			#	t_photo.token = thing.token
+			#	t_photo.remote_avatar_url = photo
+			#	t_photo.save
+			#end
 			thing.save
-			thing_hash[:photos].each do |photo|
-				t_photo = Photo.new
-				t_photo.thing_id = thing.id
-				t_photo.token = thing.token
-				t_photo.remote_avatar_url = photo
-				t_photo.save
-			end
+			logger.debug thing.errors.messages
 			render :text => thing.id
 		end
 	end
@@ -101,7 +90,7 @@ class ThingsController < ApplicationController
 
 	def tmall_crawler(url)
 		page = Nokogiri::HTML(open(url))
-		hash = { 
+		hash = {
 			title: page.css('title').text,
 			subtitle: '',
 			photos: [page.css('img#J_ImgBooth').first['src']],
@@ -120,12 +109,12 @@ class ThingsController < ApplicationController
 		page.css('div[class="carousel carousel--extend"] ul li img').each do |photo|
 			photos << (photo['src'].gsub! '!middle', '')
 		end
-		hash = { 
+		hash = {
 			title: page.css('div#thing_title h1 a').text,
 			subtitle: page.css('div#thing_title h2').text,
 			photos: photos,
 			body: page.css('div[class="body post_content is_folded"] p').to_s,
-			official_site: page.css('a[class="official_site"]').first['href']
+			official_site: page.css('a[class="official_site"]').first ? page.css('a[class="official_site"]').first['href'] : ''
 		}
 		
 		hash = {} if hash[:title].empty? || hash[:photos].empty?
@@ -133,50 +122,14 @@ class ThingsController < ApplicationController
 		hash
 	end
 
-	def processed_body(body)
-		#从body中取出所有图片链接，调用save_remote_img(url)方法保存到本地，并将更新地址后的body返回
-		page = Nokogiri::HTML(body)
-		page.css('img').each do |img|
-			#img_url = img[:src].gsub! '!review', ''
-			img_url = img[:src]
-			#img[:src] = save_remote_img(img_url)
-			#body.gsub! "#{img_url}!review", save_remote_img(img[:src].gsub! '!review', '')
-			body.gsub! "#{img_url}", save_remote_img(img_url)
-		end
-		body
-	end
+	
 
-	def save_remote_img(url)
-		ym = DateTime.now.strftime('%Y%m')
-		dir = Rails.root.join('public', 'uploads', 'body_img', ym)		
-		Dir.mkdir(dir) unless File.exists?(dir)
-
-		basename = File.basename(url).gsub! '!review', ''
-
-		#body中的图片保存到本地
-		newfile = Rails.root.join('public', 'uploads', 'body_img', ym, basename)
-		File.open(newfile, 'wb') { |f| f.write(open(url).read) }
-		#"/uploads/body_img/#{ym}/#{basename}"
-
-		#body中的图片保存到upyun
-		upyun = Upyun::Rest.new('xinqidou', 'xinqidou', 'macnmq1983', {}, Upyun::ED_AUTO)
-		result = upyun.put("/uploads/body_img/#{ym}/#{basename}", File.new(newfile, 'rb'))
-		#result = upyun.upload(File.new(newfile))
-		if result
-			File.delete(newfile)
-			"http://image.xinqidou.com/uploads/body_img/#{ym}/#{basename}"
-		else
-			"/uploads/body_img/#{ym}/#{basename}"
-		end
-	end
-
-	def check_power
+	def find_thing
 		@thing = Thing.find(params[:id])
+	end
 
-		if @thing.user_id != current_user.id
-			redirect_to '/'
-			return
-		end
+	def find_my_thing
+		@thing = current_user.things.find(params[:id])
 	end
 
 	def thing_params

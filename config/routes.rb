@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'users/login'
   resources :users
 
-  resources :identities
+  resources :identities, only: [:new]
 
-  resources :sessions
+  resources :sessions, only: [:new, :create, :destroy]
 
   get "/auth/:provider/callback", to: "sessions#create"
   post "/auth/:provider/callback", to: "sessions#create"
@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
 
   post 'things/crawler'
-  resources :things do
+  resources :things, except: [:index], :shallow => true do
     resources :feelings do
       resources :feeling_ups
     end
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :owners
     resources :buys
   end
-  resources :photos
+  resources :photos, only: [:create, :destroy, :index]
 
   post 'kindeditor_upyun/upload'
 

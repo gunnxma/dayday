@@ -16,7 +16,7 @@
 	(function() {
 	  var hm = document.createElement("script");
 	  hm.src = "//hm.baidu.com/hm.js?9db09fe91b20e481094997c7ab8c6d67";
-	  var s = document.getElementsByTagName("script")[0]; 
+	  var s = document.getElementsByTagName("script")[0];
 	  s.parentNode.insertBefore(hm, s);
 	})();
 	</script>
@@ -69,7 +69,7 @@
 	        <li><a href="/sessions/new"><i class="glyphicon glyphicon-plus" style="color:#049cdb;margin-right:5px"></i><strong>分享产品</strong></a></li>
 	        <% end %>
 	      </ul>
-	      
+
 	      <ul class="nav navbar-nav navbar-right">
 	      	<form class="navbar-form navbar-left" role="search" method="post">
 		        <div class="form-group">
@@ -86,7 +86,6 @@
 					<% else %>
 						<li><%= link_to "登录", new_session_path %></li>
 					<% end %>
-	        
 	      </ul>
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
@@ -104,7 +103,7 @@
 	  	<% child.tags.each do |tag| %>
 	   	<a href="/" style="margin:10px;"><span class="label label-info"><%= tag.name %></span></a>
 	   	<% end %>
-	  </div>	  
+	  </div>
 	  <% end %>
    </div>
 </div>
@@ -142,7 +141,7 @@
 			  <div class="form-group">
 			    <div class="progress" id="progress" style="display:none">
 					  <div class="progress-bar" role="progressbar" style="width: 100%;" id="progressbar"></div>
-					</div>					
+					</div>
 					<div class="alert alert-warning" role="alert" id="crawler_error" style="display:none">很抱歉，这个地址我们不支持，您可以通过<a href="/things/new">本地上传</a>来分享此产品。</div>
 					<div class="alert alert-success" role="alert" id="crawler_success" style="display:none">抓取成功!</div>
 			  </div>

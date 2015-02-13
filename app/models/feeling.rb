@@ -9,8 +9,8 @@ class Feeling < ActiveRecord::Base
 	validates :body, length: { maximum: 140 }, presence: true
 
 	def add_or_remove_up(user)
-		if self.feeling_ups.where(:user_id => user.id).exists?
-			self.feeling_ups.where(:user_id => user.id).first.destroy
+		if self.feeling_ups.by_user(user.id).exists?
+			self.feeling_ups.by_user(user.id).first.destroy
 			self.up = self.feeling_ups.count
 			self.save
 			'removeok'

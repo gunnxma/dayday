@@ -7,7 +7,7 @@
 	</div>
 	<div class="col-md-9 feed_body review_body">
 		<header>
-			<a href="<%= thing_review_path(review.thing, review) %>"><%= review.title %></a>
+			<a href="<%= review_path(review) %>"><%= review.title %></a>
 		</header>
 		<section>
 			<%= strip_tags(review.body).truncate(118, :separator => ' ') %>
@@ -29,9 +29,9 @@
 			<a href="/sessions/new"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= review.up %></span></a>
 		<% else %>
 			<% if review.review_ups.where('user_id = ?', current_user.id).exists? %>
-				<a href="<%= thing_review_review_ups_path(review.thing, review) %>" data-method="post" data-remote="true" data-new-review-up="<%= review.id %>" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw"></i><span><%= review.up %></span></a>
+				<a href="<%= review_review_ups_path(review) %>" data-method="post" data-remote="true" data-new-review-up="<%= review.id %>" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw"></i><span><%= review.up %></span></a>
 			<% else %>
-				<a href="<%= thing_review_review_ups_path(review.thing, review) %>" data-method="post" data-remote="true" data-new-review-up="<%= review.id %>" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= review.up %></span></a>
+				<a href="<%= review_review_ups_path(review) %>" data-method="post" data-remote="true" data-new-review-up="<%= review.id %>" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= review.up %></span></a>
 			<% end %>
 		<% end %>
 	</div>

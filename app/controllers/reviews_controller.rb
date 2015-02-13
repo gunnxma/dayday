@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	before_filter :find_thing, :only => [:index, :new, :create, :edit, :update, :show, :destroy]
+	before_filter :find_thing, :only => [:index, :new, :create]
 	before_filter :find_review, :only => [:edit, :update, :show, :destroy]
 	
 	def index
@@ -18,9 +18,9 @@ class ReviewsController < ApplicationController
 		if @thing.save
 			if !@review.publish
 				flash[:notice] = '评测保存成功'
-				redirect_to edit_thing_review_path(@thing, @review)
+				redirect_to edit_review_path(@review)
 			else
-				redirect_to thing_review_path(@thing, @review)
+				redirect_to review_path(@review)
 			end
 		else
 			flash[:notice] = '评测保存失败'
@@ -35,9 +35,9 @@ class ReviewsController < ApplicationController
 		if @review.update_attributes_with_publish(review_params, params[:commit] == '保存' ? false : true)
 			if !@review.publish
 				flash[:notice] = '评测修改成功'
-				redirect_to edit_thing_review_path(@thing, @review)
+				redirect_to edit_review_path(@review)
 			else
-				redirect_to thing_review_path(@thing, @review)
+				redirect_to review_path(@review)
 			end
 		else
 			flash[:notice] = '评测修改失败'
@@ -64,6 +64,7 @@ class ReviewsController < ApplicationController
 
 	def find_review
 		@review = Review.find(params[:id])
+		@thing = @review.thing
 	end
 
 	def review_params

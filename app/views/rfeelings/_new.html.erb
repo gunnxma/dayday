@@ -8,7 +8,7 @@
 			</center>
 		</div>
 		<div class="col-md-10" id="feeling_form">
-			<%= form_for [review.thing, review, rfeeling], :html => { :role => "form" }, :remote => true do |f| %>
+			<%= form_for [review, rfeeling], :html => { :role => "form" }, :remote => true do |f| %>
 				<div class="form-group">
 					<center><%= f.text_area :body, :class => 'form-control', :placeholder => "说点什么吧（300字以内哦）" %></center>
 				</div>

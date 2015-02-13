@@ -9,7 +9,7 @@ RailsKindeditor.setup do |config|
   config.upload_flash_ext = %w[]
   config.upload_media_ext = %w[]
   config.upload_file_ext = %w[]
-  
+
   # Porcess upload image size
   # eg: 1600x1600 => 800x800
   #     1600x800  => 800x400

@@ -2,7 +2,7 @@
 	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 	<div class="row">
 	  <div class="col-xs-12 col-md-8">
-	  	<%= render partial: 'things/top', locals: { thing: @thing } %>
+	  	<%= render 'things/top', thing: @thing %>
 	  	<% if @reviews.exists? %>
 
 				<nav id="thing-feeds-tab">
@@ -14,15 +14,15 @@
 				</nav>
 			
 				<div class="feeling_list">
-					<%= render partial: "reviews/show", collection: @reviews, as: :review %>
+					<%= render @reviews %>
 				</div>
 			<% else %>
-				<%= render partial: 'reviews/empty', locals: { thing: @thing } %>
+				<%= render 'reviews/empty', thing: @thing %>
 			<% end %>
 			<div class="thing_feelings_action">
 				<%= paginate @reviews %>
 			</div>
 	  </div>
-	  <%= render partial: 'things/right', locals: { thing: @thing } %>
+	  <%= render 'things/right', thing: @thing %>
 	</div>
 </div>

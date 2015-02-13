@@ -29,9 +29,9 @@
 			<a href="/sessions/new"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.up %></span></a>
 		<% else %>
 			<% if feeling.feeling_ups.where('user_id = ?', current_user.id).exists? %>
-				<a href="<%= thing_feeling_feeling_ups_path(feeling.thing, feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw"></i><span><%= feeling.up %></span></a>
+				<a href="<%= feeling_feeling_ups_path(feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw"></i><span><%= feeling.up %></span></a>
 			<% else %>
-				<a href="<%= thing_feeling_feeling_ups_path(feeling.thing, feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.up %></span></a>
+				<a href="<%= feeling_feeling_ups_path(feeling) %>" data-method="post" data-remote="true" data-new-feeling-up="<%= feeling.id %>" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw"></i><span><%= feeling.up %></span></a>
 			<% end %>
 		<% end %>
 	</div>

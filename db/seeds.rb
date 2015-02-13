@@ -25,7 +25,7 @@ categories = [
 			{ name: '取暖' },
 			{ name: '垃圾桶' },
 			{ name: '烟灰缸' }
-		] }, 
+		] },
 		{ name: '家具', tags:[
 			{ name: '椅子' },
 			{ name: '桌子' },
@@ -34,7 +34,7 @@ categories = [
 			{ name: '床' },
 			{ name: '茶几' },
 			{ name: '人体工程学' }
-		] }, 
+		] },
 		{ name: '家电', tags:[
 			{ name: '电视' },
 			{ name: '冰箱' },
@@ -75,7 +75,7 @@ categories = [
 			{ name: '单肩包' },
 			{ name: '公文包' },
 			{ name: '手袋' }
-		] }, 
+		] },
 		{ name: '手表', tags:[
 			{ name: '智能手表' },
 			{ name: '石英表' },
@@ -83,7 +83,7 @@ categories = [
 			{ name: '机械表' },
 			{ name: '电子表' },
 			{ name: '电波表' }
-		] }, 
+		] },
 		{ name: '智能可穿戴', tags:[
 			{ name: '智能手表' },
 			{ name: '智能手环' },
@@ -92,7 +92,7 @@ categories = [
 			{ name: '智能眼镜' },
 			{ name: '智能产品配件' },
 			{ name: '智能臂带' }
-		] }, 
+		] },
 		{ name: '其他配饰', tags:[
 			{ name: '打火机' },
 			{ name: '首饰' },
@@ -107,7 +107,7 @@ categories = [
 			{ name: '烟盒' },
 			{ name: '酒壶' },
 			{ name: '袜子' }
-		] }, 
+		] },
 		{ name: '眼镜', tags:[
 			{ name: '智能眼镜' },
 			{ name: '防辐射眼镜' },
@@ -135,7 +135,7 @@ categories = [
 			{ name: '连接线' },
 			{ name: '转换器' },
 			{ name: '电脑桌椅' }
-		] }, 
+		] },
 		{ name: '输入设备', tags:[
 			{ name: '鼠标' },
 			{ name: '键盘' },
@@ -145,38 +145,38 @@ categories = [
 			{ name: '手写板' },
 			{ name: '数位板' },
 			{ name: '演示器' }
-		] }, 
+		] },
 		{ name: '存储产品', tags:[
 			{ name: 'U盘' },
 			{ name: '外置硬盘' },
 			{ name: '移动硬盘' },
 			{ name: '读卡器' }
-		] }, 
+		] },
 		{ name: '输出设备', tags:[
 			{ name: '投影仪' },
 			{ name: '打印机' },
 			{ name: '显示器' }
-		] }, 
+		] },
 		{ name: '网络产品', tags:[
 			{ name: '路由器' },
 			{ name: '网络盒子' },
 			{ name: '网络存储' },
 			{ name: '网卡' },
 			{ name: '网络配件' }
-		] }, 
+		] },
 		{ name: '笔记本电脑', tags:[
 			{ name: '轻便本' },
 			{ name: '游戏本' },
 			{ name: '专业本' },
 			{ name: '商务本' },
 			{ name: '家用本' }
-		] }, 
+		] },
 		{ name: '平板电脑', tags:[
 			{ name: 'Android平板' },
 			{ name: '电纸书' },
 			{ name: 'iOS平板' },
 			{ name: 'Windows平板' }
-		] }, 
+		] },
 		{ name: 'DIY配件', tags:[
 			{ name: '内置硬盘' },
 			{ name: '机箱' },
@@ -186,7 +186,7 @@ categories = [
 			{ name: '声卡' },
 			{ name: '散热器' },
 			{ name: '内存' }
-		] }, 
+		] },
 		{ name: '电脑整机', tags:[
 			{ name: '家用机' },
 			{ name: '工作站' },
@@ -205,7 +205,7 @@ categories = [
 			{ name: '厨房刀剪' },
 			{ name: '厨房清洁' },
 			{ name: '砧板' }
-		] }, 
+		] },
 		{ name: '水具', tags:[
 			{ name: '办公杯' },
 			{ name: '便携杯' },
@@ -218,7 +218,7 @@ categories = [
 			{ name: '冷水壶' },
 			{ name: '苏打水机' },
 			{ name: '保温壶' }
-		] }, 
+		] },
 		{ name: '厨房电器', tags:[
 			{ name: '咖啡机' },
 			{ name: '烤箱' },
@@ -243,14 +243,14 @@ categories = [
 			{ name: '厨房小电器' },
 			{ name: '多士炉' },
 			{ name: '炸锅' }
-		] }, 
+		] },
 		{ name: '咖啡', tags:[
 			{ name: '咖啡机' },
 			{ name: '咖啡壶' },
 			{ name: '磨豆机' },
 			{ name: '打泡器' },
 			{ name: '咖啡豆' }
-		] }, 
+		] },
 		{ name: '饮酒', tags:[
 			{ name: '开瓶器' },
 			{ name: '酒杯' },
@@ -261,12 +261,12 @@ categories = [
 			{ name: '酒' },
 			{ name: '调酒' },
 			{ name: '酒柜' }
-		] }, 
+		] },
 		{ name: '饮茶', tags:[
 			{ name: '茶具' },
 			{ name: '滤茶器' },
 			{ name: '茶托' }
-		] }, 
+		] },
 		{ name: '食品', tags:[
 			{ name: '休闲食品' },
 			{ name: '饮料冲调' },
@@ -286,7 +286,7 @@ categories = [
 			{ name: 'Hi-Fi耳机' },
 			{ name: '智能耳机' },
 			{ name: '助听器' }
-		] }, 
+		] },
 		{ name: '音箱', tags:[
 			{ name: '无线音箱' },
 			{ name: '桌面音箱' },
@@ -297,12 +297,12 @@ categories = [
 			{ name: '监听音箱' },
 			{ name: '智能音箱' },
 			{ name: '车载音箱' }
-		] }, 
+		] },
 		{ name: '随身听', tags:[
 			{ name: 'MP3播放器' },
 			{ name: '收音机' },
 			{ name: 'CD播放器' }
-		] }, 
+		] },
 		{ name: '乐器', tags:[
 			{ name: '键盘乐器' },
 			{ name: '弹拨乐器' },
@@ -313,14 +313,14 @@ categories = [
 			{ name: '打击乐器' },
 			{ name: 'MIDI' },
 			{ name: '弦乐器' }
-		] }, 
+		] },
 		{ name: '音响', tags:[
 			{ name: '家庭影院功放' },
 			{ name: '桌面音响' },
 			{ name: '便携音响' },
 			{ name: 'Hi-Fi音响' },
 			{ name: '功放' }
-		] }, 
+		] },
 		{ name: '拾音设备', tags:[
 			{ name: '录音笔' },
 			{ name: '麦克风' }
@@ -339,13 +339,13 @@ categories = [
 			{ name: '求生用品' },
 			{ name: '滤水器' },
 			{ name: '望远镜' }
-		] }, 
+		] },
 		{ name: '交通工具', tags:[
 			{ name: '骑行' },
 			{ name: '电动代步车' },
 			{ name: '滑板' },
 			{ name: '摩托头盔' }
-		] }, 
+		] },
 		{ name: '车载用品', tags:[
 			{ name: '行车记录仪' },
 			{ name: 'GPS导航仪' },
@@ -358,7 +358,7 @@ categories = [
 			{ name: '车载冰箱' },
 			{ name: 'HUD' },
 			{ name: '车载安全' }
-		] }, 
+		] },
 		{ name: '旅行用品', tags:[
 			{ name: '旅行箱包' },
 			{ name: '睡眠用品' },
@@ -367,7 +367,7 @@ categories = [
 			{ name: '防盗包' },
 			{ name: '分装' },
 			{ name: '行李牌' }
-		] }, 
+		] },
 		{ name: '户外运动', tags:[
 			{ name: '极限运动' },
 			{ name: '游泳' },
@@ -380,7 +380,7 @@ categories = [
 			{ name: '乒乓球' },
 			{ name: '网球' },
 			{ name: '棒球' }
-		] }, 
+		] },
 		{ name: '健身训练', tags:[
 			{ name: '跑步机' },
 			{ name: '哑铃' },
@@ -399,19 +399,19 @@ categories = [
 			{ name: '移动电源' },
 			{ name: '充电器' },
 			{ name: '数据线' }
-		] }, 
+		] },
 		{ name: '手机配件', tags:[
 			{ name: '创意配件' },
 			{ name: '手机支架' },
 			{ name: '防丢器' },
 			{ name: '触控笔' }
-		] }, 
+		] },
 		{ name: '手机配饰', tags:[
 			{ name: '手机壳' },
 			{ name: '手机包' },
 			{ name: '贴膜' },
 			{ name: '防尘塞' }
-		] }, 
+		] },
 		{ name: '手机', tags:[
 			{ name: 'Android手机' },
 			{ name: '创意手机' },
@@ -421,7 +421,7 @@ categories = [
 			{ name: '电话机' },
 			{ name: 'BlackBerry手机' },
 			{ name: 'Symbian手机' }
-		] }, 
+		] },
 		{ name: '手机摄影', tags:[
 			{ name: '手机镜头' }
 		] }
@@ -433,7 +433,7 @@ categories = [
 			{ name: '便签' },
 			{ name: '绘图本' },
 			{ name: '纸张' }
-		] }, 
+		] },
 		{ name: '桌面用品', tags:[
 			{ name: '桌面收纳' },
 			{ name: '笔袋' },
@@ -444,7 +444,7 @@ categories = [
 			{ name: '笔筒' },
 			{ name: '计算器' },
 			{ name: '标签打印机' }
-		] }, 
+		] },
 		{ name: '书写工具', tags:[
 			{ name: '钢笔' },
 			{ name: '圆珠笔' },
@@ -453,14 +453,14 @@ categories = [
 			{ name: '水性笔' },
 			{ name: '记号笔' },
 			{ name: '毛笔' }
-		] }, 
+		] },
 		{ name: '创意文具', tags:[
 			{ name: '创意纸本' },
 			{ name: '创意笔' },
 			{ name: '贴纸' },
 			{ name: '礼品套装' },
 			{ name: '创意书籍' }
-		] }, 
+		] },
 		{ name: '文件处理', tags:[
 			{ name: '胶带' },
 			{ name: '文件夹' },
@@ -472,7 +472,7 @@ categories = [
 			{ name: '打孔机' },
 			{ name: '碎纸机' },
 			{ name: '相册' }
-		] }, 
+		] },
 		{ name: '绘图工具', tags:[
 			{ name: '绘图铅笔' },
 			{ name: '彩笔' },
@@ -482,7 +482,7 @@ categories = [
 			{ name: '针管笔' },
 			{ name: '漫画笔' },
 			{ name: '圆规' }
-		] }, 
+		] },
 		{ name: '剪裁涂改', tags:[
 			{ name: '裁纸刀' },
 			{ name: '橡皮' },
@@ -496,22 +496,22 @@ categories = [
 		{ name: '趣味', tags:[
 			{ name: '趣味设计' },
 			{ name: '趣味玩具' }
-		] }, 
+		] },
 		{ name: '模型手办', tags:[
 			{ name: '电影手办' },
 			{ name: '人体模型' },
 			{ name: '动漫手办' },
 			{ name: '毛绒玩具' }
-		] }, 
+		] },
 		{ name: '智能玩具', tags:[
 			{ name: '智能DIY' },
 			{ name: '智能机器人' },
 			{ name: '智能赛车' }
-		] }, 
+		] },
 		{ name: '积木拼图', tags:[
 			{ name: '积木' },
 			{ name: '拼图' }
-		] }, 
+		] },
 		{ name: '遥控玩具', tags:[
 			{ name: '遥控飞机' },
 			{ name: '遥控车' },
@@ -531,10 +531,10 @@ categories = [
 			{ name: '运动支架' },
 			{ name: '自拍杆' },
 			{ name: '便携打印机' }
-		] }, 
+		] },
 		{ name: '便携相机', tags:[
 			{ name: '便携数码相机' }
-		] }, 
+		] },
 		{ name: '特殊相机', tags:[
 			{ name: '创意相机' },
 			{ name: '运动相机' },
@@ -542,12 +542,12 @@ categories = [
 			{ name: '拍立得' },
 			{ name: '防水相机' },
 			{ name: '双反相机' }
-		] }, 
+		] },
 		{ name: '摄像机', tags:[
 			{ name: '便携摄像机' },
 			{ name: '运动摄像机' },
 			{ name: '专业摄像机' }
-		] }, 
+		] },
 		{ name: '单反', tags:[
 			{ name: '数码单反' },
 			{ name: '中画幅单反' },
@@ -555,13 +555,13 @@ categories = [
 			{ name: '胶片单反' },
 			{ name: '中画幅相机' },
 			{ name: '单反镜头' }
-		] }, 
+		] },
 		{ name: '单电', tags:[
 			{ name: '单电相机' },
 			{ name: '索尼E镜头' },
 			{ name: '索尼G镜头' },
 			{ name: '单电镜头' }
-		] }, 
+		] },
 		{ name: '旁轴', tags:[
 			{ name: '胶片旁轴' },
 			{ name: '数码旁轴' },
@@ -579,12 +579,12 @@ categories = [
 			{ name: '防晒' },
 			{ name: '脱毛' },
 			{ name: '止汗' }
-		] }, 
+		] },
 		{ name: '男性', tags:[
 			{ name: '剃须' },
 			{ name: '男性内衣' },
 			{ name: '男性用品' }
-		] }, 
+		] },
 		{ name: '口腔护理', tags:[
 			{ name: '电动牙刷' },
 			{ name: '牙膏' },
@@ -594,13 +594,13 @@ categories = [
 			{ name: '牙线' },
 			{ name: '创意牙刷' },
 			{ name: '牙刷消毒' }
-		] }, 
+		] },
 		{ name: '保健', tags:[
 			{ name: '按摩器械' },
 			{ name: '情趣' },
 			{ name: '理疗仪' },
 			{ name: '避孕' }
-		] }, 
+		] },
 		{ name: '美发', tags:[
 			{ name: '理发器' },
 			{ name: '吹风机' },
@@ -609,7 +609,7 @@ categories = [
 			{ name: '直发棒' },
 			{ name: '生发' },
 			{ name: '护发' }
-		] }, 
+		] },
 		{ name: '耳鼻护理', tags:[
 			{ name: '口罩' },
 			{ name: '鼻塞' },
@@ -617,24 +617,24 @@ categories = [
 			{ name: '耳塞' },
 			{ name: '耳鼻毛修剪器' },
 			{ name: '耳鼻清洁' }
-		] }, 
+		] },
 		{ name: '美容', tags:[
 			{ name: '美容仪' },
 			{ name: '洁面' },
 			{ name: '美妆工具' },
 			{ name: '肌肤检测' }
-		] }, 
+		] },
 		{ name: '眼睛护理', tags:[
 			{ name: '防辐射眼镜' },
 			{ name: '眼罩' },
 			{ name: '眼药水' },
 			{ name: '眼部护理仪' },
 			{ name: '眼镜消毒' }
-		] }, 
+		] },
 		{ name: '女性', tags:[
 			{ name: '女性用品' },
 			{ name: '女性内衣' }
-		] }, 
+		] },
 		{ name: '个人清洁', tags:[
 			{ name: '衣物清洁' },
 			{ name: '驱蚊杀虫' },
@@ -652,7 +652,7 @@ categories = [
 			{ name: '睡眠监测' },
 			{ name: '酒精检测' },
 			{ name: '备孕' }
-		] }, 
+		] },
 		{ name: '环境监测', tags:[
 			{ name: '空气净化' },
 			{ name: '空气监测' },
@@ -661,19 +661,19 @@ categories = [
 			{ name: '去湿机' },
 			{ name: '水检测' },
 			{ name: '净水设备' }
-		] }, 
+		] },
 		{ name: '母婴', tags:[
 			{ name: '婴儿用品' },
 			{ name: '亲子互动' },
 			{ name: '产后护理' },
 			{ name: '孕妇用品' },
 			{ name: '早教益智' }
-		] }, 
+		] },
 		{ name: '老幼关爱', tags:[
 			{ name: '老年保健' },
 			{ name: '防走失' },
 			{ name: '紧急报警' }
-		] }, 
+		] },
 		{ name: '医疗用品', tags:[
 			{ name: '医疗器械' },
 			{ name: '药品' },
@@ -689,7 +689,7 @@ categories = [
 			{ name: '体感设备' },
 			{ name: '动作感应' },
 			{ name: '游戏乐器' }
-		] }, 
+		] },
 		{ name: '游戏机', tags:[
 			{ name: '任天堂系游戏机' },
 			{ name: '索尼系游戏机' },

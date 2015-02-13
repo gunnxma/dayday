@@ -2,7 +2,7 @@
 	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 	<div class="row">
 	  <div class="col-xs-12 col-md-8">
-	  	<%= render partial: 'top', locals: { thing: @thing } %>
+	  	<%= render 'top', thing: @thing %>
 		  <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 			  <!-- Indicators -->
 			  <ol class="carousel-indicators">
@@ -57,7 +57,7 @@
 				</article>
 			</div>
 			<% if !@thing.reviews.where('publish = ?', true).exists? %>
-			<%= render partial: 'reviews/empty', locals: { thing: @thing } %>
+			<%= render 'reviews/empty', thing: @thing %>
 			<% else %>
 				<nav id="thing-feeds-tab">
 					<ul class="nav nav-pills nav-justified nav-layout thing_tab">
@@ -67,7 +67,7 @@
 					</ul>
 				</nav>
 				<div class="feeling_list">
-				<%= render partial: "reviews/show", collection: @thing.reviews.where('publish = ?', true).order(id: :desc).take(3), as: :review %>
+				<%= render @thing.reviews.where('publish = ?', true).order(id: :desc).take(3) %>
 				</div>
 			<% end %>
 			<div class="clearfix thing_reviews_action">
@@ -75,7 +75,7 @@
 				<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_reviews_path(@thing) %>">更多评测</a>
 				<% end %>
 			</div>
-			<%= render partial: 'feelings/new', locals: { thing: @thing, feeling: @feeling } %>
+			<%= render 'feelings/new', thing: @thing, feeling: @feeling %>
 			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout thing_tab">
 					<li>
@@ -85,12 +85,12 @@
 			</nav>
 			<% if @thing.feelings.exists? %>
 				<div id="feeling_list" class="feeling_list">
-					<%= render partial: "feelings/show", collection: @thing.feelings.order(id: :desc).take(5), as: :feeling %>
+					<%= render @thing.feelings.order(id: :desc).take(5) %>
 				</div>				
 			<% else %>
 				<div id="feeling_list" class="feeling_list">
 				</div>
-				<%= render partial: 'feelings/empty_feeling' %>
+				<%= render 'feelings/empty_feeling' %>
 			<% end %>
 			<div class="clearfix thing_feelings_action">
 				<% if @thing.feelings.count > 5 %>
@@ -98,6 +98,6 @@
 				<% end %>
 			</div>
 	  </div>
-	  <%= render partial: 'right', locals: { thing: @thing } %>
+	  <%= render 'right', thing: @thing %>
 	</div>
 </div>

@@ -26,8 +26,8 @@ class Review < ActiveRecord::Base
 	end
 
 	def add_or_remove_up(user)
-		if self.review_ups.where(:user_id => user.id).exists?
-			self.review_ups.where(:user_id => user.id).first.destroy
+		if self.review_ups.by_user(user.id).exists?
+			self.review_ups.by_user(user.id).first.destroy
 			self.up = self.review_ups.count
 			self.save
 			'removeok'

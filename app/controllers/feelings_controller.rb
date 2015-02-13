@@ -2,7 +2,7 @@ class FeelingsController < ApplicationController
   before_filter :find_thing, :only => [:index, :create]
   def index
     @feelings = @thing.feelings.order(id: :desc).page(params[:page]).per(15)
-    @feeling = Feeling.new 
+    @feeling = Feeling.new
     @title = @thing.page_title_feelings
   end
 

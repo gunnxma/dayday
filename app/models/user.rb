@@ -9,6 +9,11 @@ class User < ActiveRecord::Base
 	has_many :review_ups
 	has_many :rfeelings
 
+  has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
+	has_many :followers, :through => :user_followers
+  has_many :user_followings, :foreign_key => :follower_id, :class_name => 'UserFollower'
+  has_many :followings, :through => :user_followings
+
 	def self.create_with_omniauth(auth)
 	  create! do |user|
 	    user.provider = auth["provider"]
