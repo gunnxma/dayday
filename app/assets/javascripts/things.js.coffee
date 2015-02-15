@@ -1,3 +1,13 @@
+window.Things =
+  add_list : ->
+    if $("#list_name").val()
+      list = '<label class="btn btn-primary active">'
+      list += '<input type="checkbox" name="list" autocomplete="off" value="'+$('#list_name').val()+'"> '+$('#list_name').val()
+      list += '</label><br>'
+      $('#list_name').val('')
+      $('.thing-list').append(list)
+
+
 $(document).ready ->
   $("#new_feeling").on("ajax:before", () -> 
     $('#btn_feeling').attr('disabled','disabled')    

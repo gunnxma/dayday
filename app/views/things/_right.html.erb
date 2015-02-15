@@ -59,7 +59,7 @@
 		  				</a>
 		  			</li>
 		  			<li class="add_to_list">
-		  				<a href="#">
+		  				<a href="#" data-toggle="modal" data-target="#add-to-list">
 		  					<i class="fa fa-list-ul"></i>
 		  					加入列表
 		  				</a>
@@ -84,3 +84,45 @@
 	  		</div>	  		
 	  	</div>	  	
 	  </div>
+
+
+<div class="modal fade" id="add-to-list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-list-ul" style="margin-right:5px"></i>添加到收藏列表 “ <%= thing.title %> ”</h4>
+      </div>
+      <form action="<%=thing_to_list_path %>" method="post" data-remote="true">
+      	<input type="hidden" name="thing_id" value="<%= thing.id %>" />
+	      <div class="modal-body" style="padding:30px;">
+	      	<center>
+		        <div class="row">
+		        	<div class="col-md-6">
+		        		<%= image_tag(thing.photos.first.avatar_url('800x800'), :class => 'img-responsive') if thing.photos.first %>
+		        	</div>
+	        		<div class="col-md-6">	        			
+		        		<div class="col-md-12 input-group">
+						      <input type="text" class="form-control" id="list_name" placeholder="添加一个列表">
+						      <span class="input-group-btn">
+						        <button class="btn btn-default" type="button" onclick="return Things.add_list();">添加</button>
+						      </span>
+						    </div>
+						    <div class="col-md-12 btn-group thing-list" data-toggle="buttons">
+		        			<% @lists.each do |list| %>
+								  <label class="btn btn-primary active">
+								    <input type="checkbox" name="list" autocomplete="off" <%= list.has_thing?(thing) ? "checked" : "" %> value="<%= list.title %>"> <%= "#{list.title}(#{list.things.count})" %>
+								  </label><br>
+								  <% end %>
+								</div>
+							</div>
+		        </div>
+		        <div class="row add-to-list-btn">
+		        	<button class="btn btn-primary pull-right" type="submit">完成</button>
+		        </div>
+		      </center>
+	      </div>
+	    </form>
+    </div>
+  </div>
+</div>

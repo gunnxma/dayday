@@ -45,6 +45,7 @@ class ThingsController < ApplicationController
 	def show
 		@title = @thing.page_title
 		@feeling = Feeling.new
+		@lists = current_user.lists
 	end
 
 	def destroy
@@ -64,26 +65,14 @@ class ThingsController < ApplicationController
 			render :text => 'error'
 		else
 			thing = current_user.things.new_by_hash(thing_hash)
-			#thing = Thing.new
-			#thing.token = SecureRandom.hex
-			#thing.title = thing_hash[:title]
-			#thing.subtitle = thing_hash[:subtitle]
-			#thing.body = processed_body(thing_hash[:body])
-			#thing.official_site = thing_hash[:official_site]
-			#thing.publish = false
-			#thing.user_id = current_user.id
-			#thing.save
-			#thing_hash[:photos].each do |photo|
-			#	t_photo = Photo.new
-			#	t_photo.thing_id = thing.id
-			#	t_photo.token = thing.token
-			#	t_photo.remote_avatar_url = photo
-			#	t_photo.save
-			#end
 			thing.save
 			logger.debug thing.errors.messages
 			render :text => thing.id
 		end
+	end
+
+	def to_list
+		@thing = Thing.find(params[:thing_id])		
 	end
 
 	private

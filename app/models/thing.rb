@@ -9,6 +9,9 @@ class Thing < ActiveRecord::Base
 	has_many :owners
 	has_many :reviews
 
+	has_many :list_things, dependent: :destroy
+	has_many :lists, through: :list_things
+
 	validates :title, presence: true
 	validate :thing_photos
 

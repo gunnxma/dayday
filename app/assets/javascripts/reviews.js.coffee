@@ -26,3 +26,22 @@ $(document).ready ->
       $(this).children('span').html(parseInt($(this).children('span').html())-1)
       $(this).attr('title', $(this).data("like"))
   )
+
+  $("a[data-state-btn]").on("ajax:success", (e, data, status, xhr) ->
+    if data == "ok"
+      state = 1
+      old_state = 0
+    else
+      state = 0
+      old_state = 1
+
+    $(this).children('span').html($(this).data("h-label").split(',')[state])
+    $(this).attr('title', $(this).data("h-title").split(',')[state])
+    $(this).removeClass($(this).data("h-btn-class").split(',')[old_state])
+    $(this).addClass($(this).data("h-btn-class").split(',')[state])
+    $(this).attr('href', $(this).data("h-url").split(',')[state])
+    $(this).data('method', $(this).data("h-method").split(',')[state])
+    if $(this).data("has-icon")
+      $(this).children('i').removeClass($(this).data("h-i-class").split(',')[old_state])
+      $(this).children('i').addClass($(this).data("h-i-class").split(',')[state])
+  )

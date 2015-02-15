@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :reviews
 	has_many :review_ups
 	has_many :rfeelings
+	has_many :lists
 
   has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
 	has_many :followers, :through => :user_followers
@@ -20,5 +21,10 @@ class User < ActiveRecord::Base
 	    user.uid = auth["uid"]
 	    user.name = auth["info"]["name"]
 	  end
+	end
+
+	def followed_by_user?(user)
+		return false if user.blank?
+		return self.followers.include?(user)
 	end
 end

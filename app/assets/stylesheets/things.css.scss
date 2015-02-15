@@ -366,3 +366,30 @@ $white: #ffffff;
 		}
 	}
 }
+
+.thing-list{
+	padding: 0px;
+	margin-top: 10px;
+	label{
+		display: block;
+		float: left;
+		width: 100%;
+		background-color: #ffffff;
+		color: #999999;
+		border-radius: 0px;
+		text-align: left;
+		border: 0px;
+		box-shadow: none;
+		margin-bottom: 5px;
+	}
+
+	.active{
+		background-color: #5bc0de;
+		color: #ffffff;
+		box-shadow: none;
+	}
+}
+
+.add-to-list-btn{
+	margin-top: 10px;
+}

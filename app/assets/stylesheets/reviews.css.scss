@@ -79,3 +79,19 @@
 		}
 	}
 }
+
+.review_followed_btn{
+	background-color: #ffffff;
+	color: #999999;
+	border: 1px solid #999999;
+	&:visited{		
+		background-color: #ffffff;
+		color: #999999;
+		border: 1px solid #999999;
+	}
+	&:hover{
+		background-color: #ffffff;
+		color: #999999;
+		border: 1px solid #999999;
+	}
+}
