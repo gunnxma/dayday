@@ -1,3 +1,30 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+#user_top_nav{
+	background-color: #ffffff;
+	i{
+		margin-right:5px;
+	}
+	span{
+		color: #999999;
+		margin-left:10px;
+	}
+	a{
+		&:hover{
+			background-color: #ffffff;
+			color: #999999;
+		}
+	}
+	.active{
+		border-top: 2px #48B2E2 solid;
+		background-color: #fafafa;
+		a{
+			&:hover{
+				background-color: #fafafa;
+				color: #999999;
+			}
+		}
+	}
+}

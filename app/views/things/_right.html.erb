@@ -59,10 +59,17 @@
 		  				</a>
 		  			</li>
 		  			<li class="add_to_list">
-		  				<a href="#" data-toggle="modal" data-target="#add-to-list">
+		  				<% if current_user %>
+		  				<a href="#" data-toggle="modal" data-target="#add-to-list-modal">
 		  					<i class="fa fa-list-ul"></i>
 		  					加入列表
 		  				</a>
+		  				<% else %>
+		  				<a href="<%= new_sessions_path %>">
+		  					<i class="fa fa-list-ul"></i>
+		  					加入列表
+		  				</a>
+		  				<% end %>
 		  			</li>
 		  		</ul>
 		  		<div class="others white clearfix">
@@ -85,15 +92,15 @@
 	  	</div>	  	
 	  </div>
 
-
-<div class="modal fade" id="add-to-list" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<% if current_user %>
+<div class="modal fade" id="add-to-list-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
         <h4 class="modal-title" id="myModalLabel"><i class="fa fa-list-ul" style="margin-right:5px"></i>添加到收藏列表 “ <%= thing.title %> ”</h4>
       </div>
-      <form action="<%=thing_to_list_path %>" method="post" data-remote="true">
+      <form action="<%=things_to_list_path %>" id="thing-to-list" method="post" data-remote="true">
       	<input type="hidden" name="thing_id" value="<%= thing.id %>" />
 	      <div class="modal-body" style="padding:30px;">
 	      	<center>
@@ -109,7 +116,7 @@
 						      </span>
 						    </div>
 						    <div class="col-md-12 btn-group thing-list" data-toggle="buttons">
-		        			<% @lists.each do |list| %>
+		        			<% current_user.lists.each do |list| %>
 								  <label class="btn btn-primary active">
 								    <input type="checkbox" name="list" autocomplete="off" <%= list.has_thing?(thing) ? "checked" : "" %> value="<%= list.title %>"> <%= "#{list.title}(#{list.things.count})" %>
 								  </label><br>
@@ -126,3 +133,4 @@
     </div>
   </div>
 </div>
+<% end %>

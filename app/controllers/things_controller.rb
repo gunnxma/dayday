@@ -45,7 +45,6 @@ class ThingsController < ApplicationController
 	def show
 		@title = @thing.page_title
 		@feeling = Feeling.new
-		@lists = current_user.lists
 	end
 
 	def destroy
@@ -72,7 +71,15 @@ class ThingsController < ApplicationController
 	end
 
 	def to_list
-		@thing = Thing.find(params[:thing_id])		
+		thing = Thing.find(params[:thing_id])		
+		params[:list].split(',').each do |title|
+			list = current_user.lists.find_or_create_by(title: title)
+			unless list.has_thing?(thing)
+				thing.lists << list
+			end
+		end
+		thing.save
+		render plain: 'ok'
 	end
 
 	private

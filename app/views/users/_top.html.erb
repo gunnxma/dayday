@@ -1,0 +1,6 @@
+		  <nav id="user_top_nav" class="hidden-xs">
+		  	<ul class="nav nav-justified">
+		  		<li class="<%= params[:action] == "show" ? 'active' : '' %>"><a href="<%= user_path(user) %>"><i class="fa fa-home"></i>主页</a></li>
+		  		<li class="<%= params[:action] == "fancies" ? 'active' : '' %>"><a href=""><i class="fa fa-heart"></i>喜欢<span></span></a></li>		
+		  	</ul>
+		  </nav>

@@ -2,7 +2,7 @@ window.Things =
   add_list : ->
     if $("#list_name").val()
       list = '<label class="btn btn-primary active">'
-      list += '<input type="checkbox" name="list" autocomplete="off" value="'+$('#list_name').val()+'"> '+$('#list_name').val()
+      list += '<input type="checkbox" name="list" autocomplete="off" checked value="'+$('#list_name').val()+'"> '+$('#list_name').val()
       list += '</label><br>'
       $('#list_name').val('')
       $('.thing-list').append(list)
@@ -16,6 +16,14 @@ $(document).ready ->
     $('#feeling_body').val('')
     $('.feed_empty').css('display','none')
     $('#btn_feeling').removeAttr('disabled')
+  )
+
+  $("#thing-to-list").on("ajax:before", () ->
+    return unless $('.thing-list').html()
+  ).on("ajax:success", (e, data, status, xhr) ->
+    $('#add-to-list-modal').modal('hide')
+  ).on("ajax:error", (xhr, status, error) ->
+    alert(error)
   )
 
   $("a[data-new-feeling-up]").on("ajax:success", (e, data, status, xhr) ->

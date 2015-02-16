@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/auth/failure", to: "sessions#failure"
 
   post 'things/crawler'
-  post 'thing/to_list'
+  post 'things/to_list'
   resources :things, except: [:index], :shallow => true do
     resources :feelings do
       resources :feeling_ups
