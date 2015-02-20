@@ -28,3 +28,109 @@
 		}
 	}
 }
+
+#user-mark{
+	margin: 30px 0;
+}
+
+#user-name{
+	height: 60px;
+	line-height: 60px;
+	vertical-align:middle;
+}
+
+#user-follow{
+	border: 1px #EEEEEE;
+	border-style:dashed none none none;
+	li{
+		float: left;
+		width: 50%;
+		a{
+			display:block;
+			height: 80px;
+			padding-top: 15px;
+			text-align: center;
+			color: #aaa;
+			em{
+				display:block;
+				color: #7aa9cc;
+				font-size: 24px;
+				font-style: normal;
+				font-weight: normal;
+				margin-top: 0px;
+			}
+		}
+	}
+	li:first-child{
+		border: 1px #EEEEEE;
+		border-style:none dashed none none;
+	}
+}
+
+.following-list{
+	margin: 10px 0 0 0;
+	li{
+		float: left;
+		@include border-radius(5px);
+		height: 90px;
+		margin: 10px 0px;
+		background-color: #ffffff;
+		width: 48%;
+		vertical-align:middle;
+		img{
+			width: 50px;
+			height: 50px;
+			margin-top: 15px;
+		}
+		.following_author{
+			padding-top: 15px;
+		}
+		.following_author_name{
+			font-size: 16px;
+		}
+		p{
+			margin-top: 5px;
+			font-size: 12px;
+			color: #999999;
+		}
+		.following-btn{
+			text-align: right;
+			margin-top: 15px;
+		}
+		.btn-following-follow{
+			@include border-radius(15px);
+			background-color: #ffffff;
+			color: #47b2e2;
+			border: 1px solid #47b2e2;
+			&:visited{
+				background-color: #ffffff;
+				color: #47b2e2;
+				border: 1px solid #47b2e2;
+			}
+			&:hover{
+				background-color: #ffffff;
+				color: #47b2e2;
+				border: 1px solid #47b2e2;
+			}
+		}
+		.btn-followed-follow{
+			@include border-radius(15px);
+			background-color: #97ceec;
+			color: #ffffff;
+			border: 0px;
+			&:visited{
+				background-color: #97ceec;
+				color: #ffffff;
+				border: 0px;
+			}
+			&:hover{
+				background-color: #97ceec;
+				color: #ffffff;
+				border: 0px;
+			}
+		}
+	}
+	li:nth-child(odd){
+		margin-right: 30px;
+	}
+}

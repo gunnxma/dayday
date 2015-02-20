@@ -10,6 +10,13 @@ module ApplicationHelper
     method = ['post', 'delete']
     has_icon = true
 
+    if opts[:style] == 'following-follower-btn'
+      has_icon = false
+      label = ['关注', '已关注']
+      title = ['关注', '取消关注']
+      btn_class = ['btn btn-info btn-following-follow', 'btn btn-info btn-followed-follow']
+    end
+
     if current_user.blank?
       icon = content_tag("i", "", class: i_class.first)
       icon = '' unless has_icon

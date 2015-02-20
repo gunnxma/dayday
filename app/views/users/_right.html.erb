@@ -2,19 +2,27 @@
 	  	<div class="row mb_30">
 	  		<div class="col-md-12">
 	  			<div class="actions white clearfix">
+	  				<div class="row" id="user-mark">	  					
+	  					<div class="col-md-6" id="user-avatar">
+	  						<%= image_tag(user.avatar_url('60x60'), :width => 60, :height => 60, :class => 'img-circle pull-right') %>
+	  					</div>
+	  					<div class="col-md-6" id="user-name">
+	  						<%= user.name %>
+	  					</div>
+	  				</div>
 		  		</div>
 		  		<div class="others white clearfix">
-		  			<ul class="tags clearfix">
+		  			<ul class="clearfix" id="user-follow">
 		  				<li>
-		  					<a href="#">
-		  						<i class="glyphicon glyphicon-tag"></i>
-		  						数码
+		  					<a href="<%= followings_user_path(user) %>">
+		  						关注
+		  						<em><%= user.followings.count %></em>
 		  					</a>
 		  				</li>
 		  				<li>
 		  					<a href="#">
-		  						<i class="glyphicon glyphicon-tag"></i>
-		  						手机
+		  						关注者
+		  						<em><%= user.followers.count %></em>
 		  					</a>
 		  				</li>
 		  			</ul>

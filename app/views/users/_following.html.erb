@@ -1,0 +1,14 @@
+<li class="row">
+	<div class="col-md-2 hidden-xs">
+		<center>
+			<a href="<%= user_path(following) %>" target="_blank"><%= image_tag(following.avatar_url('150x150'), :class => 'img-circle') %></a>
+		</center>
+	</div>
+	<div class="col-md-7 following_author">
+		<a href="<%= user_path(following) %>" target="_blank" class="following_author_name"><%= following.name %></a>
+		<p><%= following.name %></p>
+	</div>
+	<div class="col-md-3 following-btn">
+<%= follower_btn_tag(following, { :style => 'following-follower-btn'}) %>
+	</div>
+</li>

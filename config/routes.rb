@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   root 'index#index'
 
   get 'users/login'
-  delete '/users/:user_id/followers', to: 'followers#destroy'
   resources :users do
-    resources :followers
+    member do
+      get :followings
+    end
+    resource :followers
   end
 
   resources :identities, only: [:new]
