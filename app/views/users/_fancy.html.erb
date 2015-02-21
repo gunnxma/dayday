@@ -1,0 +1,7 @@
+<li class="row">
+	<center><a href="<%= thing_path(fancier.thing) %>" target="_blank"><%= image_tag(fancier.thing.photos.first.avatar_url('800x800'), :class => 'img-responsive') if fancier.thing.photos.first %></a></center>
+  <div><a class="fancy-thing-title" href="<%= thing_path(fancier.thing) %>" target="_blank"><%= fancier.thing.title %></a></div>
+  <div class="fancy-list-count">
+  	<a href="#"><i class="fa fa-heart-o"></i><%= fancier.thing.fanciers.count %></a>
+ 	</div>
+</li>

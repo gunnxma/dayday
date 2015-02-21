@@ -3,10 +3,10 @@
 	<div class="row">
 	  <div class="col-xs-12 col-md-9">
 	  	<%= render 'top', user: @user %>
-	  	<ul class="following-list row">
-	  		<%= render partial: 'following', collection: @followings %>	  		
+	  	<ul class="fancy-list row">
+	  		<%= render partial: 'fancy', collection: @fanciers, as: :fancier %>	  		
 	  	</ul>
-	  	<% if @followings.blank? %>
+	  	<% if @fanciers.blank? %>
 	  		<div class="row feed_empty">
 					<div class="col-md-12 feed_body">
 						<div class="tab-pane active" id="tab_feelings">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 	  	<% end %>
-	  	<%= paginate @followings %>
+	  	<%= paginate @fanciers %>
 	  </div>
 	  <%= render 'right', user: @user %>
 	</div>

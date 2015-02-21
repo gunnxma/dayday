@@ -134,3 +134,31 @@
 		margin-right: 30px;
 	}
 }
+
+.fancy-list{
+	margin: 10px 0 0 0;
+	color: #999999;
+	li{
+		float: left;
+		margin: 10px 10px 0 0;
+		background-color: #ffffff;
+		width: 30%;
+	}
+	li:last-child{
+		margin-right: 0px;
+	}
+	.fancy-thing-title{
+		display:block;
+		text-align: center;
+		height: 50px;
+		line-height: 50px;
+		word-wrap:break-word;
+	}
+	.fancy-list-count{
+		text-align: center;
+		margin-bottom: 10px;
+		i{
+			margin-right: 5px;
+		}
+	}
+}
