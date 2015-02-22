@@ -1,0 +1,7 @@
+<li class="row">
+	<center><a href="<%= list_path(list) %>" class="fancy-img" target="_blank"><%= image_tag(list.things.first.photos.first.avatar_url('800x800'), :class => 'img-responsive') if list.things.first.photos.first %></a></center>
+  <div><a class="fancy-thing-title" href="<%= list_path(list) %>" target="_blank"><%= list.title %><small>(<%= list.things.count %>)</small></a></div>
+  <div class="fancy-list-count" style="display:none">
+  	<a href="#"><i class="fa fa-heart-o"></i>1</a>
+ 	</div>
+</li>

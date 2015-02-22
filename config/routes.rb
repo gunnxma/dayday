@@ -11,6 +11,9 @@ Rails.application.routes.draw do
       get :followings
       get :followers
       get :fancies
+      get :owns
+      get :things
+      get :lists
     end
     resource :followers
   end
@@ -41,6 +44,8 @@ Rails.application.routes.draw do
   resources :photos, only: [:create, :destroy, :index]
 
   post 'kindeditor_upyun/upload'
+
+  resources :lists
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

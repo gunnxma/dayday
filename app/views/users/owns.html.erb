@@ -4,9 +4,9 @@
 	  <div class="col-xs-12 col-md-9">	  	
 		  <%= render 'top', user: @user %>
 	  	<ul class="fancy-list row">
-	  		<%= render partial: 'fancy', collection: @fanciers, as: :fancier %>	  		
+	  		<%= render partial: 'own', collection: @owners, as: :owner %>	  		
 	  	</ul>
-	  	<% if @fanciers.blank? %>
+	  	<% if @owners.blank? %>
 	  		<div class="row feed_empty">
 					<div class="col-md-12 feed_body">
 						<div class="tab-pane active" id="tab_feelings">
@@ -18,7 +18,7 @@
 					</div>
 				</div>
 	  	<% end %>
-	  	<%= paginate @fanciers %>
+	  	<%= paginate @owners %>
 	  </div>
 	  <%= render 'right', user: @user %>
 	</div>

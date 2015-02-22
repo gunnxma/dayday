@@ -16,7 +16,22 @@ class UsersController < ApplicationController
 
 	def fancies
 		@title = "喜欢 － #{@user.name}"
-		@fanciers = @user.fanciers.order(id: :desc).page(params[:page]).per(20)
+		@fanciers = @user.fanciers.order(created_at: :desc).page(params[:page]).per(24)
+	end
+
+	def owns
+		@title = "拥有 － #{@user.name}"
+		@owners = @user.owners.order(created_at: :desc).page(params[:page]).per(24)
+	end
+
+	def things
+		@title = "分享 － #{@user.name}"
+		@things = @user.things.order(created_at: :desc).page(params[:page]).per(24)
+	end
+
+	def lists
+		@title = "列表 － #{@user.name}"
+		@lists = @user.lists.order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	private

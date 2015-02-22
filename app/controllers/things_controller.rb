@@ -11,7 +11,7 @@ class ThingsController < ApplicationController
 
 	def create
 		@thing = current_user.things.new_by_publish(thing_params, params[:commit] == '保存' ? false : true)
-		if @thing.save_with_photos			
+		if @thing.save_with_photos
 			if @thing.publish
 				redirect_to thing_path(@thing)
 			else
