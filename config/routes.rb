@@ -14,6 +14,8 @@ Rails.application.routes.draw do
       get :owns
       get :things
       get :lists
+      get :reviews
+      get :feelings
     end
     resource :followers
   end

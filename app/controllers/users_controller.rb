@@ -34,6 +34,16 @@ class UsersController < ApplicationController
 		@lists = @user.lists.order(created_at: :desc).page(params[:page]).per(24)
 	end
 
+	def reviews
+		@title = "评测 － #{@user.name}"
+		@reviews = @user.reviews.order(created_at: :desc).page(params[:page]).per(24)
+	end
+
+	def feelings
+		@title = "短评 － #{@user.name}"
+		@feelings = @user.feelings.order(created_at: :desc).page(params[:page]).per(24)
+	end
+
 	private
 
 	def find_user		

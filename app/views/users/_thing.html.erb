@@ -2,6 +2,12 @@
 	<center><a href="<%= thing_path(thing) %>" class="fancy-img" target="_blank"><%= image_tag(thing.photos.first.avatar_url('800x800'), :class => 'img-responsive') if thing.photos.first %></a></center>
   <div><a class="fancy-thing-title" href="<%= thing_path(thing) %>" target="_blank"><%= thing.title %></a></div>
   <div class="fancy-list-count">
-  	<a href="#"><i class="fa fa-heart-o"></i><%= thing.fanciers.count %></a>
+  	<a href="<%= thing_path(thing) %>" target="_blank"><i class="fa fa-heart-o"></i><%= thing.fanciers.count %></a>
+  	<% if thing.owners.count > 0 %>
+  	<a href="<%= thing_path(thing) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= thing.owners.count %></a>
+  	<% end %>
+  	<% if thing.reviews.count > 0 %>
+  	<a href="<%= thing_reviews_path(thing) %>" target="_blank"><i class="fa fa-pencil"></i><%= thing.reviews.count %></a>
+  	<% end %>
  	</div>
 </li>

@@ -1,0 +1,8 @@
+<li class="row user-review">
+	<h5><%= review.title %></h5>
+  <p><%= strip_tags(review.body).truncate(118, :separator => ' ') %></p>
+  <div class="fancy-list-count">
+  	<i class="fa fa-comments-o"></i><span><%= review.rfeelings.count %></span>
+  	<i class="fa fa-thumbs-o-up"></i><span><%= review.review_ups.count %></span>
+ 	</div>
+</li>
