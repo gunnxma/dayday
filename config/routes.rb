@@ -47,7 +47,18 @@ Rails.application.routes.draw do
 
   post 'kindeditor_upyun/upload'
 
-  resources :lists
+  resources :lists do
+    resources :lfeelings
+    resources :lfanciers
+  end
+
+  get "settings", to: "settings#profile"
+  get 'settings/profile'
+  patch 'settings/profile', to: "settings#save_profile"  
+  get 'settings/account'
+  patch 'settings/account', to: "settings#save_account"
+  get 'settings/drafts'
+  resources :settings
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

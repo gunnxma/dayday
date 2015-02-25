@@ -1,0 +1,8 @@
+class Lfeeling < ActiveRecord::Base
+	belongs_to :list
+	belongs_to :user
+
+	delegate :name, :avatar, :to => :user, :prefix => true, :allow_nil => true
+
+	validates :body, length: { maximum: 300 }, presence: true
+end

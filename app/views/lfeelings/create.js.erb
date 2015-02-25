@@ -1,0 +1,6 @@
+<% if @lfeeling.errors.empty? %>
+$("<%= j(render @lfeeling) %>").prependTo($("#rfeeling_list"));
+<% else %>
+$("#new_feeling_error").html('回复失败，请重试');
+$("#new_feeling_error").css('display','');
+<% end %>

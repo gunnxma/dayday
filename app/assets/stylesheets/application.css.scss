@@ -2,10 +2,12 @@
 @import "bootstrap";
 
 @import "compass";
+@import "font-awesome";
 @import "things";
 @import "reviews";
 @import "users";
-@import "font-awesome";
+@import "settings";
+@import "lists";
 
 @font-face {
     font-family: 'NunitoBold';
@@ -38,6 +40,10 @@ ul{
   list-style-type:none;
   margin:0px;
   padding-left:0px;
+}
+
+i{
+  margin-right: 5px;
 }
 
 .logo_font{

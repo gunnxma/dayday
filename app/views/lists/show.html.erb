@@ -1,0 +1,31 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-9">
+	  	<ul class="fancy-list row">
+	  		<%= render partial: 'thing', collection: @list.things, as: :thing %>	  		
+	  	</ul>
+	  	<nav id="thing-feeds-tab">
+				<ul class="nav nav-pills nav-justified nav-layout thing_tab">
+					<li>
+						<a><i class="fa fa-comments"></i>评论</a>
+					</li>
+				</ul>
+			</nav>
+	  	<%= render 'lfeelings/new', list: @list, lfeeling: Lfeeling.new %>
+			<% if @lfeelings.exists? %>
+				<div id="rfeeling_list" class="feeling_list">
+					<%= render @lfeelings %>
+				</div>				
+			<% else %>
+				<div id="rfeeling_list" class="feeling_list">
+				</div>
+				<%= render 'lfeelings/empty_feeling' %>
+			<% end %>
+			<div class="thing_feelings_action">
+				<%= paginate @lfeelings %>
+			</div>
+	  </div>
+	  <%= render 'right', user: @list.user, list: @list %>
+	</div>
+</div>

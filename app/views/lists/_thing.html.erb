@@ -1,0 +1,4 @@
+<li class="row">
+	<center><a href="<%= thing_path(thing) %>" class="fancy-img" target="_blank"><%= image_tag(thing.photos.first.avatar_url('800x800'), :class => 'img-responsive') if thing.photos.first %></a></center>
+  <div><a class="fancy-thing-title" href="<%= thing_path(thing) %>" target="_blank"><%= thing.title %></a></div>  
+</li>

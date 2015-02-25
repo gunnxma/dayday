@@ -53,7 +53,10 @@ class ReviewsController < ApplicationController
 
 	def destroy
 		@review.destroy
-		redirect_to thing_reviews_path(@thing)
+		respond_to do |format|
+		  format.html { redirect_to thing_reviews_path(@thing) }
+		  format.js { render plain: 'ok' }
+		end
 	end
 
 	private

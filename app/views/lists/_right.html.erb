@@ -1,0 +1,47 @@
+		<div class="col-xs-0 col-md-3 hidden-xs">
+	  	<div class="row mb_30">
+	  		<div class="col-md-12">
+	  			<div class="actions white clearfix">
+	  				<div class="row" id="user-mark">	  					
+	  					<div class="col-md-6" id="user-avatar">
+	  						<%= image_tag(user.avatar_url('60x60'), :width => 60, :height => 60, :class => 'img-circle pull-right') %>
+	  					</div>
+	  					<div class="col-md-6" id="user-name">
+	  						<%= user.name %>
+	  					</div>
+	  				</div>
+		  		</div>
+	  			<div class="list-show-title white"><%= list.title %></div>
+		  		<div class="others white clearfix list-show-count">
+		  			<% if current_user && list.lfanciers.where('user_id = ?', current_user.id).exists? %>
+		  				<a href="<%= list_lfanciers_path(list) %>" data-method="post" data-remote="true" id="new_fancier" class="list-show-fancy" data-like="喜欢" data-unlike="取消喜欢" title="取消喜欢">			  				
+		  					<i class="fa fa-heart"></i>		  				
+		  					<span><%= list.lfanciers.count %></span>
+		  				</a>		  				
+		  				<% else %>
+		  					<% if current_user %>
+		  				<a href="<%= list_lfanciers_path(list) %>" data-method="post" data-remote="true" id="new_fancier" class="list-show-fancy" data-like="喜欢" data-unlike="取消喜欢" title="喜欢">			  	
+		  					<i class="fa fa-heart-o"></i>		 
+		  					<span><%= list.lfanciers.count %></span>
+		  				</a>	
+		  					<% else %>
+		  				<a href="/sessions/new" id="new_fancier" class="list-show-fancy" data-like="喜欢" data-unlike="取消喜欢" title="喜欢">			  	
+		  					<i class="fa fa-heart-o"></i>		 
+		  					<span><%= list.lfanciers.count %></span>
+		  				</a>	
+		  					<% end %>
+		  			<% end %>
+  					<a href="#write_feeling">
+  						<i class="fa fa-comments-o"></i>
+  						<span><%= list.lfeelings.count %></span>
+  					</a>
+  					<a href="#" data-toggle="modal" data-target="#share_form">
+  						<i class="fa fa-share-alt"></i>
+  					</a>
+		  		</div>
+		  		<div class="list-show-linkall white">
+		  			<a href="<%= lists_user_path(user) %>"><i class="fa fa-angle-left"></i>查看该用户的所有列表</a>
+		  		</div> 
+	  		</div>		
+	  	</div>	  	
+	  </div>

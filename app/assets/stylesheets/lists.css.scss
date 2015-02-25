@@ -1,3 +1,36 @@
 // Place all the styles related to the lists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.list-show-title{	
+	padding: 20px 30px;
+	margin:0px;
+	border-top: 1px dashed #EEEEEE;
+	font-size: 20px;
+}
+
+.list-show-count{
+	text-align: center;
+	padding-bottom: 20px;
+	i{
+		font-size: 30px;
+	}
+	a{
+		margin-right: 30px;
+	}
+	a:last-child{
+		margin-right: 0px;
+	}
+	.list-show-fancy{
+		color: #fd5a46;
+	}
+}
+
+.list-show-linkall{
+	border-top: 1px dashed #EEEEEE;
+	height: 60px;
+	font-size: 16px;
+	line-height: 60px;
+	i{
+		padding: 0 30px;
+	}
+}

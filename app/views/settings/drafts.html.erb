@@ -1,0 +1,46 @@
+<div class="top_container container">
+  <div class="row">
+    <div class="col-xs-12 col-md-9 white">
+      <div class="page-header">
+        <h3><i class="fa fa-pencil-square-o"></i>我的草稿</h3>
+      </div>
+      <% @things.each do |thing| %>
+      <table class="table drafts-list">
+        <tr>
+          <td>
+            <h5>[产品]<%= thing.title %></h5>
+            <p><%= strip_tags(thing.body) %></p>
+            <footer>
+              <time><%= thing.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></time>
+              <span class="separator">|</span>
+              <%= link_to "编辑", edit_thing_path(thing), :target => "_blank" %>
+              <span class="separator">|</span>
+              <%= link_to "删除", thing_path(thing), :method => :delete, :remote => true, 'data-del-link' => true %>
+            </footer>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+      <% @reviews.each do |review| %>
+      <table class="table drafts-list">
+        <tr>
+          <td>
+            <h5>[评测]<%= review.title %></h5>
+            <p><%= strip_tags(review.body) %></p>
+            <footer>
+              <time><%= review.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></time>
+              <span class="separator">|</span>
+              <%= link_to "编辑", edit_review_path(review), :target => "_blank" %>
+              <span class="separator">|</span>
+              <%= link_to "删除", review_path(review), :method => :delete, :remote => true, 'data-del-link' => true %>
+            </footer>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+    <div class="col-xs-0 col-md-3 hidden-xs setting-menu">
+      <%= render 'right' %>
+    </div>
+  </div>
+</div>

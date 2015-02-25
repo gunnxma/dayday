@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
 	has_many :review_ups
 	has_many :rfeelings
 	has_many :lists
+	has_many :lfanciers
+	has_many :lfeelings
 
   has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
 	has_many :followers, :through => :user_followers

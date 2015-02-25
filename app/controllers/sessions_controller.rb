@@ -7,12 +7,12 @@ class SessionsController < ApplicationController
 	  user = User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
 	  #cookies[:user_id] = user.id
 	  cookies.permanent[:user_id] = user.id
-	  redirect_to root_url, :notice => "登录成功"
+	  redirect_to root_url
 	end
 
 	def destroy
 	  cookies.delete :user_id
-	  redirect_to root_url, :notice => "已退出"
+	  redirect_to root_url
 	end
 
 	def failure

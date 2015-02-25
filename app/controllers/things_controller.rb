@@ -49,7 +49,11 @@ class ThingsController < ApplicationController
 
 	def destroy
 		@thing.destroy
-		redirect_to '/'
+		
+		respond_to do |format|
+		  format.html { redirect_to '/' }
+		  format.js { render plain: 'ok' }
+		end	
 	end
 
 	def crawler
