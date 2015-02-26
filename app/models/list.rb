@@ -1,8 +1,11 @@
 class List < ActiveRecord::Base
+	include PublicActivity::Model
+  tracked owner: Proc.new{ |controller, model| controller.current_user }
+  
 	has_many :list_things, dependent: :destroy
 	has_many :things, through: :list_things
-	has_many :lfanciers
-	has_many :lfeelings
+	has_many :lfanciers, dependent: :destroy
+	has_many :lfeelings, dependent: :destroy
 
 	belongs_to :user
 

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 	before_filter :find_user
 	def show
-		@title = @user.name
+		@title = "动态 － #{@user.name}"
+		@activities = PublicActivity::Activity.where(owner: current_user).where('key like ?','%create%').order("created_at desc").page(params[:page]).per(24)
 	end
 
 	def followings

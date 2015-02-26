@@ -1,6 +1,6 @@
 		  <nav id="user_top_nav" class="hidden-xs">
 		  	<ul class="nav nav-justified">
-		  		<li class="<%= params[:action] == "show" ? 'active' : '' %>"><a href="<%= user_path(user) %>"><i class="fa fa-home"></i>主页</a></li>
+		  		<li class="<%= params[:action] == "show" ? 'active' : '' %>"><a href="<%= user_path(user) %>"><i class="fa fa-home"></i>动态</a></li>
 		  		<li class="<%= params[:action] == "fancies" ? 'active' : '' %>"><a href="<%= fancies_user_path(user) %>"><i class="fa fa-heart"></i>喜欢<span></span></a></li>
 		  		<li class="<%= params[:action] == "owns" ? 'active' : '' %>"><a href="<%= owns_user_path(user) %>"><i class="fa fa-check-circle-o"></i>拥有<span></span></a></li>
 		  		<li class="<%= params[:action] == "things" ? 'active' : '' %>"><a href="<%= things_user_path(user) %>"><i class="fa fa-magic"></i>分享<span></span></a></li>

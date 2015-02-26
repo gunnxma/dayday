@@ -1,16 +1,16 @@
 class User < ActiveRecord::Base
 	mount_uploader :avatar, PhotoUploader
-	has_many :things
-	has_many :fanciers
-	has_many :owners
-	has_many :feelings
-	has_many :feeling_ups
-	has_many :reviews
-	has_many :review_ups
-	has_many :rfeelings
-	has_many :lists
-	has_many :lfanciers
-	has_many :lfeelings
+	has_many :things, dependent: :destroy
+	has_many :fanciers, dependent: :destroy
+	has_many :owners, dependent: :destroy
+	has_many :feelings, dependent: :destroy
+	has_many :feeling_ups, dependent: :destroy
+	has_many :reviews, dependent: :destroy
+	has_many :review_ups, dependent: :destroy
+	has_many :rfeelings, dependent: :destroy
+	has_many :lists, dependent: :destroy
+	has_many :lfanciers, dependent: :destroy
+	has_many :lfeelings, dependent: :destroy
 
   has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
 	has_many :followers, :through => :user_followers

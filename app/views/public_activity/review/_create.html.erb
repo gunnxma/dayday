@@ -1,0 +1,15 @@
+<% if activity.trackable %>
+	<% if activity.trackable.publish %>
+	<li class="row user-review">
+		<div class="activity-title white">
+			<i class="fa fa-comment"></i>写了评测<a href="<%= review_path(activity.trackable) %>" target="_blank"><time class="pull-right" datetime="<%= activity.created_at %>"><%= distance_of_time_in_words_to_now(activity.created_at) %>前</time></a>
+		</div>
+		<a href="<%= review_path(activity.trackable) %>" target="_blank"><h5><%= activity.trackable.title %></h5></a>
+	  <p><%= strip_tags(activity.trackable.body).truncate(118, :separator => ' ') %></p>
+	  <div class="fancy-list-count">
+	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-comments-o"></i><span><%= activity.trackable.rfeelings.count %></span></a>
+	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-thumbs-o-up"></i><span><%= activity.trackable.review_ups.count %></span></a>
+	 	</div>
+	</li>
+	<% end %>
+<% end %>
