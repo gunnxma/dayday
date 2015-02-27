@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226054738) do
+ActiveRecord::Schema.define(version: 20150227014412) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 20150226054738) do
     t.integer  "owner_count"
     t.string   "price"
     t.string   "buy_url"
+    t.integer  "hits"
   end
 
   add_index "things", ["user_id"], name: "index_things_on_user_id"

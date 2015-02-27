@@ -1,8 +1,8 @@
 <div class="row feed_item">
 	<div class="col-md-2 hidden-xs">
 		<center>
-			<%= image_tag(rfeeling.user_avatar.url('150x150'), :class => 'img-circle') %>
-			<p><a href="#"><%= rfeeling.user_name %></a></p>
+			<a href="<%= user_path(rfeeling.user) %>"><%= image_tag(rfeeling.user_avatar.url('150x150'), :class => 'img-circle') %></a>
+			<p><a href="<%= user_path(rfeeling.user) %>"><%= rfeeling.user_name %></a></p>
 		</center>
 	</div>
 	<div class="col-md-10 feed_body">
@@ -15,7 +15,7 @@
 					<li>
 						<time datetime="<%= rfeeling.created_at %>"><%= distance_of_time_in_words_to_now(rfeeling.created_at) %>前</time>
 					</li>
-					<li>
+					<li style="display:none">
 						<a href="#" title="回复"><i class="fa fa-reply"></i></a>
 					</li>
 				</ul>

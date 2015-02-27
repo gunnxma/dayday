@@ -34,15 +34,17 @@
 				<article class="article">
 					<div id="thing_author">						
 						<span class="author_name">
-							<a href="#"><%= image_tag(@thing.user_avatar.url('60x60'), :width => 40, :height => 40, :class => 'img-circle') %></a>
-							<label>分享者</label><a href="#"><%= @thing.user_name %>
+							<a href="<%= user_path(@thing.user) %>"><%= image_tag(@thing.user_avatar.url('60x60'), :width => 40, :height => 40, :class => 'img-circle') %></a>
+							<label>分享者</label><a href="<%= user_path(@thing.user) %>"><%= @thing.user_name %>
 						</span>
 						<% if current_user && (current_user.id == @thing.user_id) %>
+						<% if !@thing.publish %>
 						<a class="btn btn-square btn-info btn-flag pull-right" data-confirm="确定要删除吗" data-method="delete" href="/things/<%= @thing.id %>" rel="nofollow"><i class="glyphicon glyphicon-remove"></i>删除</a>
+						<% end %>
 						<a class="btn btn-square btn-info btn-flag pull-right" href="/things/<%= @thing.id %>/edit"><i class="glyphicon glyphicon-edit"></i>编辑</a>
 						<% end %>
 						<a class="btn btn-square btn-warning btn-blue pull-right" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
-						<a class="btn btn-square btn-info btn-flag pull-right"><i class="glyphicon glyphicon-flag"></i>举报</a>
+						<a class="btn btn-square btn-info btn-flag pull-right" style="display:none"><i class="glyphicon glyphicon-flag"></i>举报</a>
 					</div>
 					<div class="post_content">
 						<p><%= @thing.subtitle %></p>

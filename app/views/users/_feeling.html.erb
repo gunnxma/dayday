@@ -1,3 +1,4 @@
+<% if feeling.thing %>
 <li class="row user-review feeling-review">
   <p><a href="<%= thing_feelings_path(feeling.thing) %>" target="_blank"><i class="fa fa-quote-left"></i><%= feeling.body %><i class="fa fa-quote-right"></i></a></p>
   <div class="fancy-list-count">
@@ -21,3 +22,4 @@
  		</div>
  	</div>
 </li>
+<% end %>

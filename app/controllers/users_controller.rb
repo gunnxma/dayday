@@ -2,17 +2,17 @@ class UsersController < ApplicationController
 	before_filter :find_user
 	def show
 		@title = "动态 － #{@user.name}"
-		@activities = PublicActivity::Activity.where(owner: current_user).where('key like ?','%create%').order("created_at desc").page(params[:page]).per(24)
+		@activities = PublicActivity::Activity.where(owner: @user).where('key like ?','%create%').order("created_at desc").page(params[:page]).per(24)
 	end
 
 	def followings
 		@title = "关注 － #{@user.name}"
-		@followings = @user.followings.order(id: :desc).page(params[:page]).per(20)
+		@followings = @user.followings.page(params[:page]).per(20)
 	end
 
 	def followers
 		@title = "关注者 － #{@user.name}"
-		@followers = @user.followers.order(id: :desc).page(params[:page]).per(20)
+		@followers = @user.followers.page(params[:page]).per(20)
 	end
 
 	def fancies
@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
 	def things
 		@title = "分享 － #{@user.name}"
-		@things = @user.things.order(created_at: :desc).page(params[:page]).per(24)
+		@things = @user.things.where(publish: true).order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	def lists
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
 
 	def reviews
 		@title = "评测 － #{@user.name}"
-		@reviews = @user.reviews.order(created_at: :desc).page(params[:page]).per(24)
+		@reviews = @user.reviews.where(publish: true).order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	def feelings

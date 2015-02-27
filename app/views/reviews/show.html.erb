@@ -9,12 +9,12 @@
 	  				<header class="row">
 		  				<div class="col-md-3 hidden-xs author_img">
 								<center>
-									<%= image_tag(@review.user_avatar.url('150x150'), :class => 'img-circle') %>								
+									<a href="<%= user_path(@review.user) %>"><%= image_tag(@review.user_avatar.url('150x150'), :class => 'img-circle') %></a>
 								</center>
 							</div>
 							<div class="col-md-9">
 								<h3><%= @review.title %></h3>
-								<p><a href="#"><%= @review.user_name %></a></p>
+								<p><a href="<%= user_path(@review.user) %>"><%= @review.user_name %></a></p>
 							</div>
 	  				</header>
 					</div>

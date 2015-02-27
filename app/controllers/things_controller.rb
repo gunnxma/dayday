@@ -43,6 +43,9 @@ class ThingsController < ApplicationController
 	end
 
 	def show
+		@thing.hits ||= 0
+		@thing.hits = @thing.hits + 1
+		@thing.save
 		@title = @thing.page_title
 		@feeling = Feeling.new
 	end
