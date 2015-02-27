@@ -64,7 +64,12 @@
 				<nav id="thing-feeds-tab">
 					<ul class="nav nav-pills nav-justified nav-layout thing_tab">
 						<li>
-							<a id="review_title">用户评测</a><a id="write_review" href="<%= new_thing_review_path(@thing) %>" target="_blank">写评测</a>
+							<a id="review_title">用户评测</a>
+							<% if current_user %>
+							<a id="write_review" href="<%= new_thing_review_path(@thing) %>" target="_blank">写评测</a>
+							<% else %>
+							<a id="write_review" href="<%= new_session_path %>">写评测</a>
+							<% end %>
 						</li>
 					</ul>
 				</nav>
