@@ -62,6 +62,8 @@ Rails.application.routes.draw do
   get 'settings/drafts'
   resources :settings
 
+  get 'search/things'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

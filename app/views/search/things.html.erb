@@ -1,0 +1,23 @@
+<div class="top_container container">
+	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
+	<div class="row">
+	  <div class="col-xs-12 col-md-12">
+	  	<ul class="fancy-list row">
+	  		<%= render partial: 'thing', collection: @things, as: :thing %>	  		
+	  	</ul>
+	  	<% if @things.blank? %>
+	  		<div class="row feed_empty">
+					<div class="col-md-12 feed_body">
+						<div class="tab-pane active" id="tab_feelings">
+							<div class="nothing">
+								<i class="fa fa-meh-o"></i><br>
+								什么都没有
+							</div>
+						</div>
+					</div>
+				</div>
+	  	<% end %>
+	  	<%= paginate @things %>
+	  </div>
+	</div>
+</div>
