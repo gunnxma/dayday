@@ -1,0 +1,23 @@
+<div class="top_container container">
+  <div class="row">
+    <div class="col-xs-12 col-md-12 white">
+      <div class="page-header">
+        <h3><i class="fa fa-pencil-square-o"></i>热门评测</h3>
+      </div>      
+      <% @reviews.each do |review| %>
+      <table class="table drafts-list">
+        <tr>
+          <td>
+            <h5>[评测]<%= review.title %></h5>
+            <p><%= strip_tags(review.body) %></p>
+            <footer>
+              <time><%= review.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></time>
+            </footer>
+          </td>
+        </tr>
+      </table>
+      <% end %>
+      <%= paginate @reviews %>
+    </div>
+  </div>
+</div>

@@ -117,7 +117,7 @@
 						    </div>
 						    <div class="col-md-12 btn-group thing-list" data-toggle="buttons">
 		        			<% current_user.lists.each do |list| %>
-								  <label class="btn btn-primary active">
+								  <label class="btn btn-primary <%= list.has_thing?(thing) ? 'active' : '' %>">
 								    <input type="checkbox" name="list" autocomplete="off" <%= list.has_thing?(thing) ? "checked" : "" %> value="<%= list.title %>"> <%= "#{list.title}(#{list.things.count})" %>
 								  </label><br>
 								  <% end %>

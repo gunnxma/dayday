@@ -40,4 +40,10 @@ class Review < ActiveRecord::Base
 			self.save ? 'ok' : 'error'
 		end
 	end
+
+	def add_hit
+		self.hits ||= 0
+		self.hits = self.hits + 1
+		self.save
+	end
 end

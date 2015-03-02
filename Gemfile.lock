@@ -59,8 +59,14 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.2.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     faraday (0.9.1)
       multipart-post (>= 1.2, < 3)
     fssm (0.2.10)
@@ -146,6 +152,23 @@ GEM
       mime-types (>= 1.16, < 3.0)
       netrc (~> 0.7)
     rmmseg-cpp (0.2.9)
+    rspec-core (3.2.1)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-mocks (3.2.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-rails (3.2.1)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.2)
     ruby-pinyin (0.4.5)
       rmmseg-cpp (~> 0.2)
     sass (3.2.19)
@@ -189,6 +212,7 @@ DEPENDENCIES
   carrierwave-upyun
   coffee-rails (~> 4.0.0)
   compass-rails
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   kaminari
@@ -202,6 +226,7 @@ DEPENDENCIES
   rails (= 4.1.7)
   rails_kindeditor
   rest-client
+  rspec-rails (~> 3.0)
   ruby-pinyin
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

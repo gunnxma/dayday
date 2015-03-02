@@ -97,6 +97,12 @@ class Thing < ActiveRecord::Base
 		end
 	end
 
+	def add_hit
+		self.hits ||= 0
+		self.hits = self.hits + 1
+		self.save
+	end
+
 	private
 
 	def thing_photos

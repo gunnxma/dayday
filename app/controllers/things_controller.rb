@@ -12,6 +12,7 @@ class ThingsController < ApplicationController
 	def create
 		@thing = current_user.things.new_by_publish(thing_params, params[:commit] == '保存' ? false : true)
 		if @thing.save_with_photos
+			@thing.add_or_remove_fancier(current_user)
 			if @thing.publish
 				redirect_to thing_path(@thing)
 			else
@@ -43,9 +44,7 @@ class ThingsController < ApplicationController
 	end
 
 	def show
-		@thing.hits ||= 0
-		@thing.hits = @thing.hits + 1
-		@thing.save
+		@thing.add_hit
 		@title = @thing.page_title
 		@feeling = Feeling.new
 	end
@@ -72,7 +71,7 @@ class ThingsController < ApplicationController
 		else
 			thing = current_user.things.new_by_hash(thing_hash)
 			thing.save
-			logger.debug thing.errors.messages
+			thing.add_or_remove_fancier(current_user)
 			render :text => thing.id
 		end
 	end

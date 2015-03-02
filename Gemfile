@@ -72,3 +72,8 @@ gem 'upyun', '~> 1.0.4'
 gem 'ruby-pinyin'
 
 gem 'public_activity'
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+end

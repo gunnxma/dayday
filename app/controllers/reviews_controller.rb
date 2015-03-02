@@ -46,6 +46,7 @@ class ReviewsController < ApplicationController
 	end
 
 	def show
+		@review.add_hit
 		@rfeeling = Rfeeling.new
 		@rfeelings = @review.rfeelings.order(id: :desc).page(params[:page]).per(15)
     @title = @review.page_title
