@@ -1,7 +1,7 @@
 class ThingsController < ApplicationController
 	before_filter :check_user, :only => [:new, :create]
 	before_filter :find_my_thing, :only => [:edit, :update, :destroy]
-	before_filter :find_thing, :only => [:show]
+	before_filter :find_thing, :only => [:show, :feelings]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
 
 	def new
@@ -46,7 +46,10 @@ class ThingsController < ApplicationController
 	def show
 		@thing.add_hit
 		@title = @thing.page_title
-		@feeling = Feeling.new
+		@feeling = Feeling.new_with_owner(@thing)
+		@reviews = @thing.reviews.where('publish = ?', true).order(id: :desc).take(3)
+		@feelings = @thing.feelings.order(id: :desc).take(5)		
+		logger.debug("feelings_count:#{@feelings.count}")
 	end
 
 	def destroy
@@ -57,6 +60,12 @@ class ThingsController < ApplicationController
 		  format.js { render plain: 'ok' }
 		end	
 	end
+
+	def feelings
+    @feelings = @thing.feelings.order(id: :desc).page(params[:page]).per(15)
+    @feeling = Feeling.new_with_owner(@thing)
+    @title = @thing.page_title_feelings
+  end
 
 	def crawler
 		url = params[:url]

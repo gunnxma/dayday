@@ -8,7 +8,9 @@
 			</center>
 		</div>
 		<div class="col-md-10" id="feeling_form">
-			<%= form_for feeling, :url => thing_feelings_path(thing), :html => { :role => "form" }, :remote => true do |f| %>
+			<%= form_for feeling, :html => { :role => "form" }, :remote => true do |f| %>
+				<%= f.hidden_field :feelingable_type %>
+				<%= f.hidden_field :feelingable_id %>
 				<div class="form-group">
 					<center><%= f.text_area :body, :class => 'form-control', :placeholder => "说点什么吧（140字以内哦）" %></center>
 				</div>

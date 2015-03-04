@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'index/hits', :as => :hits
 
   get 'users/login'
+
   resources :users do
     member do
       get :followings
@@ -34,12 +35,12 @@ Rails.application.routes.draw do
   post 'things/crawler'
   post 'things/to_list'
   resources :things, except: [:index], :shallow => true do
-    resources :feelings do
-      resources :feeling_ups
+    member do
+      get :feelings
     end
     resources :reviews do
       resources :review_ups
-      resources :rfeelings
+      resources :feelings
     end
     resources :fanciers
     resources :owners
@@ -47,10 +48,13 @@ Rails.application.routes.draw do
   end
   resources :photos, only: [:create, :destroy, :index]
 
+  resources :feelings
+  resources :votes
+
   post 'kindeditor_upyun/upload'
 
-  resources :lists do
-    resources :lfeelings
+  resources :lists, :shallow => true do
+    resources :feelings
     resources :lfanciers
   end
 

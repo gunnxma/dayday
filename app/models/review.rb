@@ -8,7 +8,7 @@ class Review < ActiveRecord::Base
 	delegate :name, :avatar, :to => :user, :prefix => true, :allow_nil => true
 
 	has_many :review_ups, dependent: :destroy
-	has_many :rfeelings, dependent: :destroy
+	has_many :feelings, as: :feelingable, dependent: :destroy
 
 	validates :title, :body, presence: true
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302050708) do
+ActiveRecord::Schema.define(version: 20150304034859) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -49,6 +49,18 @@ ActiveRecord::Schema.define(version: 20150302050708) do
   add_index "category_tags", ["category_id"], name: "index_category_tags_on_category_id"
   add_index "category_tags", ["tag_id"], name: "index_category_tags_on_tag_id"
 
+  create_table "comments", force: true do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "votes_count",      default: 0
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
+
   create_table "fanciers", force: true do |t|
     t.integer  "thing_id"
     t.integer  "user_id"
@@ -70,15 +82,16 @@ ActiveRecord::Schema.define(version: 20150302050708) do
   add_index "feeling_ups", ["user_id"], name: "index_feeling_ups_on_user_id"
 
   create_table "feelings", force: true do |t|
-    t.integer  "thing_id"
+    t.integer  "feelingable_id"
     t.integer  "user_id"
     t.string   "body"
-    t.integer  "up"
+    t.integer  "votes_count",      default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "feelingable_type"
   end
 
-  add_index "feelings", ["thing_id"], name: "index_feelings_on_thing_id"
+  add_index "feelings", ["feelingable_id"], name: "index_feelings_on_feelingable_id"
   add_index "feelings", ["user_id"], name: "index_feelings_on_user_id"
 
   create_table "identities", force: true do |t|
@@ -217,6 +230,14 @@ ActiveRecord::Schema.define(version: 20150302050708) do
     t.string   "location"
     t.string   "site"
     t.string   "description"
+  end
+
+  create_table "votes", force: true do |t|
+    t.integer  "user_id"
+    t.string   "voteable_type"
+    t.integer  "voteable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 	has_many :lists, dependent: :destroy
 	has_many :lfanciers, dependent: :destroy
 	has_many :lfeelings, dependent: :destroy
+	has_many :votes
 
   has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
 	has_many :followers, :through => :user_followers
@@ -29,4 +30,21 @@ class User < ActiveRecord::Base
 		return false if user.blank?
 		return self.followers.include?(user)
 	end
+
+	# 赞
+  def vote(voteable)
+    return false if voteable.blank?
+    return false if voteable.voted_by_user?(self)
+    self.votes.create(voteable_id: voteable.id, voteable_type: voteable.class.to_s)
+    voteable.touch
+  end
+
+  # 取消赞
+  def unvote(voteable)
+    return false if voteable.blank?
+    return false if not voteable.voted_by_user?(self)
+    vote = self.votes.where('voteable_id = ? and voteable_type = ?', voteable.id, voteable.class.to_s).first
+    vote.destroy
+    voteable.touch
+  end
 end

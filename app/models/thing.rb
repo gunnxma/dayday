@@ -7,7 +7,7 @@ class Thing < ActiveRecord::Base
 	belongs_to :user
 	delegate :name, :avatar, :to => :user, :prefix => true, :allow_nil => true
 
-	has_many :feelings, dependent: :destroy
+	has_many :feelings, as: :feelingable, dependent: :destroy
 	has_many :fanciers, dependent: :destroy
 	has_many :owners, dependent: :destroy
 	has_many :reviews, dependent: :destroy

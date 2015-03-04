@@ -49,16 +49,16 @@
 					<div class="post_content">
 						<p><%= @thing.subtitle %></p>
 						<hr>
-						<%= raw @thing.body %>
+						<%= sanitize @thing.body %>
 						<footer>
-							<% if !@thing.official_site.empty? %>
+							<% if !@thing.official_site.blank? %>
 							<a href="<%= @thing.official_site %>" target="_blank"><i class="glyphicon glyphicon-globe"></i>来源网站</a>
 							<% end %>
 						</footer>
 					</div>
 				</article>
 			</div>
-			<% if !@thing.reviews.where('publish = ?', true).exists? %>
+			<% if @reviews.blank? %>
 			<%= render 'reviews/empty', thing: @thing %>
 			<% else %>
 				<nav id="thing-feeds-tab">
@@ -74,11 +74,11 @@
 					</ul>
 				</nav>
 				<div class="feeling_list">
-				<%= render @thing.reviews.where('publish = ?', true).order(id: :desc).take(3) %>
+				<%= render @reviews %>
 				</div>
 			<% end %>
 			<div class="clearfix thing_reviews_action">
-				<% if @thing.feelings.count > 3 %>
+				<% if @reviews.count > 3 %>
 				<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_reviews_path(@thing) %>">更多评测</a>
 				<% end %>
 			</div>
@@ -90,9 +90,9 @@
 					</li>
 				</ul>
 			</nav>
-			<% if @thing.feelings.exists? %>
+			<% unless @feelings.blank? %>
 				<div id="feeling_list" class="feeling_list">
-					<%= render @thing.feelings.order(id: :desc).take(5) %>
+					<%= render @feelings %>
 				</div>				
 			<% else %>
 				<div id="feeling_list" class="feeling_list">
@@ -100,7 +100,7 @@
 				<%= render 'feelings/empty_feeling' %>
 			<% end %>
 			<div class="clearfix thing_feelings_action">
-				<% if @thing.feelings.count > 5 %>
+				<% if @feelings.count > 5 %>
 				<a class="btn btn-square btn-primary btn-blue pull-right" href="<%= thing_feelings_path(@thing) %>">更多短评</a>
 				<% end %>
 			</div>
