@@ -27,31 +27,23 @@
   				</section>
   				<div class="review_footer">
   					<footer class="row">
-  						<% if !current_user %>
-  							<a href="/sessions/new" class="btn btn-like" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
-  						<% else %>
-  							<% if @review.review_ups.where('user_id = ?', current_user.id).exists? %>
-  								<a href="<%= review_review_ups_path(@review) %>" data-method="post" data-remote="true" id="review_up" class="btn btn-like like-active" title="取消赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
-  							<% else %>
-  								<a href="<%= review_review_ups_path(@review) %>" data-method="post" data-remote="true" id="review_up" class="btn btn-like" title="赞" data-like="赞" data-unlike="取消赞"><i class="fa fa-thumbs-o-up fa-fw heartbeat"></i><span><%= @review.up %></span></a>
-  							<% end %>
-  						<% end %>
+  						<%= voteable_tag(@review, { link_class: 'btn btn-like', active_class: 'like-active' }) %>
   						<a class="btn btn-share" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享</a>
   						<time class="pull-right" datetime="<%= @review.created_at %>"><%= distance_of_time_in_words_to_now(@review.created_at) %>前</time>
   					</footer>
   				</div>
-  				<%= render 'rfeelings/new', review: @review, rfeeling: @rfeeling %>
-  				<% if @rfeelings.exists? %>
-						<div id="rfeeling_list" class="feeling_list">
-							<%= render @rfeelings %>
+  				<%= render 'feelings/new', feeling: @feeling %>
+  				<% if @feelings.exists? %>
+						<div id="feeling_list" class="feeling_list">
+							<%= render @feelings %>
 						</div>				
 					<% else %>
-						<div id="rfeeling_list" class="feeling_list">
+						<div id="feeling_list" class="feeling_list">
 						</div>
-						<%= render 'rfeelings/empty_feeling' %>
+						<%= render 'feelings/empty_feeling' %>
 					<% end %>
 					<div class="thing_feelings_action">
-						<%= paginate @rfeelings %>
+						<%= paginate @feelings %>
 					</div>
 	  		</article>
 	  	</section>

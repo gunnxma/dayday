@@ -6,9 +6,9 @@
 	<center><a href="<%= list_path(activity.trackable) %>" class="fancy-img" target="_blank"><%= image_tag(activity.trackable.things.first.photos.first.avatar_url('800x800'), :class => 'img-responsive') if activity.trackable.things.first.photos.first %></a></center>
   <div><a class="fancy-thing-title" href="<%= list_path(activity.trackable) %>" target="_blank"><%= activity.trackable.title %><small>(<%= activity.trackable.things.count %>)</small></a></div>
   <div class="fancy-list-count">
-  	<a href="<%= list_path(activity.trackable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.lfanciers.count %></a>
-  	<% if activity.trackable.lfeelings.count > 0 %>
-  	<a href="<%= list_path(activity.trackable) %>" target="_blank"><i class="fa fa-comment-o"></i><%= activity.trackable.lfeelings.count %></a>
+  	<a href="<%= list_path(activity.trackable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.likes.count %></a>
+  	<% if activity.trackable.feelings.count > 0 %>
+  	<a href="<%= list_path(activity.trackable) %>" target="_blank"><i class="fa fa-comment-o"></i><%= activity.trackable.feelings.count %></a>
   	<% end %>
  	</div>
 </li>

@@ -2,7 +2,7 @@
 	<a href="<%= review_path(review) %>" target="_blank"><h5><%= review.title %></h5></a>
   <p><%= strip_tags(review.body).truncate(118, :separator => ' ') %></p>
   <div class="fancy-list-count">
-  	<a href="<%= review_path(review) %>" target="_blank"><i class="fa fa-comments-o"></i><span><%= review.rfeelings.count %></span></a>
-  	<a href="<%= review_path(review) %>" target="_blank"><i class="fa fa-thumbs-o-up"></i><span><%= review.review_ups.count %></span></a>
+  	<a href="<%= review_path(review) %>" target="_blank"><i class="fa fa-comments-o"></i><span><%= review.feelings.count %></span></a>
+  	<a href="<%= review_path(review) %>" target="_blank"><i class="fa fa-thumbs-o-up"></i><span><%= review.votes.count %></span></a>
  	</div>
 </li>

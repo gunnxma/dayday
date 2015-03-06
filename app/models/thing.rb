@@ -2,14 +2,15 @@ class Thing < ActiveRecord::Base
 	include PublicActivity::Model
   tracked owner: Proc.new{ |controller, model| controller.current_user }
 
+  include Likeable
+
 	has_many :photos
 
 	belongs_to :user
 	delegate :name, :avatar, :to => :user, :prefix => true, :allow_nil => true
 
 	has_many :feelings, as: :feelingable, dependent: :destroy
-	has_many :fanciers, dependent: :destroy
-	has_many :owners, dependent: :destroy
+	has_many :owns, dependent: :destroy
 	has_many :reviews, dependent: :destroy
 
 	has_many :list_things, dependent: :destroy
@@ -71,30 +72,8 @@ class Thing < ActiveRecord::Base
 		result
 	end
 
-	def add_or_remove_fancier(user)
-		if self.fanciers.by_user(user.id).exists?
-			self.fanciers.by_user(user.id).first.destroy
-			self.fancier_count = self.fanciers.count
-			self.save
-			'removeok'
-		else
-			self.fanciers << user.fanciers.build
-			self.fancier_count = self.fanciers.count
-			self.save ? 'ok' : 'error'
-		end
-	end
-
-	def add_or_remove_owner(user)
-		if self.owners.by_user(user.id).exists?
-			self.owners.by_user(user.id).first.destroy
-			self.owner_count = self.owners.count
-			self.save
-			'removeok'
-		else
-			self.owners << user.owners.build
-			self.owner_count = self.owners.count
-			self.save ? 'ok' : 'error'
-		end
+	def owned_by_user?(user)
+		return !self.owns.where('user_id = ?', user.id).empty?
 	end
 
 	def add_hit

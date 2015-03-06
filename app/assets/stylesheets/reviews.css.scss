@@ -74,6 +74,12 @@
 		background-color: rgba(122,169,204,0.9);
 		color: #ffffff;
 		border: 1px solid rgba(122,169,204,0.9);
+		&:visited{
+			color: #ffffff;
+		}
+		&:active{			
+			color: #ffffff;
+		}
 		&:hover{
 			background-color: #737373;
 		}

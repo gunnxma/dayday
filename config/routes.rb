@@ -38,18 +38,15 @@ Rails.application.routes.draw do
     member do
       get :feelings
     end
-    resources :reviews do
-      resources :review_ups
-      resources :feelings
-    end
-    resources :fanciers
-    resources :owners
+    resources :reviews
     resources :buys
   end
   resources :photos, only: [:create, :destroy, :index]
 
   resources :feelings
   resources :votes
+  resources :likes
+  resources :owns
 
   post 'kindeditor_upyun/upload'
 

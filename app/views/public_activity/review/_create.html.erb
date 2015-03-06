@@ -7,8 +7,8 @@
 		<a href="<%= review_path(activity.trackable) %>" target="_blank"><h5><%= activity.trackable.title %></h5></a>
 	  <p><%= strip_tags(activity.trackable.body).truncate(118, :separator => ' ') %></p>
 	  <div class="fancy-list-count">
-	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-comments-o"></i><span><%= activity.trackable.rfeelings.count %></span></a>
-	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-thumbs-o-up"></i><span><%= activity.trackable.review_ups.count %></span></a>
+	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-comments-o"></i><span><%= activity.trackable.feelings.count %></span></a>
+	  	<a href="<%= review_path(activity.trackable) %>" target="_blank"><i class="fa fa-thumbs-o-up"></i><span><%= activity.trackable.votes.count %></span></a>
 	 	</div>
 	</li>
 	<% end %>

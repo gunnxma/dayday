@@ -7,9 +7,9 @@
   	<center><a href="<%= thing_path(activity.trackable) %>" class="fancy-img" target="_blank"><%= image_tag(activity.trackable.photos.first.avatar_url('800x800'), :class => 'img-responsive') if activity.trackable.photos.first %></a></center>
     <div><a class="fancy-thing-title" href="<%= thing_path(activity.trackable) %>" target="_blank"><%= activity.trackable.title %></a></div>
     <div class="fancy-list-count">
-    	<a href="<%= thing_path(activity.trackable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.fanciers.count %></a>
-    	<% if activity.trackable.owners.count > 0 %>
-    	<a href="<%= thing_path(activity.trackable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= activity.trackable.owners.count %></a>
+    	<a href="<%= thing_path(activity.trackable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.likes.count %></a>
+    	<% if activity.trackable.owns.count > 0 %>
+    	<a href="<%= thing_path(activity.trackable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= activity.trackable.owns.count %></a>
     	<% end %>
     	<% if activity.trackable.reviews.count > 0 %>
     	<a href="<%= thing_reviews_path(activity.trackable) %>" target="_blank"><i class="fa fa-pencil"></i><%= activity.trackable.reviews.count %></a>

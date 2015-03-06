@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150304034859) do
+ActiveRecord::Schema.define(version: 20150305053746) do
 
   create_table "activities", force: true do |t|
     t.integer  "trackable_id"
@@ -117,6 +117,14 @@ ActiveRecord::Schema.define(version: 20150304034859) do
     t.datetime "updated_at"
   end
 
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "list_things", force: true do |t|
     t.integer  "list_id"
     t.integer  "thing_id"
@@ -140,6 +148,13 @@ ActiveRecord::Schema.define(version: 20150304034859) do
 
   add_index "owners", ["thing_id"], name: "index_owners_on_thing_id"
   add_index "owners", ["user_id"], name: "index_owners_on_user_id"
+
+  create_table "owns", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "thing_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "photos", force: true do |t|
     t.integer  "thing_id"

@@ -13,44 +13,10 @@
 	  			<% end %>
 	  			<ul class="actions white clearfix">
 		  			<li class="fanciers">
-		  				<% if current_user && thing.fanciers.where('user_id = ?', current_user.id).exists? %>
-		  				<a href="<%= thing_fanciers_path(thing) %>" data-method="post" data-remote="true" id="new_fancier" data-like="喜欢该商品" data-unlike="取消喜欢该商品" title="取消喜欢该商品">			  				
-		  					<i class="fa fa-heart"></i>		  				
-		  					<span class="fanciers_count"><%= thing.fancier_count %></span><small>喜欢</small>
-		  				</a>		  				
-		  				<% else %>
-		  					<% if current_user %>
-		  				<a href="<%= thing_fanciers_path(thing) %>" data-method="post" data-remote="true" id="new_fancier" data-like="喜欢该商品" data-unlike="取消喜欢该商品" title="喜欢该商品">			  	
-		  					<i class="fa fa-heart-o"></i>		 
-		  					<span class="fanciers_count"><%= thing.fancier_count %></span><small>喜欢</small> 				
-		  				</a>	
-		  					<% else %>
-		  				<a href="/sessions/new" id="new_fancier" data-like="喜欢该商品" data-unlike="取消喜欢该商品" title="喜欢该商品">			  	
-		  					<i class="fa fa-heart-o"></i>		 
-		  					<span class="fanciers_count"><%= thing.fancier_count %></span><small>喜欢</small> 				
-		  				</a>	
-		  					<% end %>
-		  				<% end %>
+		  				<%= likeable_tag(thing, { small_label: '喜欢' }) %>
 		  			</li>
 		  			<li class="owners">		  	
-		  				<% if current_user && thing.owners.where('user_id = ?', current_user.id).exists? %>			
-		  				<a href="<%= thing_owners_path(thing) %>" data-method="post" data-remote="true" id="new_owner" data-like="拥有该商品" data-unlike="取消拥有该商品" title="取消拥有该商品">		  					
-		  					<i class="fa fa-check-circle-o"></i>		  					
-		  					<span class="fanciers_count"><%= thing.owner_count %></span><small>拥有</small>
-		  				</a>	
-		  				<% else %>	
-		  					<% if current_user %> 
-		  				<a href="<%= thing_owners_path(thing) %>" data-method="post" data-remote="true" id="new_owner" data-like="拥有该商品" data-unlike="取消拥有该商品" title="拥有该商品">		
-		  					<i class="fa fa-circle-o"></i>
-		  					<span class="fanciers_count"><%= thing.owner_count %></span><small>拥有</small>
-		  				</a>
-		  					<% else %>
-		  				<a href="/sessions/new" id="new_owner" data-like="拥有该商品" data-unlike="取消拥有该商品" title="拥有该商品">		
-		  					<i class="fa fa-circle-o"></i>
-		  					<span class="fanciers_count"><%= thing.owner_count %></span><small>拥有</small>
-		  				</a>
-		  					<% end %>
-		  				<% end %> 				
+		  				<%= ownable_tag(thing, { small_label: '拥有' }) %>
 		  			</li>
 		  			<li class="write_feeling">
 		  				<a href="#write_feeling">

@@ -1,23 +1,21 @@
 <div class="top_container container">
 	<!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
 	<div class="row">
-	  <div class="col-xs-12 col-md-9">
-	  	<ul class="fancy-list row">
-	  		<%= render partial: 'thing', collection: @list.things, as: :thing %>	  		
-	  	</ul>
-	  	<nav id="thing-feeds-tab">
+	  <div class="col-xs-12 col-md-8">
+	  	<%= render 'things/top', thing: @thing %>
+			<%= render 'feelings/new', thing: @thing, feeling: @feeling %>
+			<nav id="thing-feeds-tab">
 				<ul class="nav nav-pills nav-justified nav-layout thing_tab">
 					<li>
-						<a><i class="fa fa-comments"></i>评论</a>
+						<a><i class="fa fa-comments"></i>短评</a>
 					</li>
 				</ul>
 			</nav>
-	  	<%= render 'feelings/new', feeling: @feeling %>
 			<% if @feelings.exists? %>
 				<div id="feeling_list" class="feeling_list">
 					<%= render @feelings %>
-				</div>				
-			<% else %>
+				</div>
+			<% else %>			
 				<div id="feeling_list" class="feeling_list">
 				</div>
 				<%= render 'feelings/empty_feeling' %>
@@ -26,6 +24,6 @@
 				<%= paginate @feelings %>
 			</div>
 	  </div>
-	  <%= render 'right', user: @list.user, list: @list %>
+	  <%= render 'things/right', thing: @thing %>
 	</div>
 </div>

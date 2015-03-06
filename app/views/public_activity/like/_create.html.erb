@@ -1,0 +1,37 @@
+<% if activity.trackable && activity.trackable.likeable %>
+  <% if activity.trackable.likeable_type == "Thing" %>
+    <% if activity.trackable.likeable.publish %>
+    <li class="row">
+    	<div class="activity-title white">
+    		<i class="fa fa-heart"></i>喜欢<a href="<%= thing_path(activity.trackable.likeable) %>" target="_blank"><time class="pull-right" datetime="<%= activity.created_at %>"><%= distance_of_time_in_words_to_now(activity.created_at) %>前</time></a>
+    	</div>
+    	<center><a href="<%= thing_path(activity.trackable.likeable) %>" class="fancy-img" target="_blank"><%= image_tag(activity.trackable.likeable.photos.first.avatar_url('800x800'), :class => 'img-responsive') if activity.trackable.likeable.photos.first %></a></center>
+      <div><a class="fancy-thing-title" href="<%= thing_path(activity.trackable.likeable) %>" target="_blank"><%= activity.trackable.likeable.title %></a></div>
+      <div class="fancy-list-count">
+      	<a href="<%= thing_path(activity.trackable.likeable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.likeable.likes.count %></a>
+      	<% if activity.trackable.likeable.owns.count > 0 %>
+      	<a href="<%= thing_path(activity.trackable.likeable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= activity.trackable.likeable.owns.count %></a>
+      	<% end %>
+      	<% if activity.trackable.likeable.reviews.count > 0 %>
+      	<a href="<%= thing_reviews_path(activity.trackable.likeable) %>" target="_blank"><i class="fa fa-pencil"></i><%= activity.trackable.likeable.reviews.count %></a>
+      	<% end %>
+     	</div>
+    </li>
+    <% end %>
+  <% end %>
+  <% if activity.trackable.likeable_type == "List" %>
+  <li class="row">
+  <div class="activity-title white">
+      <i class="fa fa-heart"></i>喜欢了列表<a href="<%= list_path(activity.trackable.likeable) %>" target="_blank"><time class="pull-right" datetime="<%= activity.created_at %>"><%= distance_of_time_in_words_to_now(activity.created_at) %>前</time></a>
+    </div>
+  <center><a href="<%= list_path(activity.trackable.likeable) %>" class="fancy-img" target="_blank"><%= image_tag(activity.trackable.likeable.things.first.photos.first.avatar_url('800x800'), :class => 'img-responsive') if activity.trackable.likeable.things.first.photos.first %></a></center>
+  <div><a class="fancy-thing-title" href="<%= list_path(activity.trackable.likeable) %>" target="_blank"><%= activity.trackable.likeable.title %><small>(<%= activity.trackable.likeable.things.count %>)</small></a></div>
+  <div class="fancy-list-count">
+    <a href="<%= list_path(activity.trackable.likeable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.likeable.likes.count %></a>
+    <% if activity.trackable.likeable.feelings.count > 0 %>
+    <a href="<%= list_path(activity.trackable.likeable) %>" target="_blank"><i class="fa fa-comment-o"></i><%= activity.trackable.likeable.feelings.count %></a>
+    <% end %>
+  </div>
+</li>
+  <% end %>
+<% end %>

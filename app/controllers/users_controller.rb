@@ -42,7 +42,7 @@ class UsersController < ApplicationController
 
 	def feelings
 		@title = "短评 － #{@user.name}"
-		@feelings = @user.feelings.order(created_at: :desc).page(params[:page]).per(24)
+		@feelings = @user.feelings.where('feelingable_type = ?', 'Thing').order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	private

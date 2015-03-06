@@ -1,22 +1,22 @@
-<% if feeling.thing %>
+<% if feeling.feelingable %>
 <li class="row user-review feeling-review">
-  <p><a href="<%= thing_feelings_path(feeling.thing) %>" target="_blank"><i class="fa fa-quote-left"></i><%= feeling.body %><i class="fa fa-quote-right"></i></a></p>
+  <p><a href="<%= feelings_thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-quote-left"></i><%= feeling.body %><i class="fa fa-quote-right"></i></a></p>
   <div class="fancy-list-count">
-  	<i class="fa fa-thumbs-o-up"></i><span><%= feeling.feeling_ups.count %></span>
+  	<i class="fa fa-thumbs-o-up"></i><span><%= feeling.votes.count %></span>
  	</div>
  	<div class="user-feeling-thing row">
  		<div class="col-md-4 feeling-thing-img">
- 			<a href="<%= thing_path(feeling.thing) %>" class="feeling-img" target="_blank"><%= image_tag(feeling.thing.photos.first.avatar_url('800x800')) if feeling.thing.photos.first %></a>
+ 			<a href="<%= thing_path(feeling.feelingable) %>" class="feeling-img" target="_blank"><%= image_tag(feeling.feelingable.photos.first.avatar_url('800x800')) if feeling.feelingable.photos.first %></a>
  		</div>
  		<div class="col-md-8 feeling-thing-title">
- 			<h6><a href="<%= thing_path(feeling.thing) %>" target="_blank"><%= feeling.thing.title.truncate(15, :separator => ' ') %></a></h6>
+ 			<h6><a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><%= feeling.feelingable.title.truncate(15, :separator => ' ') %></a></h6>
  			<div class="feeling-thing-count"> 				
-		  	<a href="<%= thing_path(feeling.thing) %>" target="_blank"><i class="fa fa-heart-o"></i><%= feeling.thing.fanciers.count %></a>
-		  	<% if feeling.thing.owners.count > 0 %>
-		  	<a href="<%= thing_path(feeling.thing) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= feeling.thing.owners.count %></a>
+		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= feeling.feelingable.fanciers.count %></a>
+		  	<% if feeling.feelingable.owners.count > 0 %>
+		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= feeling.feelingable.owners.count %></a>
 		  	<% end %>
-		  	<% if feeling.thing.reviews.count > 0 %>
-		  	<a href="<%= thing_reviews_path(feeling.thing) %>" target="_blank"><i class="fa fa-pencil"></i><%= feeling.thing.reviews.count %></a>
+		  	<% if feeling.feelingable.reviews.count > 0 %>
+		  	<a href="<%= thing_reviews_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-pencil"></i><%= feeling.feelingable.reviews.count %></a>
 		  	<% end %>
  			</div>
  		</div>
