@@ -3,6 +3,7 @@ class ThingsController < ApplicationController
 	before_filter :find_my_thing, :only => [:edit, :update, :destroy]
 	before_filter :find_thing, :only => [:show, :feelings]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
+	after_filter :update_tags, :only => [:create, :update]
 
 	def new
 		@thing = Thing.new
@@ -12,7 +13,7 @@ class ThingsController < ApplicationController
 	def create
 		@thing = current_user.things.new_by_publish(thing_params, params[:commit] == '保存' ? false : true)
 		if @thing.save_with_photos
-			@thing.add_or_remove_fancier(current_user)
+			current_user.like(@thing)
 			if @thing.publish
 				redirect_to thing_path(@thing)
 			else
@@ -80,7 +81,7 @@ class ThingsController < ApplicationController
 		else
 			thing = current_user.things.new_by_hash(thing_hash)
 			thing.save
-			thing.add_or_remove_fancier(current_user)
+			current_user.like(thing)
 			render :text => thing.id
 		end
 	end
@@ -98,6 +99,11 @@ class ThingsController < ApplicationController
 	end
 
 	private
+
+	def update_tags
+		#TagsWorker.perform_async(@thing.id)
+		@thing.add_tags
+	end
 
 	def tmall_crawler(url)
 		page = Nokogiri::HTML(open(url))

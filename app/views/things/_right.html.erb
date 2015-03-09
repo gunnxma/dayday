@@ -38,20 +38,16 @@
 		  				<% end %>
 		  			</li>
 		  		</ul>
-		  		<div class="others white clearfix" style="display:none">
+		  		<div class="others white clearfix">
 		  			<ul class="tags clearfix">
+		  				<% thing.tags.each do |tag| %>
 		  				<li>
 		  					<a href="#">
 		  						<i class="glyphicon glyphicon-tag"></i>
-		  						数码
+		  						<%= tag.name %>
 		  					</a>
 		  				</li>
-		  				<li>
-		  					<a href="#">
-		  						<i class="glyphicon glyphicon-tag"></i>
-		  						手机
-		  					</a>
-		  				</li>
+		  				<% end %>
 		  			</ul>
 		  		</div>
 	  		</div>	  		

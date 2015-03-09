@@ -73,6 +73,9 @@ gem 'ruby-pinyin'
 
 gem 'public_activity'
 
+gem 'sidekiq'
+gem 'sinatra', require: false
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'

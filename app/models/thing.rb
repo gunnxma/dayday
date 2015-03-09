@@ -16,6 +16,9 @@ class Thing < ActiveRecord::Base
 	has_many :list_things, dependent: :destroy
 	has_many :lists, through: :list_things
 
+	has_many :thing_tags, dependent: :destroy
+	has_many :tags, through: :thing_tags
+
 	validates :title, presence: true
 	validate :thing_photos
 
@@ -39,9 +42,7 @@ class Thing < ActiveRecord::Base
 
 	def self.new_by_publish(params, publish)
 		thing = self.new(params)
-		thing.publish = publish		
-    thing.fancier_count = 0
-    thing.owner_count = 0
+		thing.publish = publish
     thing
 	end
 
@@ -68,7 +69,7 @@ class Thing < ActiveRecord::Base
 
 	def save_with_photos
 		result = self.save
-		Photo.by_token(@thing.token).update_all(thing_id: self.id) if result
+		Photo.by_token(self.token).update_all(thing_id: self.id) if result
 		result
 	end
 
@@ -80,6 +81,15 @@ class Thing < ActiveRecord::Base
 		self.hits ||= 0
 		self.hits = self.hits + 1
 		self.save
+	end
+
+	def add_tags
+		Tag.all.each do |tag|
+			if self.title.include?(tag.name) && !self.tags.include?(tag)
+	  		self.tags << tag
+	  	end
+	  end
+	  self.save
 	end
 
 	private
