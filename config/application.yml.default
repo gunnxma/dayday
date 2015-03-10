@@ -1,0 +1,16 @@
+defaults: &defaults
+  upyun_username: 'xinqidou'
+  upyun_password: ''
+  upyun_bucket: 'xinqidou'
+  upyun_bucket_host: 'http://image.xinqidou.com'
+  upyun_ftp_url: 'v0.ftp.upyun.com'
+  upyun_assets_bucket: 'xinqidou-assets'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

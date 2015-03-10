@@ -23,7 +23,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   #
   #  "/images/fallback/" + [version_name, "default.png"].compact.join('_')
     #{}"fallback/default.jpeg"
-    "http://image.xinqidou.com/fallback/default.jpeg#{version_name}"
+    "#{Settings.upyun_bucket_host}/fallback/default.jpeg#{version_name}"
   end
 
   def url(version_name = "")

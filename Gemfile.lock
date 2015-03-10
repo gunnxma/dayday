@@ -189,6 +189,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    settingslogic (2.0.9)
     sidekiq (3.3.2)
       celluloid (>= 0.16.0)
       connection_pool (>= 2.1.1)
@@ -251,6 +252,7 @@ DEPENDENCIES
   ruby-pinyin
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  settingslogic
   sidekiq
   sinatra
   sqlite3

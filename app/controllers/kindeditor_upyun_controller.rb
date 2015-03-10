@@ -45,12 +45,12 @@ class KindeditorUpyunController < ApplicationController
 	      file.write(uploaded_io.read)
 	    end
 
-	    upyun = Upyun::Rest.new('xinqidou', 'xinqidou', 'macnmq1983', {}, Upyun::ED_AUTO)
+	    upyun = Upyun::Rest.new(Settings.upyun_bucket, Settings.upyun_username, Settings.upyun_password, {}, Upyun::ED_AUTO)
 			result = upyun.put("/uploads/#{dir}/#{time.year}#{time.month}/#{newfilename}", File.new(filename, 'rb'))
 logger.debug("result:#{result}")
 			if result
 				File.delete(filename)
-	    	url = 'http://image.xinqidou.com/uploads/' + dir + "/#{time.year}#{time.month}" + '/' + newfilename + '!800x800'
+	    	url = "#{Settings.upyun_bucket_host}/uploads/" + dir + "/#{time.year}#{time.month}" + '/' + newfilename + '!800x800'
 	    else
 	    	url = request.protocol + request.host_with_port + '/uploads/' + dir + "/#{time.year}#{time.month}" + '/' + newfilename
 	    end

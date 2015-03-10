@@ -124,12 +124,12 @@ class Thing < ActiveRecord::Base
 		#"/uploads/body_img/#{ym}/#{basename}"
 
 		#body中的图片保存到upyun
-		upyun = Upyun::Rest.new('xinqidou', 'xinqidou', 'macnmq1983', {}, Upyun::ED_AUTO)
+		upyun = Upyun::Rest.new(Settings.upyun_bucket, Settings.upyun_username, Settings.upyun_password, {}, Upyun::ED_AUTO)
 		result = upyun.put("/uploads/body_img/#{ym}/#{basename}", File.new(newfile, 'rb'))
 		#result = upyun.upload(File.new(newfile))
 		if result
 			File.delete(newfile)
-			"http://image.xinqidou.com/uploads/body_img/#{ym}/#{basename}"
+			"#{Settings.upyun_bucket_host}/uploads/body_img/#{ym}/#{basename}"
 		else
 			"/uploads/body_img/#{ym}/#{basename}"
 		end
