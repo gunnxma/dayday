@@ -102,7 +102,8 @@ class ThingsController < ApplicationController
 
 	def update_tags
 		#TagsWorker.perform_async(@thing.id)
-		@thing.add_tags
+		Thing.delay.add_tags(@thing.id)
+		#@thing.add_tags
 	end
 
 	def tmall_crawler(url)

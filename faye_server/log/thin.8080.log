@@ -1,0 +1,26 @@
+Writing PID to tmp/pids/thin.8080.pid
+Using rack adapter
+Exiting!
+/usr/lib/ruby/2.1.0/psych.rb:464:in `initialize': No such file or directory @ rb_sysopen - ../config/config.yml (Errno::ENOENT)
+	from /usr/lib/ruby/2.1.0/psych.rb:464:in `open'
+	from /usr/lib/ruby/2.1.0/psych.rb:464:in `load_file'
+	from /mnt/dayday/faye_server/config.ru:5:in `block in <main>'
+	from /var/lib/gems/2.1.0/gems/rack-1.5.2/lib/rack/builder.rb:55:in `instance_eval'
+	from /var/lib/gems/2.1.0/gems/rack-1.5.2/lib/rack/builder.rb:55:in `initialize'
+	from /mnt/dayday/faye_server/config.ru:1:in `new'
+	from /mnt/dayday/faye_server/config.ru:1:in `<main>'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:33:in `eval'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:33:in `load'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/rack/adapter/loader.rb:42:in `for'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/thin/controllers/controller.rb:170:in `load_adapter'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/thin/controllers/controller.rb:74:in `start'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/thin/runner.rb:200:in `run_command'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/lib/thin/runner.rb:156:in `run!'
+	from /var/lib/gems/2.1.0/gems/thin-1.6.3/bin/thin:6:in `<top (required)>'
+	from /usr/local/bin/thin:23:in `load'
+	from /usr/local/bin/thin:23:in `<main>'
+Writing PID to tmp/pids/thin.8080.pid
+Using rack adapter
+Thin web server (v1.6.3 codename Protein Powder)
+Maximum connections set to 1024
+Listening on 0.0.0.0:8080, CTRL+C to stop

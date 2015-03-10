@@ -1,4 +1,7 @@
 window.App =
+  access_token : ''
+  faye_client_url : ''
+
 	voteable : (el) ->
     $el = $(el)
     voteable_type = $el.data("type")
@@ -117,4 +120,22 @@ window.App =
     $(el).data("state","owned").attr("title", "取消拥有")
     $('span',el).text("#{owns_count}")
     $("i",el).attr("class","fa fa-check-circle-o")
-    $(el).addClass($(el).data("active-class"))  
+    $(el).addClass($(el).data("active-class"))
+
+  initNotificationSubscribe : () ->
+    return if not App.access_token?
+    faye = new Faye.Client(App.faye_client_url)
+    faye.subscribe "/notifications_count/#{App.access_token}", (json) ->
+      span = $("#user_notifications_count span")
+      new_title = document.title.replace(/^\(\d+\) /,'')
+      if json.count > 0
+        span.addClass("badge-error")
+        new_title = "(#{json.count}) #{new_title}"
+        url = App.fixUrlDash("#{App.root_url}#{json.content_path}")
+        console.log url
+        $.notifier.notify("",json.title,json.content,url)
+      else
+        span.removeClass("badge-error")
+      span.text(json.count)
+      document.title = new_title
+    true

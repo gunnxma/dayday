@@ -5,7 +5,7 @@ namespace :tags do
   desc 'rebuild thing\'s tags'
   task :rebuild => :environment do
     Thing.all.each do |thing|
-	    thing.add_tags
+	    Thing.add_tags(thing.id)
 	  end
   end
 end

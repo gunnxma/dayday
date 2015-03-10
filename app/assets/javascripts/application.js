@@ -14,6 +14,7 @@
 //require jquery.turbolinks
 //= require jquery_ujs
 //= require kindeditor
+//= require faye
 //= require_tree .
 //= require bootstrap-sprockets
 //require turbolinks

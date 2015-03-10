@@ -83,13 +83,13 @@ class Thing < ActiveRecord::Base
 		self.save
 	end
 
-	def add_tags
+	def self.add_tags(thing_id)
+		thing = Thing.find(thing_id)
 		Tag.all.each do |tag|
-			if self.title.include?(tag.name) && !self.tags.include?(tag)
-	  		self.tags << tag
+			if thing.title.include?(tag.name) && !thing.tags.include?(tag)
+	  		ThingTag.create(thing_id: thing.id, tag_id: tag.id)
 	  	end
 	  end
-	  self.save
 	end
 
 	private

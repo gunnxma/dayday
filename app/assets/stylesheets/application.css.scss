@@ -248,3 +248,20 @@ a:visited { text-decoration: none;}
     background-color: #7aa9cc;
   }
 }
+
+.notification{
+  i{
+    font-size: 16px;
+  }
+  .badge{
+    background-color: #ef7e4b;
+    position: absolute;
+    top: 50%;
+    left: 28px;
+    z-index: 1;
+    margin-top: -15px;
+    padding: 1px 6px;
+    font-size: 14px;
+    color: #fff;
+  }
+}
