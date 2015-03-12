@@ -5,6 +5,9 @@ defaults: &defaults
   upyun_bucket_host: 'http://image.xinqidou.com'
   upyun_ftp_url: 'v0.ftp.upyun.com'
   upyun_assets_bucket: 'xinqidou-assets'
+  faye_server: "http://127.0.0.1:8080/faye"
+  faye_client_url: "http://192.168.0.183:8080/faye"
+  faye_token: "4b46c741d5c9ea1e48e82a547a57a8a7"
 
 development:
   <<: *defaults
