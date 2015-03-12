@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :votes, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :owns, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   has_many :user_followers, :foreign_key => :user_id, :class_name => 'UserFollower'
 	has_many :followers, :through => :user_followers

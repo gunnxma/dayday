@@ -2,7 +2,7 @@ window.App =
   access_token : ''
   faye_client_url : ''
 
-	voteable : (el) ->
+  voteable : (el) ->
     $el = $(el)
     voteable_type = $el.data("type")
     voteable_id = $el.data("id")
@@ -129,13 +129,7 @@ window.App =
       span = $("#user_notifications_count span")
       new_title = document.title.replace(/^\(\d+\) /,'')
       if json.count > 0
-        span.addClass("badge-error")
         new_title = "(#{json.count}) #{new_title}"
-        url = App.fixUrlDash("#{App.root_url}#{json.content_path}")
-        console.log url
-        $.notifier.notify("",json.title,json.content,url)
-      else
-        span.removeClass("badge-error")
-      span.text(json.count)
-      document.title = new_title
+        span.text(json.count)
+        document.title = new_title
     true
