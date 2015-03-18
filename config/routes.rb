@@ -67,6 +67,8 @@ Rails.application.routes.draw do
 
   get 'search/things'
 
+  resources :notifications
+
   mount Sidekiq::Web, at: '/sidekiq'
 
   # Example of regular route:

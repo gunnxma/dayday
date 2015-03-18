@@ -3,5 +3,6 @@
     <li role="presentation" class="<%= params[:action] == "profile" ? 'active' : '' %>"><a href="<%= settings_profile_path %>"><i class="fa fa-fw fa-user"></i>个人信息</a></li>
     <!--<li role="presentation" class="<%= params[:action] == "account" ? 'active' : '' %>"><a href="<%= settings_account_path %>">账户信息</a></li>-->
     <li role="presentation" class="<%= params[:action] == "drafts" ? 'active' : '' %>"><a href="<%= settings_drafts_path %>"><i class="fa fa-pencil-square-o fa-fw"></i>我的草稿</a></li>
+    <li role="presentation" class="<%= params[:controller] == "notifications" ? 'active' : '' %>"><a href="<%= notifications_path %>"><i class="fa fa-bell fa-fw"></i>我的提醒</a></li>
   </ul>
 </div>

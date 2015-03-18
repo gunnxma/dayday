@@ -66,6 +66,7 @@ class ThingsController < ApplicationController
     @feelings = @thing.feelings.order(id: :desc).page(params[:page]).per(15)
     @feeling = Feeling.new_with_owner(@thing)
     @title = @thing.page_title_feelings
+    @atwho = @thing.feelings_user_names
   end
 
 	def crawler

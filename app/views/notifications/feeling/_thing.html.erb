@@ -1,0 +1,13 @@
+<table class="table drafts-list">
+        <tr>
+          <td>
+            <h5><a href="<%= user_path(notification.notificationable.user) %>" target="_blank"><%= notification.notificationable.user.name %></a>评论了你分享的产品：<a href="<%= thing_path(notification.notificationable.feelingable) %>" target="_blank"><%= notification.notificationable.feelingable.title %></a></h5>
+            <p><%= notification.notificationable.body %></p>
+            <footer>
+              <time><%= notification.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></time>
+              <span class="separator">|</span>
+              <%= link_to "删除", notification_path(notification), :method => :delete, :remote => true, 'data-del-link' => true %>
+            </footer>
+          </td>
+        </tr>
+      </table>

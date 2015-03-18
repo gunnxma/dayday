@@ -1,0 +1,15 @@
+<div class="top_container container">
+  <div class="row">
+    <div class="col-xs-12 col-md-9 white">
+      <div class="page-header">
+        <h3><i class="fa fa-bell"></i>我的提醒</h3>
+      </div>
+      <% @notifications.each do |notification| %>
+      <%= render partial: "notifications/#{notification.action}/#{notification.notificationable_type.downcase}", locals: { notification: notification} %>
+      <% end %>
+    </div>
+    <div class="col-xs-0 col-md-3 hidden-xs setting-menu">
+      <%= render 'settings/right' %>
+    </div>
+  </div>
+</div>

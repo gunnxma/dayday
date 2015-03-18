@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require kindeditor
 //= require faye
+//= require jquery.atwho
 //= require_tree .
 //= require bootstrap-sprockets
 //require turbolinks
