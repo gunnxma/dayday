@@ -1,0 +1,9 @@
+<table class="table drafts-list">
+        <tr>
+          <td>
+            <h5><a href="<%= user_path(notification.notificationable.user) %>" target="_blank"><%= notification.notificationable.user.name %></a>在评测：<a href="<%= review_path(notification.notificationable.feelingable) %>" target="_blank"><%= notification.notificationable.feelingable.title %></a>回复中提到了你</h5>
+            <p><%= notification.notificationable.body %></p>
+            <%= render partial: 'notifications/foot', locals: { notification: notification } %>
+          </td>
+        </tr>
+      </table>

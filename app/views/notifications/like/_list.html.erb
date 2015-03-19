@@ -2,11 +2,7 @@
         <tr>
           <td>
             <h5><a href="<%= user_path(notification.notificationable.user) %>" target="_blank"><%= notification.notificationable.user.name %></a>喜欢了你的列表：<a href="<%= list_path(notification.notificationable.likeable) %>" target="_blank"><%= notification.notificationable.likeable.title %></a></h5>
-            <footer>
-              <time><%= notification.created_at.localtime.strftime("%Y-%m-%d %H:%M:%S") %></time>
-              <span class="separator">|</span>
-              <%= link_to "删除", notification_path(notification), :method => :delete, :remote => true, 'data-del-link' => true %>
-            </footer>
+            <%= render partial: 'notifications/foot', locals: { notification: notification } %>
           </td>
         </tr>
       </table>

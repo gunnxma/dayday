@@ -66,3 +66,8 @@ Exiting!
 	from /var/lib/gems/2.1.0/gems/thin-1.6.3/bin/thin:6:in `<top (required)>'
 	from /usr/local/bin/thin:23:in `load'
 	from /usr/local/bin/thin:23:in `<main>'
+Writing PID to tmp/pids/thin.8080.pid
+Using rack adapter
+Thin web server (v1.6.3 codename Protein Powder)
+Maximum connections set to 1024
+Listening on 0.0.0.0:8080, CTRL+C to stop

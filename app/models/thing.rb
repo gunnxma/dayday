@@ -83,6 +83,10 @@ class Thing < ActiveRecord::Base
 		self.save
 	end
 
+	def feelings_user_names
+		User.where(id: self.feelings.select(:user_id).distinct.pluck(:user_id)).pluck(:name)
+	end
+
 	def self.add_tags(thing_id)
 		thing = Thing.find(thing_id)
 		Tag.all.each do |tag|

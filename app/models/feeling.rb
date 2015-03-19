@@ -4,6 +4,7 @@ class Feeling < ActiveRecord::Base
 
   include Voteable
   include Notificationable
+  include Mentionable
 
   belongs_to :feelingable, polymorphic: true
 

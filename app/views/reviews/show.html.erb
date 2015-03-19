@@ -23,7 +23,7 @@
   						<%= follower_btn_tag(@review.user) %>
   						<a class="btn btn-primary" data-toggle="modal" data-target="#share_form"><i class="fa fa-share-alt"></i>分享评测</a>
   					</header>
-  					<%= raw @review.body %>
+  					<%= sanitize @review.body %>
   				</section>
   				<div class="review_footer">
   					<footer class="row">
