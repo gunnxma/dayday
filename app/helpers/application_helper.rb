@@ -1,4 +1,17 @@
 module ApplicationHelper
+  def notice_message
+    flash_messages = []
+
+    flash.each do |type, message|
+      type = :success if type.to_sym == :notice
+      
+      text = content_tag(:div, content_tag(:button, content_tag(:span, "&times;", 'aria-hidden' => "true"), :class => "close", 'data-dismiss' => "alert", 'aria-label' => "Close") + message, :class => "alert alert-warning alert-dismissible", :role => "alert")
+      flash_messages << text if message
+    end
+
+    flash_messages.join("\n").html_safe
+  end
+
 	def follower_btn_tag(user, opts = {})
     return "" if user == current_user
 

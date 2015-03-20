@@ -10,11 +10,28 @@ class ApplicationController < ActionController::Base
 	  @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id]
 	end
 
-	private
+	rescue_from CanCan::AccessDenied do |exception|
+    render_403
+  end
 
-	def check_user
-		if !current_user
-			redirect_to :controller => :sessions, :action => :new
-		end
-	end
+  def render_404
+  	@title = "404页面不存在"
+    render_optional_error_file(404)
+  end
+
+  def render_403  	
+    if current_user
+    	@title = "403禁止访问"
+    else
+    	@title = "需要登录"
+    end
+    render_optional_error_file(403)
+  end
+
+  def render_optional_error_file(status_code)
+    status = status_code.to_s
+    fname = %W(404 403 422 500).include?(status) ? status : 'unknown'
+    render template: "/errors/#{fname}", format: [:html],
+           handler: [:erb], status: status, layout: 'application'
+  end
 end

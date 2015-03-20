@@ -1,4 +1,6 @@
 class NotificationsController < ApplicationController
+	load_and_authorize_resource
+	
 	def index
 		@notifications = current_user.notifications.order(id: :desc).page(params[:page]).per(15)
 		@title = "提醒"

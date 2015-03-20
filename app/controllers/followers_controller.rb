@@ -1,4 +1,6 @@
 class FollowersController < ApplicationController
+	authorize_resource :class => false
+	
 	def create
 		user = User.find(params[:user_id])
 		user.followers << current_user

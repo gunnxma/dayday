@@ -98,6 +98,7 @@
 	    </div><!-- /.navbar-collapse -->
 	  </div><!-- /.container-fluid -->
 	</nav>
+	<%= notice_message %>
 <%= yield %>
 
 <% Category.where('parent_id = 0').each do |category| %>

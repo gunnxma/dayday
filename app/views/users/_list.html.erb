@@ -2,7 +2,7 @@
 	<center><a href="<%= list_path(list) %>" class="fancy-img" target="_blank"><%= image_tag(list.things.first.photos.first.avatar_url('800x800'), :class => 'img-responsive') if list.things.first.photos.first %></a></center>
   <div><a class="fancy-thing-title" href="<%= list_path(list) %>" target="_blank"><%= list.title %><small>(<%= list.things.count %>)</small></a></div>
   <div class="fancy-list-count">
-  	<a href="<%= list_path(list) %>" target="_blank"><i class="fa fa-heart-o"></i><%= list.lfanciers.count %></a>
+  	<a href="<%= list_path(list) %>" target="_blank"><i class="fa fa-heart-o"></i><%= list.likes.count %></a>
   	<% if list.feelings.count > 0 %>
   	<a href="<%= list_path(list) %>" target="_blank"><i class="fa fa-comment-o"></i><%= list.feelings.count %></a>
   	<% end %>

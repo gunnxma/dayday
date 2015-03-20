@@ -1,4 +1,6 @@
 class SettingsController < ApplicationController
+	authorize_resource :class => false
+	
 	before_filter :find_user, :except => [:index]
 	def index
 	end

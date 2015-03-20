@@ -11,9 +11,9 @@
  		<div class="col-md-8 feeling-thing-title">
  			<h6><a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><%= feeling.feelingable.title.truncate(15, :separator => ' ') %></a></h6>
  			<div class="feeling-thing-count"> 				
-		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= feeling.feelingable.fanciers.count %></a>
-		  	<% if feeling.feelingable.owners.count > 0 %>
-		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= feeling.feelingable.owners.count %></a>
+		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= feeling.feelingable.likes.count %></a>
+		  	<% if feeling.feelingable.owns.count > 0 %>
+		  	<a href="<%= thing_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= feeling.feelingable.owns.count %></a>
 		  	<% end %>
 		  	<% if feeling.feelingable.reviews.count > 0 %>
 		  	<a href="<%= thing_reviews_path(feeling.feelingable) %>" target="_blank"><i class="fa fa-pencil"></i><%= feeling.feelingable.reviews.count %></a>

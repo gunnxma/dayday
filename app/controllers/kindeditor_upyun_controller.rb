@@ -1,4 +1,5 @@
 class KindeditorUpyunController < ApplicationController
+	authorize_resource :class => false
 	skip_before_filter :verify_authenticity_token
 
 	def upload

@@ -1,15 +1,28 @@
-<% if fancier.thing %>
-<li class="row">
-	<center><a href="<%= thing_path(fancier.thing) %>" class="fancy-img" target="_blank"><%= image_tag(fancier.thing.photos.first.avatar_url('800x800'), :class => 'img-responsive') if fancier.thing.photos.first %></a></center>
-  <div><a class="fancy-thing-title" href="<%= thing_path(fancier.thing) %>" target="_blank"><%= fancier.thing.title %></a></div>
-  <div class="fancy-list-count">
-  	<a href="<%= thing_path(fancier.thing) %>" target="_blank"><i class="fa fa-heart-o"></i><%= fancier.thing.fanciers.count %></a>
-  	<% if fancier.thing.owners.count > 0 %>
-  	<a href="<%= thing_path(fancier.thing) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= fancier.thing.owners.count %></a>
-  	<% end %>
-  	<% if fancier.thing.reviews.count > 0 %>
-  	<a href="<%= thing_reviews_path(fancier.thing) %>" target="_blank"><i class="fa fa-pencil"></i><%= fancier.thing.reviews.count %></a>
-  	<% end %>
- 	</div>
-</li>
+<% if fancier.likeable_type == "Thing" %>
+  <% if fancier.likeable %>
+  <li class="row">
+  	<center><a href="<%= thing_path(fancier.likeable) %>" class="fancy-img" target="_blank"><%= image_tag(fancier.likeable.photos.first.avatar_url('800x800'), :class => 'img-responsive') if fancier.likeable.photos.first %></a></center>
+    <div><a class="fancy-thing-title" href="<%= thing_path(fancier.likeable) %>" target="_blank"><%= fancier.likeable.title %></a></div>
+    <div class="fancy-list-count">
+    	<a href="<%= thing_path(fancier.likeable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= fancier.likeable.likes.count %></a>
+    	<% if fancier.likeable.owns.count > 0 %>
+    	<a href="<%= thing_path(fancier.likeable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= fancier.likeable.owns.count %></a>
+    	<% end %>
+    	<% if fancier.likeable.reviews.count > 0 %>
+    	<a href="<%= thing_reviews_path(fancier.likeable) %>" target="_blank"><i class="fa fa-pencil"></i><%= fancier.likeable.reviews.count %></a>
+    	<% end %>
+   	</div>
+  </li>
+  <% end %>
+<% end %>
+<% if fancier.likeable_type == "List" %>
+  <% if fancier.likeable %>
+  <li class="row">
+    <center><a href="<%= list_path(fancier.likeable) %>" class="fancy-img" target="_blank"><%= image_tag(fancier.likeable.things.first.photos.first.avatar_url('800x800'), :class => 'img-responsive') if fancier.likeable.things.first.photos.first %></a></center>
+    <div><a class="fancy-thing-title" href="<%= list_path(fancier.likeable) %>" target="_blank"><%= fancier.likeable.title %></a></div>
+    <div class="fancy-list-count">
+      <a href="<%= list_path(fancier.likeable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= fancier.likeable.likes.count %></a>
+    </div>
+  </li>
+  <% end %>
 <% end %>

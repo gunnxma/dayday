@@ -17,12 +17,12 @@ class UsersController < ApplicationController
 
 	def fancies
 		@title = "喜欢 － #{@user.name}"
-		@fanciers = @user.fanciers.order(created_at: :desc).page(params[:page]).per(24)
+		@fanciers = @user.likes.order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	def owns
 		@title = "拥有 － #{@user.name}"
-		@owners = @user.owners.order(created_at: :desc).page(params[:page]).per(24)
+		@owns = @user.owns.order(created_at: :desc).page(params[:page]).per(24)
 	end
 
 	def things
@@ -49,5 +49,8 @@ class UsersController < ApplicationController
 
 	def find_user		
 		@user = User.find(params[:id])
+		if @user.blank?
+			render_404
+		end
 	end
 end

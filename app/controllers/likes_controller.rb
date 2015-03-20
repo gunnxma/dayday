@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  authorize_resource :class => false
+  
 	before_filter :find_likeable
 
 	def create

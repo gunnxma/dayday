@@ -1,16 +1,12 @@
+<% if current_user.blank? %>
 <div class="top_container">
   <div class="row">
     <div class="col-md-3 hidden-xs"></div>
     <div class="col-xs-12 col-md-6 white">
       <div class="page-header">
-        <h3>登录</h3>
+        <h3>需要登录才能继续操作</h3>
       </div>
-      <% if flash[:notice] %>
-        <div class="alert alert-warning" role="alert">         
-          <%= flash[:notice] %>
-        </div>
-      <% end %>
-      <%= render 'form' %>
+      <%= render 'sessions/form' %>
     </div>
     <div class="col-md-3 hidden-xs"></div>
   </div>
@@ -29,3 +25,18 @@
     <div class="col-md-3 hidden-xs"></div>
   </div>
 </div>
+<% else %>
+<div class="top_container">
+  <div class="row">
+    <div class="col-md-3 hidden-xs"></div>
+    <div class="col-xs-12 col-md-6 white">
+      <div class="page-header">
+        <h3>您没有权限进行此项操作(403)</h3>
+        <%= link_to "回到首页", root_path, :class => "btn btn-success" %>
+        <%= link_to "返回上一页", "javascript:history.go(-1)", :class => "btn btn-success" %>  
+      </div>
+    </div>
+    <div class="col-md-3 hidden-xs"></div>
+  </div>
+</div>
+<% end %>

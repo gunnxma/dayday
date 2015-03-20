@@ -1,4 +1,6 @@
 class BuysController < ApplicationController
+	authorize_resource :class => false
+	
 	def create
 		thing = Thing.find(params[:thing_id])
 		if thing.buy_url?

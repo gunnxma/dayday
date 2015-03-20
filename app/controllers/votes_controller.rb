@@ -1,4 +1,6 @@
 class VotesController < ApplicationController
+  authorize_resource :class => false
+  
 	before_filter :find_voteable
 
 	def create

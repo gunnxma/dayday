@@ -11,4 +11,8 @@ class IndexController < ApplicationController
 	def reviews
 		@reviews = Review.where('publish = ?', true).order(hits: :desc).page(params[:page]).per(20)
 	end
+
+	def error_404
+    render_404
+  end
 end

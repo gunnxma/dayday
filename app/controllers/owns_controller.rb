@@ -1,4 +1,6 @@
 class OwnsController < ApplicationController
+  authorize_resource :class => false
+  
 	before_filter :find_ownable
 
 	def create

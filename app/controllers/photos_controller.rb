@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
-	skip_before_filter :verify_authenticity_token
-	before_filter :check_user
+	load_and_authorize_resource
+	skip_before_filter :verify_authenticity_token	
 
 	def index
 		token = params[:token]

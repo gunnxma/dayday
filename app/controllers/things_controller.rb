@@ -1,5 +1,5 @@
 class ThingsController < ApplicationController
-	before_filter :check_user, :only => [:new, :create]
+	load_and_authorize_resource only: [:new, :create, :edit, :update, :destroy, :crawler, :to_list]
 	before_filter :find_my_thing, :only => [:edit, :update, :destroy]
 	before_filter :find_thing, :only => [:show, :feelings]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
