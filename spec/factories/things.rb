@@ -4,9 +4,10 @@ FactoryGirl.define do
     subtitle 'subtitle'
     official_site 'official_site'
     body 'body'
+    token SecureRandom.hex
   end
 
   factory :thing_with_photos, :parent => :thing do |thing|
-    photos { build_list :photo, 3 }
+    photos { create_list :photo, 3, token: token }
   end
 end
