@@ -1,26 +1,26 @@
 <% if activity.trackable && activity.trackable.voteable %>
-	<% if activity.trackable.voteable_type == "Feeling" %>
+	<% if activity.trackable.voteable_type == "Feeling" && activity.trackable.voteable.feelingable_type == "Thing" %>
 	<li class="row user-review feeling-review">
 		<div class="activity-title white">
-			<i class="fa fa-thumbs-o-up"></i>赞了短评<a href="<%= feelings_thing_path(activity.trackable.voteable.thing) %>" target="_blank"><time class="pull-right" datetime="<%= activity.created_at %>"><%= distance_of_time_in_words_to_now(activity.created_at) %>前</time></a>
+			<i class="fa fa-thumbs-o-up"></i>赞了短评<a href="<%= feelings_thing_path(activity.trackable.voteable.feelingable) %>" target="_blank"><time class="pull-right" datetime="<%= activity.created_at %>"><%= distance_of_time_in_words_to_now(activity.created_at) %>前</time></a>
 		</div>
-	  <p><a href="<%= feelings_thing_path(activity.trackable.voteable.thing) %>" target="_blank"><i class="fa fa-quote-left"></i><%= activity.trackable.voteable.body %><i class="fa fa-quote-right"></i></a></p>
+	  <p><a href="<%= feelings_thing_path(activity.trackable.voteable.feelingable) %>" target="_blank"><i class="fa fa-quote-left"></i><%= activity.trackable.voteable.body %><i class="fa fa-quote-right"></i></a></p>
 	  <div class="fancy-list-count">
 	  	<i class="fa fa-thumbs-o-up"></i><span><%= activity.trackable.voteable.votes.count %></span>
 	 	</div>
 	 	<div class="user-feeling-thing row">
 	 		<div class="col-md-4 feeling-thing-img">
-	 			<a href="<%= thing_path(activity.trackable.voteable.thing) %>" class="feeling-img" target="_blank"><%= image_tag(activity.trackable.voteable.thing.photos.first.avatar_url('800x800')) if activity.trackable.voteable.thing.photos.first %></a>
+	 			<a href="<%= thing_path(activity.trackable.voteable.feelingable) %>" class="feeling-img" target="_blank"><%= image_tag(activity.trackable.voteable.feelingable.photos.first.avatar_url('800x800')) if activity.trackable.voteable.feelingable.photos.first %></a>
 	 		</div>
 	 		<div class="col-md-8 feeling-thing-title">
-	 			<h6><a href="<%= thing_path(activity.trackable.voteable.thing) %>" target="_blank"><%= activity.trackable.voteable.thing.title.truncate(15, :separator => ' ') %></a></h6>
+	 			<h6><a href="<%= thing_path(activity.trackable.voteable.feelingable) %>" target="_blank"><%= activity.trackable.voteable.feelingable.title.truncate(15, :separator => ' ') %></a></h6>
 	 			<div class="feeling-thing-count"> 				
-			  	<a href="<%= thing_path(activity.trackable.voteable.thing) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.voteable.thing.fanciers.count %></a>
-			  	<% if activity.trackable.voteable.thing.owners.count > 0 %>
-			  	<a href="<%= thing_path(activity.trackable.voteable.thing) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= activity.trackable.voteable.thing.owners.count %></a>
+			  	<a href="<%= thing_path(activity.trackable.voteable.feelingable) %>" target="_blank"><i class="fa fa-heart-o"></i><%= activity.trackable.voteable.feelingable.likes.count %></a>
+			  	<% if activity.trackable.voteable.feelingable.owns.count > 0 %>
+			  	<a href="<%= thing_path(activity.trackable.voteable.feelingable) %>" target="_blank"><i class="fa fa-check-circle-o"></i><%= activity.trackable.voteable.feelingable.owns.count %></a>
 			  	<% end %>
-			  	<% if activity.trackable.voteable.thing.reviews.count > 0 %>
-			  	<a href="<%= thing_reviews_path(activity.trackable.voteable.thing) %>" target="_blank"><i class="fa fa-pencil"></i><%= activity.trackable.voteable.thing.reviews.count %></a>
+			  	<% if activity.trackable.voteable.feelingable.reviews.count > 0 %>
+			  	<a href="<%= thing_reviews_path(activity.trackable.voteable.feelingable) %>" target="_blank"><i class="fa fa-pencil"></i><%= activity.trackable.voteable.feelingable.reviews.count %></a>
 			  	<% end %>
 	 			</div>
 	 		</div>
