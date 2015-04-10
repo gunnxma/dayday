@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-	load_and_authorize_resource
+	authorize_resource :class => false
 	
 	before_filter :find_thing, :only => [:index, :new, :create]
 	before_filter :find_review, :only => [:edit, :update, :show, :destroy]

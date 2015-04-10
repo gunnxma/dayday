@@ -1,5 +1,5 @@
 class ThingsController < ApplicationController
-	load_and_authorize_resource only: [:new, :create, :edit, :update, :destroy, :crawler, :to_list]
+	authorize_resource :class => false, only: [:new, :create, :edit, :update, :destroy, :crawler, :to_list]
 	before_filter :find_my_thing, :only => [:edit, :update, :destroy]
 	before_filter :find_thing, :only => [:show, :feelings]
 	skip_before_filter :verify_authenticity_token, :only => [:crawler]
@@ -103,7 +103,8 @@ class ThingsController < ApplicationController
 
 	def update_tags
 		#TagsWorker.perform_async(@thing.id)
-		Thing.delay.add_tags(@thing.id)
+		#Thing.delay.add_tags(@thing.id)
+		Thing.add_tags(@thing.id)
 		#@thing.add_tags
 	end
 

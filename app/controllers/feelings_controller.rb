@@ -1,5 +1,5 @@
 class FeelingsController < ApplicationController
-	load_and_authorize_resource
+	authorize_resource :class => false
 	
   def create
     @feeling = current_user.feelings.new(feeling_params)

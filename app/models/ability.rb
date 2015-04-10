@@ -5,23 +5,23 @@ class Ability
     if user.blank?
       can :read, :all
       can :create, :buy
-      cannot :read, Notification
+      cannot :read, :notification
     else
       can :read, :all
 
       #Thing
-      can :create, Thing
-      can :update, Thing do |thing|
+      can :create, :thing
+      can :update, :thing do |thing|
         (thing.user_id == user.id)
       end
-      can :destroy, Thing do |thing|
+      can :destroy, :thing do |thing|
         (thing.user_id == user.id)
       end
-      can :crawler, Thing
-      can :to_list, Thing
+      can :crawler, :thing
+      can :to_list, :thing
 
       #Feeling
-      can :create, Feeling
+      can :create, :feeling
 
       #Follower
       can :create, :follower
@@ -35,8 +35,8 @@ class Ability
       can :destroy, :like
 
       #Notification
-      can :read, Notification
-      can :destroy, Notification do |notification|
+      can :read, :notification
+      can :destroy, :notification do |notification|
         (notification.user_id == user.id)
       end
 
@@ -45,17 +45,17 @@ class Ability
       can :destroy, :own
 
       #Photo
-      can :create, Photo
-      can :destroy, Photo do |photo|
+      can :create, :photo
+      can :destroy, :photo do |photo|
         (photo.thing.blank? || photo.thing.user_id == user.id)
       end
 
       #Review
-      can :create, Review
-      can :update, Review do |review|
+      can :create, :review
+      can :update, :review do |review|
         (review.user_id == user.id)
       end
-      can :destroy, Review do |review|
+      can :destroy, :review do |review|
         (review.user_id == user.id)
       end
 

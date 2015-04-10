@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
-	load_and_authorize_resource
+	authorize_resource :class => false
+	
 	skip_before_filter :verify_authenticity_token	
 
 	def index

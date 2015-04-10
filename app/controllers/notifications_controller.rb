@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-	load_and_authorize_resource
+	authorize_resource :class => false
 	
 	def index
 		@notifications = current_user.notifications.order(id: :desc).page(params[:page]).per(15)
