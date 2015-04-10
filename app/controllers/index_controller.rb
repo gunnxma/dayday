@@ -22,4 +22,8 @@ class IndexController < ApplicationController
 	def error_404
     render_404
   end
+
+  #def phones
+  #	render layout: false
+  #end
 end

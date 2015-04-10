@@ -11,5 +11,12 @@ require 'rails_helper'
 #   end
 # end
 RSpec.describe LikesHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "likeable_tag" do
+  	let(:user) { FactoryGirl.create(:user) }
+  	let(:thing) { FactoryGirl.create(:thing_with_photos) }
+
+  	it "nil param" do
+  		expect(helper.likeable_tag(nil)).to eq("")
+  	end
+  end
 end

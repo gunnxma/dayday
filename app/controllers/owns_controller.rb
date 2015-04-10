@@ -16,6 +16,6 @@ class OwnsController < ApplicationController
 private
 
 	def find_ownable
-	  @item = Thing.find_by_id(params[:id])    
+	  @item = Thing.find_by_id(params[:id])
   end
 end
