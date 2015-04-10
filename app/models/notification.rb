@@ -2,7 +2,7 @@ class Notification < ActiveRecord::Base
 	belongs_to :notificationable, polymorphic: true
 	belongs_to :user
 
-	scope :unread, -> { where("read = ?", false) }
+	scope :unread, -> { where(:read, false) }
 
 	after_create :realtime_push_to_client
   after_update :realtime_push_to_client
